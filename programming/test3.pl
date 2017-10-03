@@ -1,18 +1,15 @@
-probs_color_change(red, [0, 1/3, 1/3, 1/3]).
-probs_color_change(green, [1/3, 0, 1/3, 1/3]).
-probs_color_change(blue, [1/3, 1/3, 0, 1/3]).
-probs_color_change(yellow, [1/3, 1/3, 1/3, 0]).
+:- use_module(library(apply)).
+:- use_module(library(lists)).
 
 color(red).
 color(green).
-%color(blue).
-%color(yellow).
+color(blue).
+color(yellow).
+no_color(nocolor).
 
 %%%%%%%%%%%%%%%%%
 % UTILITY PREDICATES
 %%%%%%%%%%%%%%%%%
-append([],L,L). 
-append([H|T],L2,[H|L3])  :-  append(T,L2,L3).
 
 transpose(Ls, Ts) :-
 	lists_transpose(Ls, Ts).
@@ -26,6 +23,58 @@ transpose_(_, Fs, Lists0, Lists) :-
 	maplist(list_first_rest, Lists0, Fs, Lists).
 	
 list_first_rest([L|Ls], L, Ls).
+
+same_length([],[]).
+same_length([_|L1],[_|L2]) :- same_length(L1, L2).
+
+
+%%%%%%%%%%%%%%%
+% RANDOM EVENTS
+%%%%%%%%%%%%%%%
+probs_color_change(red, [0, 1/3, 1/3, 1/3]).
+probs_color_change(green, [1/3, 0, 1/3, 1/3]).
+probs_color_change(blue, [1/3, 1/3, 0, 1/3]).
+probs_color_change(yellow, [1/3, 1/3, 1/3, 0]).
+
+% we'll press one of the blocks on board.
+ProbPress::press(Board, X, Y, Color) :-
+	how_many_blocks_with_color(Board, N),
+	ProbPress is 1 / N,
+	find_block(Board, X, Y, block(Color, X, Y)),
+	color(Color).
+	
+change_color(Board, X, Y, NewColor, NewBoard) :-
+	press(Board, X, Y, Color),
+	findall(C, color(C), Colors),
+	probs_color_change(Color, Probs),
+	select_weighted(1, Probs, Colors, NewColor, _),
+	NewBoard is 5.
+	
+find_block([[Block|_]|_], 1, 1, Block).
+find_block([Row|Tail], X, Y, Block) :-
+	Y > 1,
+	NewY is Y - 1,
+	find_block(Tail, X, NewY, Block).
+find_block([[Block|Tail]|Tail2], X, 1, Acc) :-
+	X > 1,
+	NewX is X - 1,
+	find_block([Tail1|Tail2]).
+
+
+
+how_many_blocks_with_color(Board, Blocks) :-
+	how_many_blocks_with_color(Board, Blocks, 0).
+how_many_blocks_with_color([], Blocks, Blocks).
+how_many_blocks_with_color([[]|Tail], Blocks, Acc) :-
+	how_many_blocks_with_color(Tail, Blocks, Acc).
+how_many_blocks_with_color([[block(Color, _, _)|Tail1]|Tail2], Blocks, Acc) :-
+	color(Color),
+	NewAcc is Acc + 1,
+	how_many_blocks_with_color([Tail1|Tail2], Blocks, NewAcc).
+how_many_blocks_with_color([[block(Color, _, _)|Tail1]|Tail2], Blocks, Acc) :-
+	no_color(Color),
+	how_many_blocks_with_color([Tail1|Tail2], Blocks, Acc).
+	
 
 %%%%%%%%%%%%%%%%%
 % GAME PREDICATES
@@ -106,4 +155,15 @@ start(Board, Width, Height) :-
 	find_same_vertical(Board, []).
 	
 	
-query(create_board(2, 2, Board)).
+query(change_color([
+		[block(red, 1, 1), block(green, 2, 1), block(blue, 3, 1), block(red, 4, 1), block(green, 5, 1), block(blue, 6, 1), block(red, 7, 1), block(green, 8, 1), block(blue, 9, 1), block(red, 10, 1)],
+		[block(green, 1, 2), block(blue, 2, 2), block(red, 3, 2), block(green, 4, 2), block(blue, 5, 2), block(red, 6, 2), block(green, 7, 2), block(blue, 8, 2), block(red, 9, 2), block(green, 10, 2)],
+		[block(blue, 1, 3), block(red, 2, 3), block(green, 3, 3), block(blue, 4, 3), block(red, 5, 3), block(green, 6, 3), block(blue, 7, 3), block(red, 8, 3), block(green, 9, 3), block(blue, 10, 3)],
+		[block(red, 1, 4), block(green, 2, 4), block(blue, 3, 4), block(red, 4, 4), block(green, 5, 4), block(blue, 6, 4), block(red, 7, 4), block(green, 8, 4), block(blue, 9, 4), block(red, 10, 4)],
+		[block(green, 1, 5), block(blue, 2, 5), block(red, 3, 5), block(green, 4, 5), block(blue, 5, 5), block(red, 6, 5), block(green, 7, 5), block(blue, 8, 5), block(red, 9, 5), block(green, 10, 5)],
+		[block(blue, 1, 6), block(red, 2, 6), block(green, 3, 6), block(blue, 4, 6), block(red, 5, 6), block(green, 6, 6), block(blue, 7, 6), block(red, 8, 6), block(green, 9, 6), block(blue, 10, 6)],
+		[block(red, 1, 7), block(green, 2, 7), block(blue, 3, 7), block(red, 4, 7), block(green, 5, 7), block(blue, 6, 7), block(red, 7, 7), block(green, 8, 7), block(blue, 9, 7), block(red, 10, 7)],
+		[block(green, 1, 8), block(blue, 2, 8), block(red, 3, 8), block(green, 4, 8), block(blue, 5, 8), block(red, 6, 8), block(green, 7, 8), block(blue, 8, 8), block(red, 9, 8), block(green, 10, 8)],
+		[block(blue, 1, 9), block(red, 2, 9), block(green, 3, 9), block(blue, 4, 9), block(red, 5, 9), block(green, 6, 9), block(blue, 7, 9), block(red, 8, 9), block(green, 9, 9), block(blue, 10, 9)],
+		[block(red, 1, 10), block(green, 2, 10), block(blue, 3, 10), block(red, 4, 10), block(green, 5, 10), block(blue, 6, 10), block(red, 7, 10), block(green, 8, 10), block(blue, 9, 10), block(red, 10, 10)]
+	], X, Y, NewColor, NewBoard)).
