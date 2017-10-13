@@ -1,9 +1,10 @@
 pack([],[]).
 pack([X|Xs],[Z|Zs]) :- transfer(X,Xs,Ys,Z), pack(Ys,Zs).
 
-transfer(X,[],[],[X]).
-transfer(X,[Y|Ys],[Y|Ys],[X]) :- X \= Y.
+transfer(block(Color, _, _),[],[],[block(Color, _, _)]).
+transfer(block(Color1, _, _),[block(Color2, _, _)|Ys],[block(Color2, _, _)|Ys],[block(Color1, _, _)]) :- Color1 \= Color2.
 transfer(X,[X|Xs],Ys,[X|Zs]) :- transfer(X,Xs,Ys,Zs).
+
 
 transform([], Result, Result, Index).
 transform([[X|Xs]|Ys], Result, Acc, Index) :- 
@@ -60,6 +61,7 @@ get_column_from_list([H|T], Width, Height, Result, Acc, Remaining) :-
 	append(Acc, [H], NewAcc),
 	NewHeight is Height - 1,
 	get_column_from_list(T, Width, NewHeight, Result, NewAcc, Remaining).
+	
 
 	
 %query(check_for_3_or_more([r,g,b,b,b,b,r,r,r,g,b],List)).
