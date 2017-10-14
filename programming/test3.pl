@@ -213,7 +213,8 @@ find_same_vertical(Board, Same) :-
 	
 find_same_in_list(List, Same) :-
 	pack(List, PackedList),
-	find_same_in_packed_list(PackedList, Same, []).
+	remove_no_colors_from_packed_list(PackedList, NoColorPackedList),
+	find_same_in_packed_list(NoColorPackedList, Same, []).
 find_same_in_packed_list([], Same, Same).
 find_same_in_packed_list([Pack|Tail], Same, Acc) :-
 	length(Pack, Length),
@@ -225,6 +226,17 @@ find_same_in_packed_list([Pack|Tail], Same, Acc) :-
 	Length =< 2,
 	find_same_in_packed_list(Tail, Same, Acc).
 
+remove_no_colors_from_packed_list(PackedList, Result) :-
+	remove_no_colors_from_packed_list(PackedList, Result, []).
+remove_no_colors_from_packed_list([], Result, Result).
+remove_no_colors_from_packed_list([[block(Color,X,Y)|Tail1]|Tail2], Result, ResultAcc) :-
+	color(Color),
+	append(ResultAcc, [[block(Color,X,Y)|Tail1]], NewResultAcc),
+	remove_no_colors_from_packed_list(Tail2, Result, NewResultAcc).
+remove_no_colors_from_packed_list([[block(Color,_,_)|Tail1]|Tail2], Result, ResultAcc) :-
+	\+color(Color),
+	remove_no_colors_from_packed_list(Tail2, Result, ResultAcc).
+	
 start(Board, Width, Height) :-
 	create_board(Width, Height, Board),
 %	Board = [
@@ -261,7 +273,7 @@ query(change_color([
 		[block(red, 1, 1), block(red, 2, 1), block(blue, 3, 1)],
 		[block(green, 1, 2), block(blue, 2, 2), block(red, 3, 2)],
 		[block(red, 1, 3), block(red, 2, 3), block(green, 3, 3)]
-	], 1, 2, Color, Score)).
+	], X, Y, Color, Score)).
 
 %query(find_same([
 %		[block(red, 1, 1), block(red, 2, 1), block(red, 3, 1), block(red, 4, 1), block(green, 5, 1), block(blue, 6, 1), block(red, 7, 1), block(green, 8, 1), block(blue, 9, 1), block(red, 10, 1)],
