@@ -62,8 +62,6 @@ ProbPress::press(Board, X, Y, Color) :-
 	find_color_of_block(Board, X, Y, Color),
 	color(Color).
 	
-change_color(Board, X, Y, NewBoard, Score) :-
-	change_color(Board, X, Y, NewBoard, Score, 0).
 change_color(Board, X, Y, NewBoard, Score, ScoreAcc) :-
 	press(Board, X, Y, Color),
 	findall(C, color(C), Colors),
@@ -238,12 +236,9 @@ remove_no_colors_from_packed_list([[block(Color,_,_)|_]|Tail2], Result, ResultAc
 	remove_no_colors_from_packed_list(Tail2, Result, ResultAcc).
 	
 	
-turn(Board, X, Y, NewBoard, Score) :-
-	change_color(Board, X, Y, NewBoard, Score).
-	
-turn2(Board, X1, Y1, X2, Y2, NewBoard, Score) :-
-	change_color(Board, X1, Y1, NewBoard1, Score1),
-	change_color(NewBoard1, X2, Y2, NewBoard, Score).
+turn(Board, X1, Y1, X2, Y2, NewBoard, Score) :-
+	change_color(Board, X1, Y1, NewBoard1, Score1, 0),
+	change_color(NewBoard1, X2, Y2, NewBoard, Score, Score1).
 	
 start(Board, Width, Height) :-
 	create_board(Width, Height, Board),
@@ -279,16 +274,17 @@ start(Board, Width, Height) :-
 
 
 	
-%query(change_color([
-%		[block(red, 1, 1), block(red, 2, 1), block(blue, 3, 1)],
+query(change_color([
+		[block(green, 1, 1), block(red, 2, 1), block(blue, 3, 1)],
+		[block(red, 1, 2), block(green, 2, 2), block(red, 3, 2)],
+		[block(blue, 1, 3), block(red, 2, 3), block(green, 3, 3)]
+	], X, Y, NewBoard, Score, 0)).
+
+
+%query(turn([[block(red, 1, 1), block(red, 2, 1), block(blue, 3, 1)],
 %		[block(green, 1, 2), block(blue, 2, 2), block(red, 3, 2)],
 %		[block(red, 1, 3), block(red, 2, 3), block(green, 3, 3)]
-%	], X, Y, Color, Score)).
-
-query(turn2([[block(red, 1, 1), block(red, 2, 1), block(blue, 3, 1)],
-		[block(green, 1, 2), block(blue, 2, 2), block(red, 3, 2)],
-		[block(red, 1, 3), block(red, 2, 3), block(green, 3, 3)]
-	], X1, Y1, X2, Y2, NewBoard, Score)).
+%	], X1, Y1, X2, Y2, NewBoard, Score)).
 
 %query(find_same([
 %		[block(red, 1, 1), block(red, 2, 1), block(red, 3, 1), block(red, 4, 1), block(green, 5, 1), block(blue, 6, 1), block(red, 7, 1), block(green, 8, 1), block(blue, 9, 1), block(red, 10, 1)],
