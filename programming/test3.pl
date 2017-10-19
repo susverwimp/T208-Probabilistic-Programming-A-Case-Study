@@ -62,13 +62,15 @@ ProbPress::press(Board, X, Y, Color) :-
 	find_color_of_block(Board, X, Y, Color),
 	color(Color).
 	
-change_color(Board, X, Y, NewColor, Score) :-
+change_color(Board, X, Y, NewBoard, Score) :-
+	change_color(Board, X, Y, NewBoard, Score, 0).
+change_color(Board, X, Y, NewBoard, Score, ScoreAcc) :-
 	press(Board, X, Y, Color),
 	findall(C, color(C), Colors),
 	probs_color_change(Color, Probs),
 	select_weighted(1, Probs, Colors, NewColor, _),
-	change_color_in_board(Board, X, Y, NewColor, NewBoard),
-	remove_and_drop(NewBoard, NewNewBoard, Score).
+	change_color_in_board(Board, X, Y, NewColor, NewBoard1),
+	remove_and_drop(NewBoard1, NewBoard, Score, ScoreAcc).
 
 remove_and_drop(Board, NewBoard, Score) :-
 	remove_and_drop(Board, NewBoard, Score, 0).
@@ -134,11 +136,11 @@ change_color_in_board(Board, X, Y, NewColor, NewBoard) :-
 	change_color_in_board(Board, X, Y, NewColor, NewBoard, []).
 change_color_in_board([], _, _, _, NewBoard, NewBoard).
 change_color_in_board([Row|Tail], X, Y, NewColor, NewBoard, NewBoardAcc) :-
-	\+member(block(Color, X, Y), Row),
+	\+member(block(_, X, Y), Row),
 	append(NewBoardAcc,[Row], NewNewBoardAcc),
 	change_color_in_board(Tail, X, Y, NewColor, NewBoard, NewNewBoardAcc).
 change_color_in_board([Row|Tail], X, Y, NewColor, NewBoard, NewBoardAcc) :-
-	member(block(Color, X, Y), Row),
+	member(block(_, X, Y), Row),
 	change_color_in_row(Row, X, NewColor, NewRow),
 	append(NewBoardAcc,[NewRow|Tail], NewNewBoardAcc),
 	change_color_in_board([], X, Y, NewColor, NewBoard, NewNewBoardAcc).
@@ -168,8 +170,6 @@ how_many_blocks_with_color([[block(Color, _, _)|Tail1]|Tail2], Blocks, Acc) :-
 	\+color(Color),
 	how_many_blocks_with_color([Tail1|Tail2], Blocks, Acc).
 	
-
-
 	
 
 %%%%%%%%%%%%%%%%%
@@ -233,9 +233,17 @@ remove_no_colors_from_packed_list([[block(Color,X,Y)|Tail1]|Tail2], Result, Resu
 	color(Color),
 	append(ResultAcc, [[block(Color,X,Y)|Tail1]], NewResultAcc),
 	remove_no_colors_from_packed_list(Tail2, Result, NewResultAcc).
-remove_no_colors_from_packed_list([[block(Color,_,_)|Tail1]|Tail2], Result, ResultAcc) :-
+remove_no_colors_from_packed_list([[block(Color,_,_)|_]|Tail2], Result, ResultAcc) :-
 	\+color(Color),
 	remove_no_colors_from_packed_list(Tail2, Result, ResultAcc).
+	
+	
+turn(Board, X, Y, NewBoard, Score) :-
+	change_color(Board, X, Y, NewBoard, Score).
+	
+turn2(Board, X1, Y1, X2, Y2, NewBoard, Score) :-
+	change_color(Board, X1, Y1, NewBoard1, Score1),
+	change_color(NewBoard1, X2, Y2, NewBoard, Score).
 	
 start(Board, Width, Height) :-
 	create_board(Width, Height, Board),
@@ -268,12 +276,19 @@ start(Board, Width, Height) :-
 %		[block(blue, 1, 9), block(red, 2, 9), block(green, 3, 9), block(blue, 4, 9), block(red, 5, 9), block(green, 6, 9), block(blue, 7, 9), block(red, 8, 9), block(green, 9, 9), block(blue, 10, 9)],
 %		[block(red, 1, 10), block(green, 2, 10), block(blue, 3, 10), block(red, 4, 10), block(green, 5, 10), block(blue, 6, 10), block(red, 7, 10), block(green, 8, 10), block(blue, 9, 10), block(red, 10, 10)]
 %	], X, Y, Color, Score)).
+
+
 	
-query(change_color([
-		[block(red, 1, 1), block(red, 2, 1), block(blue, 3, 1)],
+%query(change_color([
+%		[block(red, 1, 1), block(red, 2, 1), block(blue, 3, 1)],
+%		[block(green, 1, 2), block(blue, 2, 2), block(red, 3, 2)],
+%		[block(red, 1, 3), block(red, 2, 3), block(green, 3, 3)]
+%	], X, Y, Color, Score)).
+
+query(turn2([[block(red, 1, 1), block(red, 2, 1), block(blue, 3, 1)],
 		[block(green, 1, 2), block(blue, 2, 2), block(red, 3, 2)],
 		[block(red, 1, 3), block(red, 2, 3), block(green, 3, 3)]
-	], X, Y, Color, Score)).
+	], X1, Y1, X2, Y2, NewBoard, Score)).
 
 %query(find_same([
 %		[block(red, 1, 1), block(red, 2, 1), block(red, 3, 1), block(red, 4, 1), block(green, 5, 1), block(blue, 6, 1), block(red, 7, 1), block(green, 8, 1), block(blue, 9, 1), block(red, 10, 1)],
