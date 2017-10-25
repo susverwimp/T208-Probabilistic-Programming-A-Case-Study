@@ -1,0 +1,39 @@
+Sus,
+
+Ik heb een paar concrete opmerkingen:
+
+De beperking dat je maar 5 slides mag gebruiken moet je RUIM
+interpreteren: er mogen maximaal 5 thema's aan bod komen. Dat doe je
+momenteel al heel goed in je presentatie: Inleiding, Waarom, Hoe,
+Methode (Spel), Conclusie. Maar omdat alles op 1 slide terechtkomt zijn
+de slides overvol. Ik stel dus voor dat je jouw slides (zeker 3 en 4)
+opsplitst, maar de titels hetzelfde houdt.
+
+* Probeer meer kleurvolle slides te maken, en meer gebruik te maken van
+  figuren in plaats van bullets. Zoals het er nu uitziet oogt het erg
+  kaal.
+  
+0 Voeg slide-nummers toe, dit is altijd handiger voor de toeschouwers.
+
+0 Voeg een titelslide toe, met daarop de titel van jouw thesis, jouw
+  naam en de naam van jouw promotor (Tom Schrijvers).
+  
+0 Vermeld in jou presentatie ook welke talen je wilt bestuderen.
+
+0 Wees consistent met hoofdlettergebruik (bv. op je eerste slide, de
+  de 3e bullet is zonder hoofdletter, de overige met hoofdletter)
+
+x Probeer het onnodig mixen van Engels en Nederlands te vermijden,
+  tenzij het gaat om jargon:
+  bv. "Theorie gebruiken als evidence voor hypothesis."
+      ->
+      "Theorie gebruiken als bewijsmateriaal voor de hypothese."
+  
+0 Typo's:
+   - karakterestieken     -> karakteristieken
+   - probabiliteits model -> probabiliteitsmodel
+   - colom                -> kolom
+
+Met vriendelijke groeten,
+
+Alexander Vandenbroucke
