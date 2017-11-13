@@ -66,11 +66,79 @@ P::press(Board,X,Y,T,color_ratio) :-
 	P is 1 / MinCount.
 	
 P::press(Board,X,Y,T,possible_score) :-
-	find_block_in_board(block(Color,X,Y),Board),
-	pressable_color(Color),
-	how_many_blocks_with_color(Board, N),
+	find_all_possible_score_blocks(Board,Blocks),
+	member(block(_,X,Y),Blocks),
+	length(Blocks,N),
 	P is 1 / N.
 	
+find_all_possible_score_blocks(Board,Blocks) :-
+	transpose(Board,TransposeBoard),
+	findall(Block,find_possible_score_block_horizontal(Board,Block),BlocksHorizontal),
+	findall(Block,find_possible_score_block_horizontal(TransposeBoard,Block),BlocksVertical),
+	append(BlocksHorizontal,BlocksVertical,ListBlocks),
+	set(ListBlocks,Blocks).
+
+find_possible_score_block_horizontal(Board,Block) :-
+	member(Row,Board),
+	member(Block,Row),
+	has_possible_score(Block,Row).
+
+has_possible_score(block(Color,X,Y),List) :-
+	pressable_color(Color),
+	X2 is X + 1,
+	X3 is X + 2,
+	member(block(Color2,X2,Y),List),
+	pressable_color(Color2),
+	Color2 \= Color,
+	member(block(Color3,X3,Y),List),
+	Color3 == Color2.
+has_possible_score(block(Color,X,Y),List) :-
+	pressable_color(Color),
+	X2 is X - 1,
+	X3 is X - 2,
+	member(block(Color2,X2,Y),List),
+	pressable_color(Color2),
+	Color2 \= Color,
+	member(block(Color3,X3,Y),List),
+	Color3 == Color2.
+has_possible_score(block(Color,X,Y),List) :-
+	pressable_color(Color),
+	X2 is X + 1,
+	X3 is X - 1,
+	member(block(Color2,X2,Y),List),
+	pressable_color(Color2),
+	Color2 \= Color,
+	member(block(Color3,X3,Y),List),
+	Color3 == Color2.
+has_possible_score(block(Color,X,Y),List) :-
+	pressable_color(Color),
+	Y2 is Y + 1,
+	Y3 is Y + 2,
+	member(block(Color2,X,Y2),List),
+	pressable_color(Color2),
+	Color2 \= Color,
+	member(block(Color3,X,Y3),List),
+	Color3 == Color2.
+has_possible_score(block(Color,X,Y),List) :-
+	pressable_color(Color),
+	Y2 is Y - 1,
+	Y3 is Y - 2,
+	member(block(Color2,X,Y2),List),
+	pressable_color(Color2),
+	Color2 \= Color,
+	member(block(Color3,X,Y3),List),
+	Color3 == Color2.
+has_possible_score(block(Color,X,Y),List) :-
+	pressable_color(Color),
+	Y2 is Y + 1,
+	Y3 is Y - 1,
+	member(block(Color2,X,Y2),List),
+	pressable_color(Color2),
+	Color2 \= Color,
+	member(block(Color3,X,Y3),List),
+	Color3 == Color2.
+	
+
 flatten([],[]).
 flatten([X|Xs],Zs) :- flatten(X,Y), flatten(Xs,Ys), append(Y,Ys,Zs).
 	
@@ -99,10 +167,10 @@ list_ratio([block(Color,_,_)|Tail], ListRatio, RedAcc, GreenAcc, BlueAcc, Yellow
 	
 min_ratio([X|L],S) :- min_ratio(L,X,S).
 min_ratio([],S,S).
-min_ratio([[Color1,ColorCount1]|L],[Color2,ColorCount2],S) :-
+min_ratio([[_,ColorCount1]|L],[Color2,ColorCount2],S) :-
     ColorCount2 < ColorCount1,
     min_ratio(L,[Color2,ColorCount2],S).
-min_ratio([[Color1,ColorCount1]|L],[Color2,ColorCount2],S) :-
+min_ratio([[Color1,ColorCount1]|L],[_,ColorCount2],S) :-
     ColorCount2 >= ColorCount1,
     min_ratio(L,[Color1,ColorCount1],S).
 	
@@ -130,7 +198,7 @@ how_many_blocks_with_color([[block(Color, _, _)|Tail1]|Tail2], Blocks, Acc) :-
 1/3::change_color(blue,red);1/3::change_color(blue,green);1/3::change_color(blue,yellow).
 1/3::change_color(yellow,red);1/3::change_color(yellow,green);1/3::change_color(yellow,blue).
 
-board(0,[[block(red,0,0),block(green,1,0),block(blue,2,0)],[block(yellow,0,1),block(yellow,1,1),block(red,2,1)],[block(red,0,2),block(green,1,2),block(blue,2,2)]],0).
+board(0,[[block(red,0,0),block(red,1,0),block(blue,2,0)],[block(red,0,1),block(yellow,1,1),block(red,2,1)],[block(blue,0,2),block(red,1,2),block(blue,2,2)]],0).
 board(T,Board,X,Y,Score) :-
 	T > 0,
 	TT is T - 1,
@@ -230,10 +298,6 @@ get_no_color_and_colors_of_column([block(Color, _, _)|Tail], NoColors, Colors, N
 	append(NoColorsAcc, [Color], NewNoColorsAcc),
 	get_no_color_and_colors_of_column(Tail, NoColors, Colors, NewNoColorsAcc, ColorsAcc).
 	
-find_color_of_block(Board, X, Y, Color) :-
-	member(Row, Board),
-	member(block(Color, X, Y), Row).
-	
 find_same(Board, Same) :-
 	find_same_horizontal(Board, Horizontal),
 	find_same_vertical(Board, Vertical),
@@ -279,8 +343,9 @@ remove_no_colors_from_packed_list([[block(Color,_,_)|_]|Tail2], Result, ResultAc
 	remove_no_colors_from_packed_list(Tail2, Result, ResultAcc).
 	
 evidence(strategy(uniform),false).
-evidence(strategy(possible_score),false).
-evidence(strategy(color_ratio),true).
+evidence(strategy(possible_score),true).
+evidence(strategy(color_ratio),false).
 	
+% query(find_all_possible_score_blocks([[block(red,0,0),block(red,1,0),block(blue,2,0)],[block(red,0,1),block(yellow,1,1),block(red,2,1)],[block(blue,0,2),block(red,1,2),block(blue,2,2)]],Blocks)).
 % query(board(1,Board,X,Y,Score)).
 query(score_of_turn(1,Score)).
