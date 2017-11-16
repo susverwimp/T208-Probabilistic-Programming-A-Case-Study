@@ -94,42 +94,36 @@ block(X, Y, white) :-
 right_same_color(X, Y) :-
 	X2 is X + 1,
 	block(X, Y, Color),
-	block(X2, Y, Color),
-	color(Color).
+	block(X2, Y, Color).
 	
 left_same_color(X, Y) :-
 	X2 is X - 1,
 	block(X, Y, Color),
-	block(X2, Y, Color),
-	color(Color).
+	block(X2, Y, Color).
 	
 up_same_color(X, Y) :-
 	Y2 is Y + 1,
 	block(X, Y, Color),
-	block(X, Y2, Color),
-	color(Color).
+	block(X, Y2, Color).
 	
 down_same_color(X, Y) :-
 	Y2 is Y - 1,
 	location(X, Y),
 	location(X, Y2),
 	block(X, Y, Color),
-	block(X, Y2, Color),
-	color(Color).
+	block(X, Y2, Color).
 	
 left_and_right_same_color(X, Y) :-
 	X2 is X - 1,
 	X3 is Y + 1,
 	block(X2, Y, Color),
-	block(X3, Y, Color),
-	color(Color).
+	block(X3, Y, Color).
 	
 down_and_up_same_color(X, Y) :-
 	Y2 is Y - 1,
 	Y3 is Y + 1,
 	block(X, Y2, Color),
-	block(X, Y3, Color),
-	color(Color).
+	block(X, Y3, Color).
 	
 evidence(block(1,1,red), true).
 evidence(block(1,1,green), false).
@@ -173,11 +167,11 @@ evidence(block(3,1,blue), false).
 evidence(block(3,1,yellow), false).
 evidence(block(3,1,white), false).
 
-evidence(block(3,2,red), false).
-evidence(block(3,2,green), true).
-evidence(block(3,2,blue), false).
-evidence(block(3,2,yellow), false).
-evidence(block(3,2,white), false).
+% evidence(block(3,2,red), false).
+% evidence(block(3,2,green), true).
+% evidence(block(3,2,blue), false).
+% evidence(block(3,2,yellow), false).
+% evidence(block(3,2,white), false).
 
 % evidence(block(3,3,red), false).
 % evidence(block(3,3,green), false).
@@ -185,7 +179,7 @@ evidence(block(3,2,white), false).
 % evidence(block(3,3,yellow), false).
 % evidence(block(3,3,white), false).
 
-% evidence(up_same_color(3,2)).
+evidence(up_same_color(3,2)).
 
 query(block(1,1,Color)).
 query(block(1,2,Color)).

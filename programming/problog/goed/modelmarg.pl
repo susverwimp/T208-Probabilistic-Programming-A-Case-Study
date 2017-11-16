@@ -1,6 +1,36 @@
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 
+block(blue,0,2). 	block(white,1,2). 	block(red,2,2).
+block(red,0,1). 	block(blue,1,1). 	block(red,2,1).
+block(red,0,0). 	block(red,1,0). 	block(yellow,2,0).
+
+
+initial_board(Board) :-
+	block(Color00,0,0),
+	block(Color10,1,0),
+	block(Color20,2,0),
+	block(Color01,0,1),
+	block(Color11,1,1),
+	block(Color21,2,1),
+	block(Color02,0,2),
+	block(Color12,1,2),
+	block(Color22,2,2),
+	Board = [
+		[block(Color02,0,2),block(Color12,1,2),block(Color22,2,2)],
+		[block(Color01,0,1),block(Color11,1,1),block(Color21,2,1)],
+		[block(Color00,0,0),block(Color10,1,0),block(Color20,2,0)]
+	].
+	
+strategy(possible_score).
+
+scoretest :-
+	board(1,Board,X,Y,0);board(1,Board,X,Y,3);board(1,Board,X,Y,5).
+% query(find_all_possible_score_blocks([[block(red,0,0),block(red,1,0),block(blue,2,0)],[block(red,0,1),block(yellow,1,1),block(red,2,1)],[block(blue,0,2),block(red,1,2),block(blue,2,2)]],Blocks)).
+query(board(1,Board,X,Y,Score)).
+% query(score_of_turn(1,S)).
+% query(not(scoretest)).
+
 %%%%%%%%%%%%%%%%%
 % UTILITY PREDICATES
 %%%%%%%%%%%%%%%%%
@@ -49,26 +79,62 @@ pressable_color(green).
 pressable_color(blue).
 pressable_color(yellow).
 
-1/3::strategy(uniform);1/3::strategy(possible_score);1/3::strategy(color_ratio).
 
-P::press(Board,X,Y,T,uniform) :-
+P::press(Board,X,Y,Color,T,uniform) :-
 	find_block_in_board(block(Color,X,Y),Board),
 	pressable_color(Color),
 	how_many_blocks_with_color(Board, N),
 	P is 1 / N.
 	
-P::press(Board,X,Y,T,color_ratio) :-
-	find_block_in_board(block(Color,X,Y),Board),
+P::press(Board,X,Y,Color,T,color_ratio) :-
 	flatten(Board,FlattenBoard),
 	list_ratio(FlattenBoard,ColorRatio),
-	min_ratio(ColorRatio,[MinColor,MinCount]),
-	Color = MinColor,
+	remove_zero_ratio(ColorRatio,NonZeroColorRatio),
+	min_color_and_count(NonZeroColorRatio,Colors,MinCount),
+	find_block_in_board(block(Color,X,Y),Board),
+	member(Color,Colors),
 	P is 1 / MinCount.
+
+remove_zero_ratio(List,Result) :-
+	remove_zero_ratio(List,Result,[]).
+remove_zero_ratio([],Result, Result).
+remove_zero_ratio([[Color,0]|Tail],Result, ResultAcc) :-
+	remove_zero_ratio(Tail,Result,ResultAcc).
+remove_zero_ratio([[Color,Count]|Tail],Result, ResultAcc) :-
+	Count > 0,
+	append(ResultAcc,[[Color,Count]], NewResultAcc),
+	remove_zero_ratio(Tail,Result,NewResultAcc).
+
+min_color_and_count([[Color,Count]|Tail],MinColors,TotalMinCounts) :-
+	min_color_and_count(Tail,MinColors,TotalMinCounts,[Color],Count,Count).
+min_color_and_count([],MinColors,TotalMinCounts,MinColors,TotalMinCounts,MinCount).
+min_color_and_count([[Color,Count]|Tail],MinColors,TotalMinCounts,MinColorsAcc,TotalMinCountsAcc,MinCount) :-
+	Count < MinCount,
+	min_color_and_count(Tail,MinColors,TotalMinCounts,[Color],Count,Count).
+min_color_and_count([[Color,Count]|Tail],MinColors,TotalMinCounts,MinColorsAcc,TotalMinCountsAcc,MinCount) :-
+	Count = MinCount,
+	NewTotalMinCountsAcc is TotalMinCountsAcc + Count,
+	NewMinColorsAcc = [Color|MinColorsAcc],
+	min_color_and_count(Tail,MinColors,TotalMinCounts,NewMinColorsAcc,NewTotalMinCountsAcc,MinCount).
+min_color_and_count([[Color,Count]|Tail],MinColors,TotalMinCounts,MinColorsAcc,TotalMinCountsAcc,MinCount) :-
+	Count > MinCount,
+	min_color_and_count(Tail,MinColors,TotalMinCounts,MinColorsAcc,TotalMinCountsAcc,MinCount).
+
 	
-P::press(Board,X,Y,T,possible_score) :-
+P::press(Board,X,Y,Color,T,possible_score) :-
 	find_all_possible_score_blocks(Board,Blocks),
-	member(block(_,X,Y),Blocks),
+	possible_score_press(Blocks,Board,Color,X,Y,P).
+	
+% if possible_score_blocks is empty, use uniform press.
+possible_score_press([],Board,Color,X,Y,P) :-
+	find_block_in_board(block(Color,X,Y),Board),
+	pressable_color(Color),
+	how_many_blocks_with_color(Board, N),
+	P is 1 / N.
+possible_score_press(Blocks,Board,Color,X,Y,P) :-
 	length(Blocks,N),
+	N > 0,
+	member(block(Color,X,Y),Blocks),
 	P is 1 / N.
 	
 find_all_possible_score_blocks(Board,Blocks) :-
@@ -165,19 +231,12 @@ list_ratio([block(Color,_,_)|Tail], ListRatio, RedAcc, GreenAcc, BlueAcc, Yellow
 	Color = white,
 	list_ratio(Tail, ListRatio, RedAcc, GreenAcc, BlueAcc, YellowAcc).
 	
-min_ratio([X|L],S) :- min_ratio(L,X,S).
-min_ratio([],S,S).
-min_ratio([[_,ColorCount1]|L],[Color2,ColorCount2],S) :-
-    ColorCount2 < ColorCount1,
-    min_ratio(L,[Color2,ColorCount2],S).
-min_ratio([[Color1,ColorCount1]|L],[_,ColorCount2],S) :-
-    ColorCount2 >= ColorCount1,
-    min_ratio(L,[Color1,ColorCount1],S).
+
+		
 	
-	
-press(Board,X,Y,T) :-
+press(Board,X,Y,Color,T) :-
 	strategy(Strategy),
-	press(Board,X,Y,T,Strategy).
+	press(Board,X,Y,Color,T,Strategy).
 	
 how_many_blocks_with_color(Board, Blocks) :-
 	how_many_blocks_with_color(Board, Blocks, 0).
@@ -198,13 +257,13 @@ how_many_blocks_with_color([[block(Color, _, _)|Tail1]|Tail2], Blocks, Acc) :-
 1/3::change_color(blue,red);1/3::change_color(blue,green);1/3::change_color(blue,yellow).
 1/3::change_color(yellow,red);1/3::change_color(yellow,green);1/3::change_color(yellow,blue).
 
-board(0,[[block(red,0,0),block(red,1,0),block(blue,2,0)],[block(red,0,1),block(yellow,1,1),block(red,2,1)],[block(blue,0,2),block(red,1,2),block(blue,2,2)]],0).
+board(0,Board,0) :-
+	initial_board(Board).
 board(T,Board,X,Y,Score) :-
 	T > 0,
 	TT is T - 1,
 	board(TT,PreviousBoard,PreviousScore),
-	press(PreviousBoard,X,Y,TT),
-	find_block_in_board(block(Color,X,Y),PreviousBoard),
+	press(PreviousBoard,X,Y,Color,TT),
 	change_color(Color,NewColor),
 	change_color_in_board(PreviousBoard,X,Y,NewColor,ColorChangedBoard),
 	remove_and_drop(ColorChangedBoard, Board, CurrentScore),
@@ -255,6 +314,15 @@ remove_and_drop(Board, NewBoard, Score, ScoreAcc) :-
 	drop_blocks(BoardAcc, NewBoardAcc),
 	remove_and_drop(NewBoardAcc, NewBoard, Score, NewScoreAcc).
 	
+% test(N,S) :-
+	% remove_and_drop([
+		% [block(white,0,2),block(white,1,2),block(red,2,2)],
+		% [block(red,0,1),block(yellow,1,1),block(red,2,1)],
+		% [block(red,0,0),block(red,1,0),block(yellow,2,0)]
+	% ],N,S).
+
+% query(test(N,S)).
+	
 remove_same(Board, [], Board).
 remove_same(Board, [block(_, X, Y)|Tail], NewBoard) :-
 	change_color_in_board(Board, X, Y, white, BoardAcc),
@@ -265,9 +333,10 @@ drop_blocks(Board, NewBoard) :-
 	drop_columns(Transpose, NewBoardTranspose),
 	transpose(NewBoardTranspose, NewBoard).
 	
+
 	
 drop_columns(Board, NewBoard) :-
-	drop_columns(Board, NewBoard, [], 1).
+	drop_columns(Board, NewBoard, [], 0).
 drop_columns([], NewBoard, NewBoard, _).
 drop_columns([Column|Tail], NewBoard, NewBoardAcc, ColumnIndex) :-
 	get_no_color_and_colors_of_column(Column, NoColors, Colors),
@@ -278,7 +347,7 @@ drop_columns([Column|Tail], NewBoard, NewBoardAcc, ColumnIndex) :-
 	drop_columns(Tail, NewBoard, NewNewBoardAcc, NewColumnIndex).
 
 create_column_from_color_list(ColorColumn, NewColumn, ColumnIndex) :-
-	create_column_from_color_list(ColorColumn, NewColumn, [], 1, ColumnIndex).
+	create_column_from_color_list(ColorColumn, NewColumn, [], 0, ColumnIndex).
 create_column_from_color_list([], Column, Column, _, _).
 create_column_from_color_list([Color|Tail], Column, ColumnAcc, RowIndex, ColumnIndex) :-
 	append(ColumnAcc, [block(Color, ColumnIndex, RowIndex)], NewColumnAcc),
@@ -330,7 +399,7 @@ find_same_in_packed_list([Pack|Tail], Same, Acc) :-
 	length(Pack, Length),
 	Length =< 2,
 	find_same_in_packed_list(Tail, Same, Acc).
-
+	
 remove_no_colors_from_packed_list(PackedList, Result) :-
 	remove_no_colors_from_packed_list(PackedList, Result, []).
 remove_no_colors_from_packed_list([], Result, Result).
@@ -341,11 +410,3 @@ remove_no_colors_from_packed_list([[block(Color,X,Y)|Tail1]|Tail2], Result, Resu
 remove_no_colors_from_packed_list([[block(Color,_,_)|_]|Tail2], Result, ResultAcc) :-
 	\+ pressable_color(Color),
 	remove_no_colors_from_packed_list(Tail2, Result, ResultAcc).
-	
-evidence(strategy(uniform),false).
-evidence(strategy(possible_score),true).
-evidence(strategy(color_ratio),false).
-	
-% query(find_all_possible_score_blocks([[block(red,0,0),block(red,1,0),block(blue,2,0)],[block(red,0,1),block(yellow,1,1),block(red,2,1)],[block(blue,0,2),block(red,1,2),block(blue,2,2)]],Blocks)).
-% query(board(1,Board,X,Y,Score)).
-query(score_of_turn(1,Score)).
