@@ -1,10 +1,24 @@
 :- use_module(library(apply)).
 :- use_module(library(lists)).
 
-block(blue,0,2). 	block(white,1,2). 	block(red,2,2).
+pressable_color(red).
+pressable_color(green).
+pressable_color(blue).
+pressable_color(yellow).
+
+%pas hier aan om een ander bord te verkrijgen
+block(blue,0,2). 	block(green,1,2). 	block(red,2,2).
 block(red,0,1). 	block(blue,1,1). 	block(red,2,1).
 block(red,0,0). 	block(red,1,0). 	block(yellow,2,0).
 
+% block(blue,0,2). 	block(green,1,2). 	block(red,2,2).
+% block(red,0,1). 	block(blue,1,1). 	block(red,2,1).
+% block(red,0,0). 	block(red,1,0). 	block(yellow,2,0).
+% geeft het bord:
+% 2|b g r|
+% 1|r b r|
+% 0|r r y|
+%   0 1 2
 
 initial_board(Board) :-
 	block(Color00,0,0),
@@ -21,65 +35,28 @@ initial_board(Board) :-
 		[block(Color01,0,1),block(Color11,1,1),block(Color21,2,1)],
 		[block(Color00,0,0),block(Color10,1,0),block(Color20,2,0)]
 	].
-	
-strategy(possible_score).
 
+	
+%%%%%%%%%%%%%%%%%
+% STRATEGY
+%%%%%%%%%%%%%%%%%
+strategy(uniform).
+% strategy(color_ratio).
+% strategy(possible_score).
+
+%%%%%%%%%%%%%%%%%
+% QUERIES
+%%%%%%%%%%%%%%%%%
 scoretest :-
 	board(1,Board,X,Y,0);board(1,Board,X,Y,3);board(1,Board,X,Y,5).
-% query(find_all_possible_score_blocks([[block(red,0,0),block(red,1,0),block(blue,2,0)],[block(red,0,1),block(yellow,1,1),block(red,2,1)],[block(blue,0,2),block(red,1,2),block(blue,2,2)]],Blocks)).
-query(board(1,Board,X,Y,Score)).
-% query(score_of_turn(1,S)).
 % query(not(scoretest)).
+% query(board(1,Board,X,Y,Score)). geeft de juiste werelden met de juiste kansen weer.
+% query(board(1,Board,X,Y,Score)).
+query(score_of_turn(1,S)). % geeft de juiste werelden weer met de VERKEERDE kansen (BUG).
 
 %%%%%%%%%%%%%%%%%
-% UTILITY PREDICATES
+% RANDOM EVENTS
 %%%%%%%%%%%%%%%%%
-
-transpose(Ls, Ts) :-
-	lists_transpose(Ls, Ts).
-
-lists_transpose([], []).
-lists_transpose([L|Ls], Ts) :-
-	maplist(same_length(L), Ls),
-	foldl(transpose_, L, Ts, [L|Ls], _).
-
-transpose_(_, Fs, Lists0, Lists) :-
-	maplist(list_first_rest, Lists0, Fs, Lists).
-	
-list_first_rest([L|Ls], L, Ls).
-
-same_length([],[]).
-same_length([_|L1],[_|L2]) :- same_length(L1, L2).
-
-insert_at_end(X,[],[X]).
-insert_at_end(X,[H|T],[H|Z]) :- insert_at_end(X,T,Z).
-
-pack([],[]).
-pack([X|Xs],[Z|Zs]) :- transfer(X,Xs,Ys,Z), pack(Ys,Zs).
-
-transfer(X,[],[],[X]).
-transfer(block(Color1,X1,Y1),[block(Color2,X2,Y2)|Ys],[block(Color2,X2,Y2)|Ys],[block(Color1,X1,Y1)]) :- Color1 \= Color2.
-transfer(block(Color,X1,Y1),[block(Color,X2,Y2)|Xs],Ys,[block(Color,X1,Y1)|Zs]) :- transfer(block(Color,X2,Y2),Xs,Ys,Zs).
-
-set([], []).
-set([H|T], [H|T1]) :- 
-    remv(H, T, T2),
-    set(T2, T1).
-
-remv(_, [], []).
-remv(X, [X|T], T1) :- remv(X, T, T1).
-remv(X, [H|T], [H|T1]) :-
-    X \= H,
-    remv(X, T, T1).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-pressable_color(red).
-pressable_color(green).
-pressable_color(blue).
-pressable_color(yellow).
-
-
 P::press(Board,X,Y,Color,T,uniform) :-
 	find_block_in_board(block(Color,X,Y),Board),
 	pressable_color(Color),
@@ -94,6 +71,40 @@ P::press(Board,X,Y,Color,T,color_ratio) :-
 	find_block_in_board(block(Color,X,Y),Board),
 	member(Color,Colors),
 	P is 1 / MinCount.
+	
+P::press(Board,X,Y,Color,T,possible_score) :-
+	find_all_possible_score_blocks(Board,Blocks),
+	possible_score_press(Blocks,Board,Color,X,Y,P).
+	
+% if possible_score_blocks is empty, use uniform press.
+possible_score_press([],Board,Color,X,Y,P) :-
+	find_block_in_board(block(Color,X,Y),Board),
+	pressable_color(Color),
+	how_many_blocks_with_color(Board, N),
+	P is 1 / N.
+possible_score_press(Blocks,Board,Color,X,Y,P) :-
+	length(Blocks,N),
+	N > 0,
+	member(block(Color,X,Y),Blocks),
+	P is 1 / N.
+	
+how_many_blocks_with_color(Board, Blocks) :-
+	how_many_blocks_with_color(Board, Blocks, 0).
+how_many_blocks_with_color([], Blocks, Blocks).
+how_many_blocks_with_color([[]|Tail], Blocks, Acc) :-
+	how_many_blocks_with_color(Tail, Blocks, Acc).
+how_many_blocks_with_color([[block(Color, _, _)|Tail1]|Tail2], Blocks, Acc) :-
+	pressable_color(Color),
+	NewAcc is Acc + 1,
+	how_many_blocks_with_color([Tail1|Tail2], Blocks, NewAcc).
+how_many_blocks_with_color([[block(Color, _, _)|Tail1]|Tail2], Blocks, Acc) :-
+	\+ pressable_color(Color),
+	how_many_blocks_with_color([Tail1|Tail2], Blocks, Acc).
+	
+find_block_in_board(block(Color,X,Y),Board) :-
+	member(Row, Board),
+	member(block(Color, X, Y), Row).	
+
 
 remove_zero_ratio(List,Result) :-
 	remove_zero_ratio(List,Result,[]).
@@ -121,21 +132,7 @@ min_color_and_count([[Color,Count]|Tail],MinColors,TotalMinCounts,MinColorsAcc,T
 	min_color_and_count(Tail,MinColors,TotalMinCounts,MinColorsAcc,TotalMinCountsAcc,MinCount).
 
 	
-P::press(Board,X,Y,Color,T,possible_score) :-
-	find_all_possible_score_blocks(Board,Blocks),
-	possible_score_press(Blocks,Board,Color,X,Y,P).
-	
-% if possible_score_blocks is empty, use uniform press.
-possible_score_press([],Board,Color,X,Y,P) :-
-	find_block_in_board(block(Color,X,Y),Board),
-	pressable_color(Color),
-	how_many_blocks_with_color(Board, N),
-	P is 1 / N.
-possible_score_press(Blocks,Board,Color,X,Y,P) :-
-	length(Blocks,N),
-	N > 0,
-	member(block(Color,X,Y),Blocks),
-	P is 1 / N.
+
 	
 find_all_possible_score_blocks(Board,Blocks) :-
 	transpose(Board,TransposeBoard),
@@ -205,8 +202,7 @@ has_possible_score(block(Color,X,Y),List) :-
 	Color3 == Color2.
 	
 
-flatten([],[]).
-flatten([X|Xs],Zs) :- flatten(X,Y), flatten(Xs,Ys), append(Y,Ys,Zs).
+
 	
 list_ratio(List, ListRatio) :-
 	list_ratio(List, ListRatio, 0, 0, 0, 0).
@@ -238,25 +234,66 @@ press(Board,X,Y,Color,T) :-
 	strategy(Strategy),
 	press(Board,X,Y,Color,T,Strategy).
 	
-how_many_blocks_with_color(Board, Blocks) :-
-	how_many_blocks_with_color(Board, Blocks, 0).
-how_many_blocks_with_color([], Blocks, Blocks).
-how_many_blocks_with_color([[]|Tail], Blocks, Acc) :-
-	how_many_blocks_with_color(Tail, Blocks, Acc).
-how_many_blocks_with_color([[block(Color, _, _)|Tail1]|Tail2], Blocks, Acc) :-
-	pressable_color(Color),
-	NewAcc is Acc + 1,
-	how_many_blocks_with_color([Tail1|Tail2], Blocks, NewAcc).
-how_many_blocks_with_color([[block(Color, _, _)|Tail1]|Tail2], Blocks, Acc) :-
-	\+ pressable_color(Color),
-	how_many_blocks_with_color([Tail1|Tail2], Blocks, Acc).
-	
 
 1/3::change_color(red,green);1/3::change_color(red,blue);1/3::change_color(red,yellow).
 1/3::change_color(green,red);1/3::change_color(green,blue);1/3::change_color(green,yellow).
 1/3::change_color(blue,red);1/3::change_color(blue,green);1/3::change_color(blue,yellow).
 1/3::change_color(yellow,red);1/3::change_color(yellow,green);1/3::change_color(yellow,blue).
 
+
+%%%%%%%%%%%%%%%%%
+% UTILITY PREDICATES
+%%%%%%%%%%%%%%%%%
+
+% flatten a list: [[a],[b]] = [a,b]
+flatten([],[]).
+flatten([X|Xs],Zs) :- flatten(X,Y), flatten(Xs,Ys), append(Y,Ys,Zs).
+
+% transpose a 2D board
+transpose(Ls, Ts) :-
+	lists_transpose(Ls, Ts).
+
+lists_transpose([], []).
+lists_transpose([L|Ls], Ts) :-
+	maplist(same_length(L), Ls),
+	foldl(transpose_, L, Ts, [L|Ls], _).
+
+transpose_(_, Fs, Lists0, Lists) :-
+	maplist(list_first_rest, Lists0, Fs, Lists).
+	
+list_first_rest([L|Ls], L, Ls).
+
+same_length([],[]).
+same_length([_|L1],[_|L2]) :- same_length(L1, L2).
+
+% insert element at last position in list
+insert_at_end(X,[],[X]).
+insert_at_end(X,[H|T],[H|Z]) :- insert_at_end(X,T,Z).
+
+% pack a list: [a,a,a,a,b,b,c,c,a,b] = [[a,a,a,a],[b,b],[c,c],[a],[b]]
+pack([],[]).
+pack([X|Xs],[Z|Zs]) :- transfer(X,Xs,Ys,Z), pack(Ys,Zs).
+
+transfer(X,[],[],[X]).
+transfer(block(Color1,X1,Y1),[block(Color2,X2,Y2)|Ys],[block(Color2,X2,Y2)|Ys],[block(Color1,X1,Y1)]) :- Color1 \= Color2.
+transfer(block(Color,X1,Y1),[block(Color,X2,Y2)|Xs],Ys,[block(Color,X1,Y1)|Zs]) :- transfer(block(Color,X2,Y2),Xs,Ys,Zs).
+
+% Create a set of a list, remove duplicates
+set([], []).
+set([H|T], [H|T1]) :- 
+    remv(H, T, T2),
+    set(T2, T1).
+
+remv(_, [], []).
+remv(X, [X|T], T1) :- remv(X, T, T1).
+remv(X, [H|T], [H|T1]) :-
+    X \= H,
+    remv(X, T, T1).
+
+
+%%%%%%%%%%%%%%%%%
+% GAME PREDICATES
+%%%%%%%%%%%%%%%%%
 board(0,Board,0) :-
 	initial_board(Board).
 board(T,Board,X,Y,Score) :-
@@ -271,11 +308,6 @@ board(T,Board,X,Y,Score) :-
 	
 score_of_turn(T,Score) :-
 	board(T,Board,X,Y,Score).
-	
-	
-find_block_in_board(block(Color,X,Y),Board) :-
-	member(Row, Board),
-	member(block(Color, X, Y), Row).
 	
 change_color_in_board(Board, X, Y, NewColor, NewBoard) :-
 	change_color_in_board(Board, X, Y, NewColor, NewBoard, []).
@@ -313,15 +345,6 @@ remove_and_drop(Board, NewBoard, Score, ScoreAcc) :-
 	remove_same(Board, Same, BoardAcc),
 	drop_blocks(BoardAcc, NewBoardAcc),
 	remove_and_drop(NewBoardAcc, NewBoard, Score, NewScoreAcc).
-	
-% test(N,S) :-
-	% remove_and_drop([
-		% [block(white,0,2),block(white,1,2),block(red,2,2)],
-		% [block(red,0,1),block(yellow,1,1),block(red,2,1)],
-		% [block(red,0,0),block(red,1,0),block(yellow,2,0)]
-	% ],N,S).
-
-% query(test(N,S)).
 	
 remove_same(Board, [], Board).
 remove_same(Board, [block(_, X, Y)|Tail], NewBoard) :-
