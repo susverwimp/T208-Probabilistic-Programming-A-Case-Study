@@ -50,8 +50,7 @@ strategy(uniform).
 scoretest :-
 	board(1,Board,X,Y,0);board(1,Board,X,Y,3);board(1,Board,X,Y,5).
 % query(not(scoretest)).
-% query(board(1,Board,X,Y,Score)). geeft de juiste werelden met de juiste kansen weer.
-% query(board(1,Board,X,Y,Score)).
+% query(board(1,Board,X,Y,Score)). % geeft de juiste werelden met de juiste kansen weer.
 query(score_of_turn(1,S)). % geeft de juiste werelden weer met de VERKEERDE kansen (BUG).
 
 %%%%%%%%%%%%%%%%%
