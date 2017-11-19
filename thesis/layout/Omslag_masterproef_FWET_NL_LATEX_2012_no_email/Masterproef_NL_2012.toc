@@ -1,0 +1,14 @@
+\select@language {dutch}
+\contentsline {chapter}{Voorwoord}{i}{chapter*.1}
+\contentsline {chapter}{Korte Samenvatting}{ii}{chapter*.2}
+\contentsline {chapter}{Lijst van afkortingen en lijst van symbolen}{iii}{chapter*.3}
+\contentsline {chapter}{\numberline {1}Inleiding}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Probabilistic Programming Languages}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}ProbLog}{2}{section.2.1}
+\contentsline {section}{\numberline {2.2}Anglican}{2}{section.2.2}
+\contentsline {chapter}{\numberline {3}Stappenplan}{3}{chapter.3}
+\contentsline {section}{\numberline {3.1}Spel}{3}{section.3.1}
+\contentsline {section}{\numberline {3.2}Modelleren}{5}{section.3.2}
+\contentsline {section}{\numberline {3.3}Evaluatiecriteria}{5}{section.3.3}
+\contentsline {chapter}{\numberline {4}Resultaten}{6}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusie}{7}{chapter.5}

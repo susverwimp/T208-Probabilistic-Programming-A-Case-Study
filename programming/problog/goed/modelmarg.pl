@@ -7,8 +7,11 @@ pressable_color(blue).
 pressable_color(yellow).
 
 %pas hier aan om een ander bord te verkrijgen
-block(blue,0,2). 	block(green,1,2). 	block(red,2,2).
-block(red,0,1). 	block(blue,1,1). 	block(red,2,1).
+% block(blue,0,2). 	block(green,1,2). 	block(red,2,2).
+% block(red,0,1). 	block(blue,1,1). 	block(red,2,1).
+% block(red,0,0). 	block(red,1,0). 	block(yellow,2,0).
+block(white,0,2). 	block(white,1,2). 	block(white,2,2).
+block(blue,0,1). 	block(blue,1,1). 	block(yellow,2,1).
 block(red,0,0). 	block(red,1,0). 	block(yellow,2,0).
 
 % block(blue,0,2). 	block(green,1,2). 	block(red,2,2).
@@ -40,22 +43,29 @@ initial_board(Board) :-
 %%%%%%%%%%%%%%%%%
 % STRATEGY
 %%%%%%%%%%%%%%%%%
-strategy(uniform).
+% strategy(uniform).
 % strategy(color_ratio).
-% strategy(possible_score).
+strategy(possible_score).
 
 %%%%%%%%%%%%%%%%%
 % QUERIES
 %%%%%%%%%%%%%%%%%
-scoretest :-
-	board(1,Board,X,Y,0);board(1,Board,X,Y,3);board(1,Board,X,Y,5).
+% boardtest :-
+	% board(1,Board,0,Positions);board(1,Board,3,Positions).
+% query(not(boardtest)).
+% scoretest :-
+	% score_of_turn(1,0);score_of_turn(1,3).
 % query(not(scoretest)).
-% query(board(1,Board,X,Y,Score)). % geeft de juiste werelden met de juiste kansen weer.
-query(score_of_turn(1,S)). % geeft de juiste werelden weer met de VERKEERDE kansen (BUG).
+% query(board(1,Board,Score,Positions)). % geeft de juiste werelden met de juiste kansen weer.
+query(score_of_turn(2,S)). % geeft de juiste werelden weer met de VERKEERDE kansen (BUG).
 
 %%%%%%%%%%%%%%%%%
 % RANDOM EVENTS
 %%%%%%%%%%%%%%%%%
+press(Board,X,Y,Color,T) :-
+	strategy(Strategy),
+	press(Board,X,Y,Color,T,Strategy).
+
 P::press(Board,X,Y,Color,T,uniform) :-
 	find_block_in_board(block(Color,X,Y),Board),
 	pressable_color(Color),
@@ -226,18 +236,10 @@ list_ratio([block(Color,_,_)|Tail], ListRatio, RedAcc, GreenAcc, BlueAcc, Yellow
 	Color = white,
 	list_ratio(Tail, ListRatio, RedAcc, GreenAcc, BlueAcc, YellowAcc).
 	
-
-		
-	
-press(Board,X,Y,Color,T) :-
-	strategy(Strategy),
-	press(Board,X,Y,Color,T,Strategy).
-	
-
-1/3::change_color(red,green);1/3::change_color(red,blue);1/3::change_color(red,yellow).
-1/3::change_color(green,red);1/3::change_color(green,blue);1/3::change_color(green,yellow).
-1/3::change_color(blue,red);1/3::change_color(blue,green);1/3::change_color(blue,yellow).
-1/3::change_color(yellow,red);1/3::change_color(yellow,green);1/3::change_color(yellow,blue).
+1/3::change_color(red,green,T);1/3::change_color(red,blue,T);1/3::change_color(red,yellow,T).
+1/3::change_color(green,red,T);1/3::change_color(green,blue,T);1/3::change_color(green,yellow,T).
+1/3::change_color(blue,red,T);1/3::change_color(blue,green,T);1/3::change_color(blue,yellow,T).
+1/3::change_color(yellow,red,T);1/3::change_color(yellow,green,T);1/3::change_color(yellow,blue,T).
 
 
 %%%%%%%%%%%%%%%%%
@@ -293,20 +295,21 @@ remv(X, [H|T], [H|T1]) :-
 %%%%%%%%%%%%%%%%%
 % GAME PREDICATES
 %%%%%%%%%%%%%%%%%
-board(0,Board,0) :-
+board(0,Board,0,[]) :-
 	initial_board(Board).
-board(T,Board,X,Y,Score) :-
+board(T,Board,Score,Positions) :-
 	T > 0,
 	TT is T - 1,
-	board(TT,PreviousBoard,PreviousScore),
+	board(TT,PreviousBoard,PreviousScore,PreviousPositions),
 	press(PreviousBoard,X,Y,Color,TT),
-	change_color(Color,NewColor),
+	append(PreviousPositions,[[X,Y]],Positions),
+	change_color(Color,NewColor,TT),
 	change_color_in_board(PreviousBoard,X,Y,NewColor,ColorChangedBoard),
 	remove_and_drop(ColorChangedBoard, Board, CurrentScore),
 	Score is PreviousScore + CurrentScore.
 	
 score_of_turn(T,Score) :-
-	board(T,Board,X,Y,Score).
+	board(T,Board,Score,Positions).
 	
 change_color_in_board(Board, X, Y, NewColor, NewBoard) :-
 	change_color_in_board(Board, X, Y, NewColor, NewBoard, []).
@@ -355,39 +358,41 @@ drop_blocks(Board, NewBoard) :-
 	drop_columns(Transpose, NewBoardTranspose),
 	transpose(NewBoardTranspose, NewBoard).
 	
-
-	
 drop_columns(Board, NewBoard) :-
-	drop_columns(Board, NewBoard, [], 0).
-drop_columns([], NewBoard, NewBoard, _).
-drop_columns([Column|Tail], NewBoard, NewBoardAcc, ColumnIndex) :-
-	get_no_color_and_colors_of_column(Column, NoColors, Colors),
-	append(NoColors, Colors, NewColorColumn),
-	create_column_from_color_list(NewColorColumn, NewColumn, ColumnIndex),
-	NewColumnIndex is ColumnIndex + 1,
-	append(NewBoardAcc, [NewColumn], NewNewBoardAcc),
-	drop_columns(Tail, NewBoard, NewNewBoardAcc, NewColumnIndex).
-
-create_column_from_color_list(ColorColumn, NewColumn, ColumnIndex) :-
-	create_column_from_color_list(ColorColumn, NewColumn, [], 0, ColumnIndex).
-create_column_from_color_list([], Column, Column, _, _).
-create_column_from_color_list([Color|Tail], Column, ColumnAcc, RowIndex, ColumnIndex) :-
-	append(ColumnAcc, [block(Color, ColumnIndex, RowIndex)], NewColumnAcc),
-	NewRowIndex is RowIndex + 1,
-	create_column_from_color_list(Tail, Column, NewColumnAcc, NewRowIndex, ColumnIndex).
-
+	drop_columns(Board, NewBoard,[]).
+drop_columns([],NewBoard,NewBoard).
+drop_columns([Column|Tail],NewBoard,NewBoardAcc) :-
+	drop_column(Column,NewColumn),
+	append(NewBoardAcc,[NewColumn],NewNewBoardAcc),
+	drop_columns(Tail,NewBoard,NewNewBoardAcc).
 	
-get_no_color_and_colors_of_column(Column, NoColors, Colors) :-
-	get_no_color_and_colors_of_column(Column, NoColors, Colors, [], []).
-get_no_color_and_colors_of_column([], NoColors, Colors, NoColors, Colors).
-get_no_color_and_colors_of_column([block(Color, _, _)|Tail], NoColors, Colors, NoColorsAcc, ColorsAcc) :-
+drop_column([block(Color,X,Y)|Tail],NewColumn) :-
+	length([block(Color,X,Y)|Tail],L),
+	get_colors_of_column_in_order([block(Color,X,Y)|Tail],Colors),
+	create_new_column_of_colors(Colors,L,X,NewColumn).
+	
+get_colors_of_column_in_order(Column,Colors) :-
+	get_colors_of_column_in_order(Column,Colors,[]).
+get_colors_of_column_in_order([],Colors,Colors).
+get_colors_of_column_in_order([block(Color,_,_)|Tail],Colors,ColorsAcc) :-
 	pressable_color(Color),
-	append(ColorsAcc, [Color], NewColorsAcc),
-	get_no_color_and_colors_of_column(Tail, NoColors, Colors, NoColorsAcc, NewColorsAcc).
-get_no_color_and_colors_of_column([block(Color, _, _)|Tail], NoColors, Colors, NoColorsAcc, ColorsAcc) :-
+	get_colors_of_column_in_order(Tail,Colors,[Color|ColorsAcc]).
+get_colors_of_column_in_order([block(Color,_,_)|Tail],Colors,ColorsAcc) :-
 	\+ pressable_color(Color),
-	append(NoColorsAcc, [Color], NewNoColorsAcc),
-	get_no_color_and_colors_of_column(Tail, NoColors, Colors, NewNoColorsAcc, ColorsAcc).
+	get_colors_of_column_in_order(Tail,Colors,ColorsAcc).
+	
+create_new_column_of_colors(Colors,Height,X,NewColumn) :-
+	create_new_column_of_colors(Colors,Height,X,NewColumn,[],0).
+create_new_column_of_colors([],Height,_,NewColumn,NewColumn,Height).
+create_new_column_of_colors([],Height,X,NewColumn,NewColumnAcc,Index) :-
+	Height > Index,
+	NewIndex is Index + 1,
+	create_new_column_of_colors([],Height,X,NewColumn,[block(white,X,Index)|NewColumnAcc],NewIndex).
+create_new_column_of_colors([Color|Tail],Height,X,NewColumn,NewColumn,Height).
+create_new_column_of_colors([Color|Tail],Height,X,NewColumn,NewColumnAcc,Index) :-
+	Height > Index,
+	NewIndex is Index + 1,
+	create_new_column_of_colors(Tail,Height,X,NewColumn,[block(Color,X,Index)|NewColumnAcc],NewIndex).
 	
 find_same(Board, Same) :-
 	find_same_horizontal(Board, Horizontal),
