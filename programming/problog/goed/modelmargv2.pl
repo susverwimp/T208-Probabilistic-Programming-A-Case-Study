@@ -43,9 +43,9 @@ initial_board(Board) :-
 %%%%%%%%%%%%%%%%%
 % STRATEGY
 %%%%%%%%%%%%%%%%%
-% strategy(uniform).
+strategy(uniform).
 % strategy(color_ratio).
-strategy(possible_score).
+% strategy(possible_score).
 
 %%%%%%%%%%%%%%%%%
 % QUERIES
@@ -56,8 +56,8 @@ strategy(possible_score).
 % scoretest :-
 	% score_of_turn(1,0);score_of_turn(1,3).
 % query(not(scoretest)).
-query(board(2,Board,Score,Positions)). % geeft de juiste werelden met de juiste kansen weer.
-% query(score_of_turn(2,S)). % geeft de juiste werelden weer met de VERKEERDE kansen (BUG).
+% query(board(2,Board,Score,Positions)). % geeft de juiste werelden met de juiste kansen weer.
+query(score_of_turn(2,S)). % geeft de juiste werelden weer met de VERKEERDE kansen (BUG).
 
 %%%%%%%%%%%%%%%%%
 % RANDOM EVENTS
