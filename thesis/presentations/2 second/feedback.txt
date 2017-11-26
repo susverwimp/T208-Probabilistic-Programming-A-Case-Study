@@ -1,0 +1,4 @@
+inleiding high level uitleg
+background informatio over ppls
+implementatie van model wat ik er zelf van meenam(wat hebben we gedaan en wat kan het)
+resultaten en metrieken over het model
