@@ -147,13 +147,41 @@ Voorafgaande schriftelijke toestemming van de promotor(en) is eveneens vereist v
 \setcounter{page}{0}
 \pagenumbering{arabic}
 \chapter{Inleiding}
-
-\chapter{Probabilistic Programming Languages}
+Onzekerheid in artifici\"{e}le intelligentie is een van de invloedrijkste domeinen van artifici\"{e}le intelligentie. De reden hiervoor is omdat de wereld van nature veel onzekerheid bevat. Denk aan de volgende punten:
+\begin{itemize}
+  \item Kennis (we kunnen niet alles van de wereld weten)
+  \item Incomplete modellen (verschijnselen die niet onder het model vallen)
+  \item Sensoren (we kunnen de wereld enkel observeren met de tools die beschikbaar zijn en deze zijn meestal nog foutgevoelig.)
+  \item Acties (we kunnen niet elke actie uitvoeren)
+\end{itemize}
+Met werken met onzekerheid bedoelen we het opstellen van een hypothese, en deze hypothese (zo goed mogelijk) bewijzen aan de hand van het gegeven bewijs van de wereld.
+Er zijn 3 belangrijke kwesties in verband met het werken met onzekerheid:
+\begin{itemize}
+  \item Representeren van onzekerheid
+  \item Redeneren over onzekerheid
+  \item Leren aan de hand van onzekerheid
+\end{itemize}
+Het representeren van onzekerheid gebeurd in het model. Een model is een weergave van een onzekerheidsprobleem waarbij elke wereld kan gesimuleerd worden.
+Bij het redeneren over onzekerheid maken we gebruik van het model om vragen te stellen over mogelijke hypotheses. 
+(vb. Wat is de kans dat we een eerlijke muntstuk hebben als we deze 20 keer tossen en 15 keer hoofd en 5 keer munt verkrijgen.)
+In dit voorbeeld is de hypothese of het muntstuk eerlijk is. Het bewijs dat we hebben is dat we 20 keer tossen en 15 keer hoofd en 5 keer munt kregen. Wat we willen is de kans dat de hypothese klopt m.a.w. de kans dat het muntstuk eerlijk is.
+\\\\
+Omdat het modelleren van een onzekerheidsprobleem, het redeneren over dit probleem en het leren aan de hand van de redeneringen een intensief proces i
+\section{Probabilistic Programming Languages}
 Probabilistic Programming Languages of PPL's zijn programmeertalen die het modelleren van een onzekerheidsprobleem makkelijker maakt, en vragen over deze onzekerheden kunnen oplossen aan de hand van een inferentie methode. In hoofdstukken~\ref{sec:problog} en~\ref{sec:anglican} vindt u meer informatie over de implementatie en inferentie methodes van de twee PPL's die ik bespreek in deze thesis: Problog en Anglican.
-\section{ProbLog}
-\label{sec:problog}
-\section{Anglican}
-\label{sec:anglican}
+
+E\'{e}n van de belangrijkste formules in onzekerheid is de Bayes' rule (figuur~\ref{fig:bayes_rule}).
+\begin{figure}
+  \centering
+    \includegraphics[height=55truemm]{bayes_rule}
+  \caption{Bayes' rule geeft de kans dat een Hypothese A waar is gegeven het bewijs B.}
+  \label{fig:bayes_rule}
+\end{figure}
+Bayes' rule geeft de kans dat een hypothese waar is in een wereld waar er al dan niet bewijs is over deze wereld.
+\subsection{ProbLog}
+\label{subsec:problog}
+\subsection{Anglican}
+\label{subsec:anglican}
 
 \chapter{Stappenplan}
 Om de twee PPL's te evalueren en vergelijken maak ik gebruik van een zelf verzonnen spel dat probabilistische aspecten bevat. Dit spel modelleer ik in ProbLog en Anglican. Na de implementatie kan ik beginnen met het vergelijken en evalueren van de PPL's aan de hand van verschillende kwalitatieve en kwantitatieve criteria.
