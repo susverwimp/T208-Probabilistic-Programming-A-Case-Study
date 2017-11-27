@@ -50,18 +50,20 @@ strategy(uniform).
 %%%%%%%%%%%%%%%%%
 % QUERIES
 %%%%%%%%%%%%%%%%%
-% boardtest :-
-	% board(1,Board,0,Positions);board(1,Board,3,Positions).
-% query(not(boardtest)).
-% scoretest :-
-	% score_of_turn(1,0);score_of_turn(1,3).
-% query(not(scoretest)).
 % query(board(2,Board,Score,Positions)). % geeft de juiste werelden met de juiste kansen weer.
 query(score_of_turn(2,S)). % geeft de juiste werelden weer met de VERKEERDE kansen (BUG).
 
 %%%%%%%%%%%%%%%%%
 % RANDOM EVENTS
-%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%	
+select_uniform(block(Color,X,Y),[block(Color,X,Y)]).
+P::select_uniform(block(Color,X,Y),[block(Color,X,Y)|Tail]);PRem::select_uniform(B2,[block(Color,X,Y)|Tail]) :-
+	length([block(Color,X,Y)|Tail],N),
+	P is 1/N,
+	PRem is 1 - P,
+	Tail \= [],
+	select_uniform(B2,Tail).
+	
 press(Board,X,Y,Color,T) :-
 	strategy(Strategy),
 	press(Board,X,Y,Color,T,Strategy).
@@ -70,14 +72,6 @@ press(Board,X,Y,Color,T,uniform) :-
 	flatten(Board,FlattenBoard),
 	select_uniform(block(Color,X,Y),FlattenBoard),
 	pressable_color(Color).
-	
-select_uniform(block(Color,X,Y),[block(Color,X,Y)]).
-P::select_uniform(block(Color,X,Y),[block(Color,X,Y)|Tail]);PRem::select_uniform(B2,[block(Color,X,Y)|Tail]) :-
-	length([block(Color,X,Y)|Tail],N),
-	P is 1/N,
-	PRem is 1 - P,
-	Tail \= [],
-	select_uniform(B2,Tail).
 	
 press(Board,X,Y,Color,T,color_ratio) :-
 	flatten(Board,FlattenBoard),
