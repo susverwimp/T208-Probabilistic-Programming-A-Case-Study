@@ -43,8 +43,8 @@ initial_board(Board) :-
 %%%%%%%%%%%%%%%%%
 % STRATEGY
 %%%%%%%%%%%%%%%%%
-strategy(uniform).
-% strategy(color_ratio).
+% strategy(uniform).
+strategy(color_ratio).
 % strategy(possible_score).
 
 %%%%%%%%%%%%%%%%%

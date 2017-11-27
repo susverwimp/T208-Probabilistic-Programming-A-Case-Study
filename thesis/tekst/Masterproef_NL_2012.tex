@@ -149,43 +149,72 @@ Voorafgaande schriftelijke toestemming van de promotor(en) is eveneens vereist v
 \chapter{Inleiding}
 Onzekerheid in artifici\"{e}le intelligentie is een van de invloedrijkste domeinen van artifici\"{e}le intelligentie. De reden hiervoor is omdat de wereld van nature veel onzekerheid bevat. Denk aan de volgende punten:
 \begin{itemize}
-  \item Kennis (we kunnen niet alles van de wereld weten)
-  \item Incomplete modellen (verschijnselen die niet onder het model vallen)
-  \item Sensoren (we kunnen de wereld enkel observeren met de tools die beschikbaar zijn en deze zijn meestal nog foutgevoelig.)
-  \item Acties (we kunnen niet elke actie uitvoeren)
+	\item Kennis (we kunnen niet alles van de wereld weten)
+	\item Incomplete modellen (verschijnselen die niet onder het model vallen)
+	\item Sensoren (we kunnen de wereld enkel observeren met de tools die beschikbaar zijn en deze zijn meestal nog foutgevoelig.)
+	\item Acties (we kunnen niet elke actie uitvoeren)
 \end{itemize}
-Met werken met onzekerheid bedoelen we het opstellen van een hypothese, en deze hypothese (zo goed mogelijk) bewijzen aan de hand van het gegeven bewijs van de wereld.
+Als we spreken over werken met onzekerheid bedoelen we het opstellen van een hypothese, en deze hypothese (zo goed mogelijk) bewijzen aan de hand van het gegeven bewijs van de wereld.
 Er zijn 3 belangrijke kwesties in verband met het werken met onzekerheid:
 \begin{itemize}
-  \item Representeren van onzekerheid
-  \item Redeneren over onzekerheid
-  \item Leren aan de hand van onzekerheid
+	\item Representeren van onzekerheid
+	\item Redeneren over onzekerheid
+	\item Leren aan de hand van onzekerheid
 \end{itemize}
 Het representeren van onzekerheid gebeurd in het model. Een model is een weergave van een onzekerheidsprobleem waarbij elke wereld kan gesimuleerd worden.
 Bij het redeneren over onzekerheid maken we gebruik van het model om vragen te stellen over mogelijke hypotheses. 
 (vb. Wat is de kans dat we een eerlijke muntstuk hebben als we deze 20 keer tossen en 15 keer hoofd en 5 keer munt verkrijgen.)
 In dit voorbeeld is de hypothese of het muntstuk eerlijk is. Het bewijs dat we hebben is dat we 20 keer tossen en 15 keer hoofd en 5 keer munt kregen. Wat we willen is de kans dat de hypothese klopt m.a.w. de kans dat het muntstuk eerlijk is.
 \\\\
-Omdat het modelleren van een onzekerheidsprobleem, het redeneren over dit probleem en het leren aan de hand van de redeneringen een intensief proces i
-\section{Probabilistic Programming Languages}
-Probabilistic Programming Languages of PPL's zijn programmeertalen die het modelleren van een onzekerheidsprobleem makkelijker maakt, en vragen over deze onzekerheden kunnen oplossen aan de hand van een inferentie methode. In hoofdstukken~\ref{sec:problog} en~\ref{sec:anglican} vindt u meer informatie over de implementatie en inferentie methodes van de twee PPL's die ik bespreek in deze thesis: Problog en Anglican.
+Omdat het modelleren van een onzekerheidsprobleem, het redeneren over dit probleem en het leren aan de hand van de redeneringen een intensief proces is, is het efficienter om computerkracht hiervoor te gebruiken. Hierdoor werden er Probabilistische programmeertalen ontworpen.
+\section{Probabilistische programmeertalen}
+Probabilistische programmeertalen (of PPL's van Probabilistic Programming Languages) zijn programmeertalen met 2 hoofddoelen in zicht:
+\begin{itemize}
+	\item Het vergemakkelijken van het modelleer proces
+	\item Redeneren over het model
+\end{itemize}
+Er zijn PPL implementaties die een volledig nieuwe taal hebben ge\"{i}mplementeerd speciaal voor het modelleren en redeneren, maar de meesten zijn ge\"{i}mplementeerd als extensie van een bestaande programmeertaal.
+\subsection{Modelleren}
 
-E\'{e}n van de belangrijkste formules in onzekerheid is de Bayes' rule (figuur~\ref{fig:bayes_rule}).
+\subsection{Inferentie}
+E\'{e}n van de belangrijkste formules in het werken met onzekerheid is de Bayes' rule (figuur~\ref{fig:bayes_rule}).
 \begin{figure}
   \centering
     \includegraphics[height=55truemm]{bayes_rule}
   \caption{Bayes' rule geeft de kans dat een Hypothese A waar is gegeven het bewijs B.}
   \label{fig:bayes_rule}
 \end{figure}
-Bayes' rule geeft de kans dat een hypothese waar is in een wereld waar er al dan niet bewijs is over deze wereld.
-\subsection{ProbLog}
-\label{subsec:problog}
+Bayes' rule geeft de kans dat een hypothese waar is in een wereld waar er al dan niet bewijs is over deze wereld. PPl's kunnen hetzelfde berekenen aan de hand van een inferentie proces dat de taal implementeert. Elke PPL heeft een methode om de inferentie te bereken. Hoe ze dit doen verschilt voor elke PPL. Meer info over de inferentie methodes in de sectie~\ref{subsec:problog2} en~\ref{subsec:anglican}.
+\\\\
+Het berekenen van de inferentie is een zeer krachtig, maar zeer kostelijk proces qua rekenkracht. Veel PPL's zoeken een balans tussen hoe efficient ze inferentie kunnen berekenen en welke problemen ze kunnen modelleren (hoe expressief de taal is).
+\subsection{ProbLog2}
+\label{subsec:problog2}
+ProbLog is een speciale vorm van PPL. Het is een Probabilistische logische programma PLP. 
+ProbLog is gebasseerd op Prolog. Terwijl het niet echt een extensie is van Prolog heeft het wel dezelfde syntax. Het verschil met Prolog zit hem in de kansen dat voor de feiten of predicaten kunnen gezet worden. In Prolog is een feit altijd waar in het programma. In ProbLog is een feit waar met kans P en niet waar met kans (1-P). hetzelfde geldt voor predicaten. Als we een feit schrijven zonder kans is deze waar in het logische programma. Als we een feit schrijven als P::f dan is de feit f waar met kans P en niet waar met kans (P-1). 
+
+\subsubsection{inferentie}
+De inferentie in ProbLog gebeurd aan de hand van verschillende processen:
+\begin{enumerate}
+	\item converteren van logisch programma gewogen booleaanse formules.
+	\item inferentie proces op de gewogen booleaanse formules.
+\end{enumerate}
+Deze stappen zijn onafhankelijke processen en zijn zo gekozen dat de output van het ene algoritme in het volgende algoritme past.
+
+om te converteren van logisch programma gewogen booleaanse we 3 input's nodig. Het ProbLog model, het bewijs van het model en de vragen die men aan het model wilt stellen. Tijdens dit proces wordt het domein van de probabilistische variabelen opgesteld en deze variabelen zullen enkel de termen in hun domein gebruiken om het gewogen booleaanse formula op te bouwen.
+\\\\
+De inferentie is anders afhankelijk van wat er gevraagt wordt.
+\begin{itemize}
+	\item Als de MARG/SUCC gevraagt wordt maakt het systeem gebruik van een algoritme genaamd Weighted Model Counting (WMC).
+	\item Als de MPE gevraagt wordt maakt het systeem gebruik van een algoritme genaamd MAX-SAT.
+\end{itemize}
+Dit zijn welbestudeerde algoritmes en voor meer informatie kunt u het artikel (Inference and Learning in Probabilistic Logic Programs using Weighted Boolean Formulas) lezen.
 \subsection{Anglican}
 \label{subsec:anglican}
+\subsubsection{inferentie}
 
-\chapter{Stappenplan}
-Om de twee PPL's te evalueren en vergelijken maak ik gebruik van een zelf verzonnen spel dat probabilistische aspecten bevat. Dit spel modelleer ik in ProbLog en Anglican. Na de implementatie kan ik beginnen met het vergelijken en evalueren van de PPL's aan de hand van verschillende kwalitatieve en kwantitatieve criteria.
-\section{Spel}
+\subsection{Stappenplan}
+Om PPL's te evalueren en vergelijken maak ik gebruik van een case study. Ik gebruik een case study omdat het evalueren van programmeer talen die niet dezelfde programmeer paradigma hebben niet triviaal is. De case die ik gebruik is een zelf verzonnen spel dat probabilistische aspecten bevat. Dit spel modelleer ik in ProbLog en Anglican. Na de implementatie kan ik beginnen met het vergelijken en evalueren van de PPL's aan de hand van verschillende kwalitatieve en kwantitatieve criteria.
+\subsubsection{Spel}
 Het spel bestaat uit een bord van 10 op 10 blokken. Elke blok in het bord heeft 1 toegewezen kleur. Er zijn 4 kleuren die aan een blok kunnen toegewezen worden: rood, groen, geel, blauw.\\\\
 Elke beurt kan de speler op 1 van de blokken drukken. Als er op een blok wordt gedrukt, verandert deze van kleur. De kleur waar de blok in verandert hangt af van welke kleur de blok had voor dat er op gedrukt werd.
 \begin{itemize}
@@ -208,8 +237,9 @@ Als er drie of meer blokken van dezelfde kleur horizontaal/verticaal naast elkaa
   \caption{Stel dat de blok in figuur~\ref{fig:game_change_blocks} rood werd, dan staan er 3 blokken met dezelfde kleur naast elkaar. Het spel verwijdert deze blokken en voor elke blok die verwijdert is krijgt de speler een punt. In dit geval heeft de speler 5 punten. De gele en de blauwe blok vallen naar beneden tot ze op een andere blok of op de bodem vallen.}
   \label{fig:game_score}
 \end{figure}
-\section{Modelleren}
-\section{Evaluatiecriteria}
+\subsubsection{Modelleren}
+\subsubsection{Evaluatiecriteria}
+De evaluatiecriteria kunnen gecategorizeerd worden in qualitatieve en quantitatieve criteria. Ook zijn er objectieve criteria en subjectieve criteria waar ik mijn evaluatie op basseer.
 
 \chapter{Resultaten}
 \chapter{Conclusie}

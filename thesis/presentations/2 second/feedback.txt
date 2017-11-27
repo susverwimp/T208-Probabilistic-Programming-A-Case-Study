@@ -1,0 +1,34 @@
+inhoudsopgave niet nodig zolang logische opeenvolging
+A hypothese veranderen en kleuren gebruiken
+slide 5 uitgebreider uitleggen
+ppl meer uitleg over wat een PPL is.
+slide 6 verschillen niet enkel in iferentie maar ook in paradigma, compleet verschillend
+programmeerparadigma niet als criteria
+slide 9 chronologische consistentie
+slide 12 over nadenken bovenste 2 bollen
+slide 13 soort van event tree met root probleem minder bullets
+
+slide 15 kleuren gebruiken, spel opzij zodat het groter kan gemaakt worden
+
+apparte uitleg voor strategien
+niet terug switchen naar slides
+geen code bij resultaten, 
+belangrijkste code eventueel
+logische code weinig uitleg, probabilistsche code beetje tonen
+code commentaar wat doet wat
+zeker niet te veel
+
+slide 29 alleen score of turn overtypen met eventueel grafiek
+slide 30 goede punten groen slechte rood
+meer verhaal 
+slide 30 niet makkelijk gebruiken eventueel begrijpelijke code
+slide 31 thesis tekst
+meer tijdstappen bij toekomst, logische progressie
+query voorbeeld in resultaten
+apparte conclusie
+
+
+tekst
+inleiding meer focussen op probleemstelling
+sneller overgaan naar stappenplan
+introductie lezer net genoeg snapt om motivatie te begrijpen
