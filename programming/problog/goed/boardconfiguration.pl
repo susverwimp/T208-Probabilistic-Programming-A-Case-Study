@@ -36,14 +36,14 @@ block(yellow,X,Y) :-
 	uniform_color(yellow,X,Y),
 	block_conditions(yellow,X,Y).
 	
-block_conditions(Color,X,Y).	
+% block_conditions(Color,X,Y).	
 	
-% block_conditions(Color,X,Y) :-
-	% X2 is X + 1,
-	% \+ block(Color,X2,Y).
-% block_conditions(Color,X,Y) :-
-	% X2 is X + 2,
-	% \+ block(Color,X2,Y).
+block_conditions(Color,X,Y) :-
+	X2 is X + 1,
+	\+ block(Color,X2,Y).
+block_conditions(Color,X,Y) :-
+	X2 is X + 2,
+	\+ block(Color,X2,Y).
 	
 	
 initial_board(Board) :-
