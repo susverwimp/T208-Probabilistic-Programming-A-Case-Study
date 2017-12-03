@@ -49,9 +49,9 @@ initial_board(Board) :-
 % STRATEGY
 %%%%%%%%%%%%%%%%%
 % strategy(uniform).
-% strategy(color_ratio).
+strategy(color_ratio).
 % strategy(possible_score).
-strategy(possible_score_improved).
+% strategy(possible_score_improved).
 
 %%%%%%%%%%%%%%%%%
 % QUERIES
@@ -62,6 +62,11 @@ query(score_of_turn(2,S)). % geeft de juiste werelden weer met de VERKEERDE kans
 %%%%%%%%%%%%%%%%%
 % RANDOM EVENTS
 %%%%%%%%%%%%%%%%%
+probs_color_change(red,green,1/3). probs_color_change(red,blue,1/3). probs_color_change(red,yellow,1/3).
+probs_color_change(green,red,1/3). probs_color_change(green,blue,1/3). probs_color_change(green,yellow,1/3).
+probs_color_change(blue,red,1/3). probs_color_change(blue,green,1/3). probs_color_change(blue,yellow,1/3).
+probs_color_change(yellow,red,1/3). probs_color_change(yellow,green,1/3). probs_color_change(yellow,blue,1/3).
+
 select_uniform(block(Color,X,Y),[],false).
 select_uniform(block(Color,X,Y),[block(Color,X,Y)],true).
 P::select_uniform(block(Color,X,Y),[block(Color,X,Y)|Tail],true);PRem::select_uniform(B2,[block(Color,X,Y)|Tail],true) :-
@@ -124,11 +129,6 @@ possible_score_improved_press(Blocks,Board,Color,X,Y,SomeThingSelected) :-
 	Blocks \= [],
 	find_max_score_blocks(Board,Blocks,MaxScoreBlocks),
 	select_uniform(block(Color,X,Y),MaxScoreBlocks,SomeThingSelected).
-
-probs_color_change(red,green,1/3). probs_color_change(red,blue,1/3). probs_color_change(red,yellow,1/3).
-probs_color_change(green,red,1/3). probs_color_change(green,blue,1/3). probs_color_change(green,yellow,1/3).
-probs_color_change(blue,red,1/3). probs_color_change(blue,green,1/3). probs_color_change(blue,yellow,1/3).
-probs_color_change(yellow,red,1/3). probs_color_change(yellow,green,1/3). probs_color_change(yellow,blue,1/3).
 	
 find_max_score_blocks(Board,Blocks,MaxScoreBlocks) :-
 	find_max_score_blocks(Board,Blocks,MaxScoreBlocks,0,[]).
@@ -212,8 +212,6 @@ find_all_possible_score_blocks(Board,Blocks) :-
 	append(BlocksHorizontal,BlocksVertical,ListBlocks),
 	set(ListBlocks,Blocks).
 	
-% query(find_all_possible_score_blocks([[block(white, 0, 2), block(white, 1, 2), block(white, 2, 2)], [block(red, 0, 1), block(white, 1, 1), block(red, 2, 1)], [block(yellow, 0, 0), block(white, 1, 0), block(yellow, 2, 0)]],Blocks)).
-
 find_possible_score_block_horizontal(Board,Block) :-
 	member(Row,Board),
 	member(Block,Row),
@@ -274,9 +272,6 @@ has_possible_score(block(Color,X,Y),List) :-
 	member(block(Color3,X,Y3),List),
 	Color3 == Color2.
 	
-
-
-	
 list_ratio(List, ListRatio) :-
 	list_ratio(List, ListRatio, 0, 0, 0, 0).
 list_ratio([], [[red,RedAcc], [green,GreenAcc], [blue,BlueAcc], [yellow,YellowAcc]], RedAcc, GreenAcc, BlueAcc, YellowAcc).
@@ -300,10 +295,22 @@ list_ratio([block(Color,_,_)|Tail], ListRatio, RedAcc, GreenAcc, BlueAcc, Yellow
 	Color = white,
 	list_ratio(Tail, ListRatio, RedAcc, GreenAcc, BlueAcc, YellowAcc).
 	
-1/3::change_color(red,green,T);1/3::change_color(red,blue,T);1/3::change_color(red,yellow,T).
-1/3::change_color(green,red,T);1/3::change_color(green,blue,T);1/3::change_color(green,yellow,T).
-1/3::change_color(blue,red,T);1/3::change_color(blue,green,T);1/3::change_color(blue,yellow,T).
-1/3::change_color(yellow,red,T);1/3::change_color(yellow,green,T);1/3::change_color(yellow,blue,T).
+RG::change_color(red,green,T);RB::change_color(red,blue,T);RY::change_color(red,yellow,T) :-
+	probs_color_change(red,green,RG),
+	probs_color_change(red,blue,RB),
+	probs_color_change(red,yellow,RY).
+GR::change_color(green,red,T);GB::change_color(green,blue,T);GY::change_color(green,yellow,T) :-
+	probs_color_change(green,red,GR),
+	probs_color_change(green,blue,GB),
+	probs_color_change(green,yellow,GY).
+BR::change_color(blue,red,T);BG::change_color(blue,green,T);BY::change_color(blue,yellow,T) :-
+	probs_color_change(blue,red,BR),
+	probs_color_change(blue,green,BG),
+	probs_color_change(blue,yellow,BY).
+YR::change_color(yellow,red,T);YG::change_color(yellow,green,T);YB::change_color(yellow,blue,T) :-
+	probs_color_change(yellow,red,YR),
+	probs_color_change(yellow,green,YG),
+	probs_color_change(yellow,blue,YB).
 
 
 %%%%%%%%%%%%%%%%%
