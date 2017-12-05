@@ -22,7 +22,6 @@ block(Color,X,Y) :-
 	position(X,Y),
 	uniform_color(Color,X,Y).
 	
-	
 %%%%%%%%%%%%%%%%%
 % GAME PREDICATES
 %%%%%%%%%%%%%%%%%
@@ -59,6 +58,6 @@ create_row(X,Y,Row,RowAcc) :-
 	
 evidence(block(blue,0,2)). evidence(block(red,1,2)). evidence(block(blue,2,2)).
 evidence(block(red,0,1)). evidence(block(yellow,1,1)). evidence(block(yellow,2,1)).
-evidence(block(red,0,0)). evidence(block(blue,1,0)). evidence(block(green,2,0)).
+evidence(block(red,0,0)). %evidence(block(blue,1,0)). %evidence(block(green,2,0)).
 
 query(initial_board(Board)).
