@@ -1,0 +1,117 @@
+%%%%%%%%%%%%%%%%%
+% EVIDENCE
+%%%%%%%%%%%%%%%%%
+evidence(block(blue,0,2)). %evidence(block(red,1,2)). 
+evidence(block(red,2,2)).
+evidence(block(red,0,1)). evidence(block(blue,1,1)). evidence(block(red,2,1)).
+evidence(block(red,0,0)). evidence(block(red,1,0)). evidence(block(yellow,2,0)).
+
+[INFO] Output level: INFO
+[INFO] Propagating evidence: 0.0000s
+[INFO] Grounding: 13.0660s
+[INFO] Cycle breaking: 0.7850s
+[INFO] Clark's completion: 0.7480s
+[INFO] DSharp compilation: 1.7990s
+[INFO] Total time: 26.3690s
+score_of_turn(1,0):	0.87037037
+score_of_turn(1,3):	0.074074074
+score_of_turn(1,5):	0.055555556
+
+
+%%%%%%%%%%%%%%%%%
+% EVIDENCE
+%%%%%%%%%%%%%%%%%
+evidence(block(blue,0,2)). evidence(block(red,1,2)). 
+evidence(block(red,2,2)).
+evidence(block(red,0,1)). evidence(block(blue,1,1)). evidence(block(red,2,1)).
+evidence(block(red,0,0)). evidence(block(red,1,0)). evidence(block(yellow,2,0)).
+
+[INFO] Output level: INFO
+[INFO] Propagating evidence: 0.0000s
+[INFO] Grounding: 2.9540s
+[INFO] Cycle breaking: 0.1730s
+[INFO] Clark's completion: 0.1530s
+[INFO] DSharp compilation: 0.3020s
+[INFO] Total time: 4.5270s
+score_of_turn(1,0):	0.88888889
+score_of_turn(1,5):	0.11111111
+
+
+%%%%%%%%%%%%%%%%%
+% EVIDENCE
+%%%%%%%%%%%%%%%%%
+evidence(block(blue,0,2)). evidence(block(green,1,2)). 
+evidence(block(red,2,2)).
+evidence(block(red,0,1)). evidence(block(blue,1,1)). evidence(block(red,2,1)).
+evidence(block(red,0,0)). evidence(block(red,1,0)). evidence(block(yellow,2,0)).
+
+[INFO] Output level: INFO
+[INFO] Propagating evidence: 0.0000s
+[INFO] Grounding: 2.6900s
+[INFO] Cycle breaking: 0.1660s
+[INFO] Clark's completion: 0.1460s
+[INFO] DSharp compilation: 0.3010s
+[INFO] Total time: 4.1970s
+score_of_turn(1,0):	0.88888889
+score_of_turn(1,3):	0.074074074
+score_of_turn(1,5):	0.037037037
+
+
+%%%%%%%%%%%%%%%%%
+% EVIDENCE
+%%%%%%%%%%%%%%%%%
+evidence(block(blue,0,2)). evidence(block(blue,1,2)). 
+evidence(block(red,2,2)).
+evidence(block(red,0,1)). evidence(block(blue,1,1)). evidence(block(red,2,1)).
+evidence(block(red,0,0)). evidence(block(red,1,0)). evidence(block(yellow,2,0)).
+
+[INFO] Output level: INFO
+[INFO] Propagating evidence: 0.0000s
+[INFO] Grounding: 2.9860s
+[INFO] Cycle breaking: 0.1720s
+[INFO] Clark's completion: 0.1530s
+[INFO] DSharp compilation: 0.2790s
+[INFO] Total time: 4.3040s
+score_of_turn(1,0):	0.81481481
+score_of_turn(1,3):	0.14814815
+score_of_turn(1,5):	0.037037037
+
+
+%%%%%%%%%%%%%%%%%
+% EVIDENCE
+%%%%%%%%%%%%%%%%%
+evidence(block(blue,0,2)). evidence(block(yellow,1,2)). 
+evidence(block(red,2,2)).
+evidence(block(red,0,1)). evidence(block(blue,1,1)). evidence(block(red,2,1)).
+evidence(block(red,0,0)). evidence(block(red,1,0)). evidence(block(yellow,2,0)).
+
+[INFO] Output level: INFO
+[INFO] Propagating evidence: 0.0010s
+[INFO] Grounding: 2.7650s
+[INFO] Cycle breaking: 0.1670s
+[INFO] Clark's completion: 0.1510s
+[INFO] DSharp compilation: 0.2960s
+[INFO] Total time: 4.2850s
+score_of_turn(1,0):	0.88888889
+score_of_turn(1,3):	0.074074074
+score_of_turn(1,5):	0.037037037
+
+
+
+
+
+
+(0.88888889 + 0.88888889 + 0.81481481 + 0.88888889) / 4 = 0.87037037
+(0 + 0.074074074 + 0.14814815 + 0.074074074) / 4 = 0.074074074
+(0.11111111 + 0.037037037 + 0.037037037 + 0.037037037) / 4 = 0.055555556
+
+total time no evidence block12 = 26.3690s
+total time evidence block12 red = 4.5270s
+total time evidence block12 green = 4.1970s
+total time evidence block12 blue = 4.3040s
+total time evidence block12 yellow = 4.2850s
+
+4.5270 + 4.1970 + 4.3040 + 4.2850 = 17.313
+
+17.313 < 26.3690
+het is efficienter om de evidence aan te passen in het programma dan evidence weg te laten en hetzelfde uit te komen.

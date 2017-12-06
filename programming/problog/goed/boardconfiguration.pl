@@ -22,6 +22,8 @@ block(Color,X,Y) :-
 	position(X,Y),
 	uniform_color(Color,X,Y).
 	
+
+	
 %%%%%%%%%%%%%%%%%
 % GAME PREDICATES
 %%%%%%%%%%%%%%%%%
