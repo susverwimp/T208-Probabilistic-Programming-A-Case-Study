@@ -34,7 +34,7 @@ block(Color,X,Y) :-
 
 	
 %%%%%%%%%%%%%%%%%
-% GAME PREDICATES
+% BOARD PREDICATES
 %%%%%%%%%%%%%%%%%
 initial_board(Board) :-
 	create_board(Board).

@@ -1,11 +1,27 @@
+from problog.program import PrologString
+from problog.engine import DefaultEngine
+from problog.logic import Term
+from problog.core import ProbLog
+from problog import get_evaluatable
+
+p = PrologString("""
+:- use_module(library(apply)).
 :- use_module(library(lists)).
 
 width(2).
 height(2).
+
 pressable_color(red).
 pressable_color(green).
 pressable_color(blue).
 pressable_color(yellow).
+
+%%%%%%%%%%%%%%%%%
+% EVIDENCE
+%%%%%%%%%%%%%%%%%
+evidence(block(blue,0,2)). evidence(block(red,1,2)). evidence(block(red,2,2)).
+evidence(block(red,0,1)). evidence(block(blue,1,1)). evidence(block(red,2,1)).
+evidence(block(red,0,0)). evidence(block(red,1,0)). evidence(block(yellow,2,0)).
 
 %%%%%%%%%%%%%%%%%
 % RANDOM EVENTS
@@ -58,8 +74,24 @@ create_row(X,Y,Row,RowAcc) :-
 	block(Color,X,Y),
 	append(RowAcc,[block(Color,X,Y)],Row).
 	
-evidence(block(blue,0,2)). evidence(block(red,1,2)). evidence(block(blue,2,2)).
-evidence(block(red,0,1)). evidence(block(yellow,1,1)). evidence(block(yellow,2,1)).
-evidence(block(red,0,0)). %evidence(block(blue,1,0)). %evidence(block(green,2,0)).
-
 query(initial_board(Board)).
+""")
+
+engine = DefaultEngine()
+
+db = engine.prepare(p)
+
+# evidence_block02 = Term('block', Term('blue'),0,2)
+# evidence_block12 = Term('block', Term('red'),1,2)
+# evidence_block22 = Term('block', Term('red'),2,2)
+# evidence_block01 = Term('block', Term('red'),0,1)
+# evidence_block11 = Term('block', Term('blue'),1,1)
+# evidence_block21 = Term('block', Term('red'),2,1)
+# evidence_block00 = Term('block', Term('red'),0,0)
+# evidence_block10 = Term('block', Term('red'),1,0)
+# evidence_block20 = Term('block', Term('yellow'),2,0)
+
+# query_term = Term('score_of_turn', 1, None)
+
+lf = engine.ground_all(db)
+print(get_evaluatable().create_from(lf).evaluate())
