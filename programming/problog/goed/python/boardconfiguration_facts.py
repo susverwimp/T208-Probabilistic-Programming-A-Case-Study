@@ -53,11 +53,9 @@ create_row(X,Y,Row,RowAcc) :-
 	width(X),
 	block(Color,X,Y),
 	append(RowAcc,[block(Color,X,Y)],Row).
-	
-query(initial_board(Board)).
 """)
 
-engine = DefaultEngine()
+engine = DefaultEngine(label_all=True)
 
 db = engine.prepare(p)
 
@@ -71,7 +69,7 @@ db = engine.prepare(p)
 # evidence_block10 = Term('block', Term('red'),1,0)
 # evidence_block20 = Term('block', Term('yellow'),2,0)
 
-# query_term = Term('score_of_turn', 1, None)
+query_term = Term('initial_board', None)
 
-lf = engine.ground_all(db)
+lf = engine.ground_all(db,queries=[query_term])
 print(get_evaluatable().create_from(lf).evaluate())

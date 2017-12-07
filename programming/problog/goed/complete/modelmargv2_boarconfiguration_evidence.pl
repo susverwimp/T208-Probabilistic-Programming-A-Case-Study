@@ -6,43 +6,71 @@ pressable_color(green).
 pressable_color(blue).
 pressable_color(yellow).
 
-%pas hier aan om een ander bord te verkrijgen
-block(blue,0,2). 	block(green,1,2). 	block(red,2,2).
-block(red,0,1). 	block(blue,1,1). 	block(red,2,1).
-block(red,0,0). 	block(red,1,0). 	block(yellow,2,0).
+width(2).
+height(2).
 
-% block(yellow,0,2). 	block(red,1,2). 	block(blue,2,2).
-% block(red,0,1). 	block(blue,1,1). 	block(red,2,1).
-% block(yellow,0,0). 	block(red,1,0). 	block(yellow,2,0).
+pressable_color(red).
+pressable_color(green).
+pressable_color(blue).
+pressable_color(yellow).
 
-% block(blue,0,2). 	block(white,1,2). 	block(white,2,2).
-% block(blue,0,1). 	block(white,1,1). 	block(white,2,1).
-% block(red,0,0). 	block(white,1,0). 	block(white,2,0).
- 
-% block(white,0,2). 	block(white,1,2). 	block(white,2,2).
-% block(white,0,1). 	block(white,1,1). 	block(white,2,1).
-% block(white,0,0). 	block(white,1,0). 	block(white,2,0).
-% geeft het bord:
-% 2|b g r|
-% 1|r b r|
-% 0|r r y|
-%   0 1 2
+%%%%%%%%%%%%%%%%%
+% EVIDENCE
+%%%%%%%%%%%%%%%%%
+evidence(block(blue,0,2)). evidence(block(red,1,2)). evidence(block(red,2,2)).
+evidence(block(red,0,1)). evidence(block(blue,1,1)). evidence(block(red,2,1)).
+evidence(block(red,0,0)). evidence(block(red,1,0)). evidence(block(yellow,2,0)).
 
+%%%%%%%%%%%%%%%%%
+% RANDOM EVENTS
+%%%%%%%%%%%%%%%%%
+1/4::uniform_color(red,X,Y);1/4::uniform_color(green,X,Y);1/4::uniform_color(blue,X,Y);1/4::uniform_color(yellow,X,Y).
+
+position(X,Y) :-
+	width(Width),
+	height(Height),
+	between(0,Width,X),
+	between(0,Height,Y).
+	
+block(Color,X,Y) :- 
+	position(X,Y),
+	uniform_color(Color,X,Y).
+	
+
+	
+%%%%%%%%%%%%%%%%%
+% GAME PREDICATES
+%%%%%%%%%%%%%%%%%
 initial_board(Board) :-
-	block(Color00,0,0),
-	block(Color10,1,0),
-	block(Color20,2,0),
-	block(Color01,0,1),
-	block(Color11,1,1),
-	block(Color21,2,1),
-	block(Color02,0,2),
-	block(Color12,1,2),
-	block(Color22,2,2),
-	Board = [
-		[block(Color02,0,2),block(Color12,1,2),block(Color22,2,2)],
-		[block(Color01,0,1),block(Color11,1,1),block(Color21,2,1)],
-		[block(Color00,0,0),block(Color10,1,0),block(Color20,2,0)]
-	].
+	create_board(Board).
+
+create_board(Board) :-
+	create_board(0,Board,[]).
+create_board(Y,Board,BoardAcc) :-
+	height(Height),
+	Y < Height,
+	create_row(Y,Row),
+	NewBoardAcc = [Row|BoardAcc],
+	NewY is Y + 1,
+	create_board(NewY,Board,NewBoardAcc).
+create_board(Y,Board,BoardAcc) :-
+	height(Y),
+	create_row(Y,Row),
+	Board = [Row|BoardAcc].
+	
+create_row(Y,Row) :-
+	create_row(0,Y,Row,[]).
+create_row(X,Y,Row,RowAcc) :-
+	width(Width),
+	X < Width,
+	block(Color,X,Y),
+	append(RowAcc,[block(Color,X,Y)],NewRowAcc),
+	NewX is X + 1,
+	create_row(NewX,Y,Row,NewRowAcc).
+create_row(X,Y,Row,RowAcc) :-
+	width(X),
+	block(Color,X,Y),
+	append(RowAcc,[block(Color,X,Y)],Row).
 
 	
 %%%%%%%%%%%%%%%%%
