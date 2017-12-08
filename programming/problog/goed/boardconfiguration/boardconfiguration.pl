@@ -20,7 +20,65 @@ position(X,Y) :-
 	
 block(Color,X,Y) :- 
 	position(X,Y),
-	uniform_color(Color,X,Y).
+	uniform_color(Color,X,Y),
+	block_constraints(Color,X,Y).
+
+%constraints 3x3
+%constraints block20
+block_constraints(Color,X,Y) :-
+	Xmin1 is X - 1,
+	\+ position(Xmin1,Y),
+	Xplus1 is X + 1,
+	position(Xplus1,Y),
+	Xplus2 is X + 2,
+	position(Xplus2,Y),
+	Yplus1 is Y + 1,
+	\+ position(X,Yplus1),
+	Ymin1 is Y - 1,
+	position(X,Ymin1),
+	Ymin2 is Y - 2,
+	position(X,Ymin2),
+	pressable_color(Color2),
+	Color2 \= Color,
+	uniform_color(Color2,Xplus1,Y),
+	pressable_color(Color3),
+	Color3 \= Color,
+	uniform_color(Color3,Xplus2,Y).
+block_constraints(Color,X,Y) :-
+	Xmin1 is X - 1,
+	\+ position(Xmin1,Y),
+	Xplus1 is X + 1,
+	position(Xplus1,Y),
+	Xplus2 is X + 2,
+	position(Xplus2,Y),
+	Yplus1 is Y + 1,
+	\+ position(X,Yplus1),
+	Ymin1 is Y - 1,
+	position(X,Ymin1),
+	Ymin2 is Y - 2,
+	position(X,Ymin2),
+	uniform_color(Color,Xplus1,Y),
+	pressable_color(Color2),
+	Color2 \= Color,
+	uniform_color(Color2,Xplus2,Y).
+block_constraints(Color,X,Y) :-
+	Xmin1 is X - 1,
+	\+ position(Xmin1,Y),
+	Xplus1 is X + 1,
+	position(Xplus1,Y),
+	Xplus2 is X + 2,
+	position(Xplus2,Y),
+	Yplus1 is Y + 1,
+	\+ position(X,Yplus1),
+	Ymin1 is Y - 1,
+	position(X,Ymin1),
+	Ymin2 is Y - 2,
+	position(X,Ymin2),
+	pressable_color(Color2),
+	Color2 \= Color,
+	uniform_color(Color2,Xplus1,Y),
+	uniform_color(Color,Xplus2,Y).
+	
 	
 
 	

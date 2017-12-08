@@ -528,20 +528,36 @@ remv(X, [X|T], T1) :- remv(X, T, T1).
 remv(X, [H|T], [H|T1]) :-
     X \= H,
     remv(X, T, T1).
-    
-width(2).
-height(2).
-
-%%%%%%%%%%%%%%%%%
-% STRATEGY
-%%%%%%%%%%%%%%%%%
-strategy(uniform).
-% strategy(color_ratio).
-% strategy(possible_score).
-% strategy(possible_score_improved).
 """)
 
 def main():
+    turns = [1]
+    strategies = ['uniform', 'color_ratio', 'possible_score', 'possible_score_improved']
+    sizes = [[2,2]]
+
+    engine = DefaultEngine(label_all=True)
+
+    with Timer('parsing initial'):
+        db = engine.prepare(p)
+
+    import itertools
+    s = [turns, strategies, sizes]
+    permutations = list(itertools.product(*s))
+    for permutation in permutations:
+        problogChain(engine, db, permutation)
+
+
+def problogChain(engine, db, permutation):
+    turnPerm = permutation[0]
+    strategyPerm = permutation[1]
+    sizePerm = permutation[2]
+
+    # add width, height and strategy facts to the program
+    dbPerm = db.extend()
+    dbPerm += Term('width', Constant(sizePerm[0]))
+    dbPerm += Term('height', Constant(sizePerm[1]))
+    dbPerm += Term('strategy', Term(strategyPerm))
+
     evidence_block00 = Term('block', Term('red'), Constant(0), Constant(0))
     evidence_block10 = Term('block', Term('red'), Constant(1), Constant(0))
     evidence_block20 = Term('block', Term('yellow'), Constant(2), Constant(0))
@@ -556,36 +572,32 @@ def main():
                 (evidence_block01, True), (evidence_block11, True), (evidence_block21, True),
                 (evidence_block00, True), (evidence_block10, True), (evidence_block20, True)]
 
-    turns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    strategies = [Term('uniform'), Term('color_ratio'), Term('possible_score'), Term('possible_score_improved')]
-    evidences = [evidence]
-    sizes = [[Term('width', Constant(2)), Term('height', Constant(2))]]
-    engine = DefaultEngine(label_all=True)
+    # evidence = [(evidence_block01, True), (evidence_block11, True),
+    #             (evidence_block00, True), (evidence_block10, True)]
 
-    with Timer('parsing initial'):
-        db = engine.prepare(p)
+    query_score_of_turn_1 = Term('score_of_turn', Constant(turnPerm), None)
+    query_board_turn_1 = Term('board', Constant(turnPerm), None, None, None)
 
-    query_score_of_turn_1 = Term('score_of_turn', Constant(1), None)
-    query_board_turn_1 = Term('board', Constant(1), None, None, None)
+    perm = 'turn:' + str(turnPerm) + ' strategy:' + strategyPerm + ' size:' + str(sizePerm) + ' '
 
-    print('\n=== Ground Program ===')
-    with Timer('ground'):
-        gp = engine.ground_all(db, queries=[query_score_of_turn_1], evidence=evidence, propagate_evidence=True)
+    # print('\n=== Ground Program ===')
+    with Timer(perm + 'ground'):
+        gp = engine.ground_all(dbPerm, queries=[query_score_of_turn_1], evidence=evidence, propagate_evidence=True)
 
-    print('\n=== Acyclic Ground Program ===')
-    with Timer('acyclic'):
+    # print('\n=== Acyclic Ground Program ===')
+    with Timer(perm + 'acyclic'):
         dag = LogicDAG.create_from(gp)
 
-    print('\n=== Conversion to CNF ===')
-    with Timer('convert to CNF'):
+    # print('\n=== Conversion to CNF ===')
+    with Timer(perm + 'convert to CNF'):
         cnf = CNF.createFrom(dag)
 
-    print('\n=== Compile to d-DNNF ===')
-    with Timer('compile'):
+    # print('\n=== Compile to d-DNNF ===')
+    with Timer(perm + 'compile'):
         nnf = DDNNF.createFrom(cnf)
 
-    print('\n=== Evaluation result ===')
-    with Timer('evaluate'):
+    # print('\n=== Evaluation result ===')
+    with Timer(perm + 'evaluate'):
         result = nnf.evaluate()
 
     for it in result.items():
