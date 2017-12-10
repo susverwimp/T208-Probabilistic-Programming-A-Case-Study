@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5eaec465-6bf4-40df-8654-65129ca7d72c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/10x10.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/4x4.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/5x5.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/6x6.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/7x7.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/8x8.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/9x9.txt" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/2x2.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/3x3.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/test.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/test2.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../../java/boardconfigurations/10x10.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../../java/boardconfigurations/4x4.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../../java/boardconfigurations/5x5.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../../java/boardconfigurations/6x6.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../../java/boardconfigurations/7x7.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../../java/boardconfigurations/8x8.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../../java/boardconfigurations/9x9.txt" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -73,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="427" />
     <option name="y" value="1" />
     <option name="width" value="1400" />
@@ -234,7 +229,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
