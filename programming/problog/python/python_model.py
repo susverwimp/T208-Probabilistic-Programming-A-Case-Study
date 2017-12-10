@@ -12,7 +12,7 @@ from problog.cnf_formula import CNF
 from problog.logic import Constant,Term
 from problog import get_evaluatable
 
-def main(width, height, turns, samples,uniform):
+def main(width, height, turns, board_samples, uniform, samples):
     logic_program = """
     :- use_module(library(apply)).
     :- use_module(library(lists)).
@@ -523,26 +523,26 @@ def main(width, height, turns, samples,uniform):
 
 
     if(uniform):
-        strategies = ['uniform', 'color_ratio', 'possible_score', 'possible_score_improved']
+        strategies = ['uniform', 'color_ratio', 'possible_score', 'possible_score_improved', 'possible_score_improved_python']
     else:
-        strategies = ['color_ratio', 'possible_score', 'possible_score_improved']
+        strategies = ['color_ratio', 'possible_score', 'possible_score_improved', 'possible_score_improved_python']
 
     logic_program += 'width(' + str(width - 1) + ').\n'
     logic_program += 'height(' + str(height - 1) + ').\n'
 
-    prepareDB(logic_program, width, height, samples, strategies, turns)
+    prepareDB(logic_program, width, height, board_samples, strategies, turns)
 
 
-def prepareDB(logic_program, width, height, samples, strategies, turns):
+def prepareDB(logic_program, width, height, board_samples, strategies, turns):
     boardconfigurationsFileName = str(width) + 'x' + str(height) + '.txt'
 
     evidenceStrings = []
     with open(boardconfigurationsFileName, 'r') as fp:
         total = int(fp.readline().strip())
-        if (samples > total):
-            samples = total
-            print('There are more samples than board configurations. New sample size is: ' + str(samples))
-        sampleIndexes = random.sample(range(0, total), samples)
+        if (board_samples > total):
+            board_samples = total
+            print('There are more samples than board configurations. New sample size is: ' + str(board_samples))
+        sampleIndexes = random.sample(range(0, total), board_samples)
         for i, line in enumerate(fp):
             if i in sampleIndexes:
                 evidenceStrings.append(line.strip())
@@ -567,11 +567,11 @@ def prepareDB(logic_program, width, height, samples, strategies, turns):
     import itertools
     s = [strategies, [evidences]]
     permutations = list(itertools.product(*s))
-    for permutation in permutations:
+    for strategy in strategies:
         # add strategy fact to the program
         dbPerm = db.extend()
-        dbPerm += Term('strategy', Term(permutation[0]))
-        perm_string = 'turn:' + str(turns) + ' strategy:' + permutation[0] + ' size:' + str(width) + 'x' + str(height) + ' '
+        dbPerm += Term('strategy', Term(strategy))
+        perm_string = 'turn:' + str(turns) + ' strategy:' + strategy + ' size:' + str(width) + 'x' + str(height) + ' '
 
         problogChain(engine, dbPerm, evidences, turns, perm_string)
 
@@ -632,7 +632,6 @@ def problogChain(engine, dbPerm, evidences, turns, perm_string):
         average_evaluate_time += elapsed_time
         average_total_time += total_time
         print('%s: %.4fs' % (perm_string + 'evaluate', elapsed_time))
-
         print('%s: %.4fs' % (perm_string + 'total time', total_time))
         for it in result.items():
             key = str(it[0])[16:17]
@@ -665,4 +664,10 @@ def problogChain(engine, dbPerm, evidences, turns, perm_string):
     print()
 
 if __name__ == '__main__':
-    main(3,3,1,2,False)
+    width = 4
+    height = 4
+    turns = 1
+    boardconfiguration_samples = 1
+    uniform_included = False
+    samples = -1
+    main(width,height,turns,boardconfiguration_samples,uniform_included, samples)
