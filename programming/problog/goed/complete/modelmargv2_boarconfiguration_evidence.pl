@@ -76,10 +76,10 @@ create_row(X,Y,Row,RowAcc) :-
 %%%%%%%%%%%%%%%%%
 % STRATEGY
 %%%%%%%%%%%%%%%%%
-strategy(uniform).
+% strategy(uniform).
 % strategy(color_ratio).
 % strategy(possible_score).
-% strategy(possible_score_improved).
+strategy(possible_score_improved).
 
 %%%%%%%%%%%%%%%%%
 % QUERIES
