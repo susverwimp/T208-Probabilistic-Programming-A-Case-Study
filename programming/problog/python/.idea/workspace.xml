@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5eaec465-6bf4-40df-8654-65129ca7d72c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/3x3.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/test.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/test2.txt" />
-      <change beforePath="$PROJECT_DIR$/../goed/boardconfiguration/boardconfiguration.pl" afterPath="$PROJECT_DIR$/../goed/boardconfiguration/boardconfiguration.pl" />
-      <change beforePath="$PROJECT_DIR$/../goed/complete/modelmargv2_boarconfiguration_evidence.pl" afterPath="$PROJECT_DIR$/../goed/complete/modelmargv2_boarconfiguration_evidence.pl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/10x10.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/4x4.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/5x5.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/6x6.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/7x7.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/8x8.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/9x9.txt" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/python_model.py" afterPath="$PROJECT_DIR$/python_model.py" />
+      <change beforePath="$PROJECT_DIR$/2x2.csv" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/3x3.csv" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/test.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/test2.txt" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +27,8 @@
       <file leaf-file-name="python_model.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="656" column="24" lean-forward="false" selection-start-line="656" selection-start-column="24" selection-end-line="656" selection-end-column="24" />
+            <state relative-caret-position="131">
+              <caret line="628" column="15" lean-forward="false" selection-start-line="628" selection-start-column="15" selection-end-line="628" selection-end-column="15" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -64,10 +69,11 @@
         <option value="$PROJECT_DIR$/test2.txt" />
         <option value="$PROJECT_DIR$/3x3.txt" />
         <option value="$PROJECT_DIR$/python_model.py" />
+        <option value="$PROJECT_DIR$/4x4.txt" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="427" />
     <option name="y" value="1" />
     <option name="width" value="1400" />
@@ -228,7 +234,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -258,6 +264,26 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/python_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boardconfiguration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/python_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -422,13 +448,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/3x3.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1701451">
-          <caret line="1" column="2" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/program.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -464,10 +483,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/3x3.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="2" lean-forward="false" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/5x5.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4x4.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="100000" column="112" lean-forward="false" selection-start-line="100000" selection-start-column="112" selection-end-line="100000" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/python_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="656" column="24" lean-forward="false" selection-start-line="656" selection-start-column="24" selection-end-line="656" selection-end-column="24" />
+        <state relative-caret-position="131">
+          <caret line="628" column="15" lean-forward="false" selection-start-line="628" selection-start-column="15" selection-end-line="628" selection-end-column="15" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
