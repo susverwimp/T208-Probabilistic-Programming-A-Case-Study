@@ -1,0 +1,38 @@
+Timetable
+week 25/10 - 01/10
+maandag 25/09 6u
+zelfstudie learnprolognow, problog tutorials
+dinsdag 26/09 7u
+zelfstudie problog tutorials en artikel over systeem.
+implementatie van model
+woensdag 27/09 4u
+zelfstudie problog tutorials en artikel over systeem
+implementatie
+donderdag 28/09 2u
+implementatie van model
+vrijdag 29/09 3u
+implementatie van model
+zaterdag 30/09 2u
+implementatie van model
+
+week 02/10 - 8/10
+maandag 02/10 5u
+zelfstudie problog, error nazien + implementatie model
+dinsdag 03/10 1u
+meeting
+donderdag 05/10 2u
+implementatie van error in vorige meeting + verdere implementatie van model
+zondag 08/10 4u
+implementatie model
+
+week 09/10 - 15/10
+maandag 09/10 2u
+implementatie model
+dinsdag 10/10 2u
+testen van verschillende lineaire(2D array in problog) en constant time(arg\3 met complexe termen)
+woensdag 11/10 6u
+implementatie van model + core probability inference concepts(Probabilistic Logic Programming Concepts)
+donderdag 12/10 3u
+implementatie van model + "optimalisatie"(betere code, niet perse sneller)
+vrijdag 13/10 1u
+meeting
