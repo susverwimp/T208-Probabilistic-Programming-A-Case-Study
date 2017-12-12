@@ -667,7 +667,7 @@ if __name__ == '__main__':
     width = 4
     height = 4
     turns = 1
-    boardconfiguration_samples = 1
+    boardconfiguration_samples = 2
     uniform_included = False
     samples = -1
     main(width,height,turns,boardconfiguration_samples,uniform_included, samples)
