@@ -10,7 +10,7 @@ from problog.formula import LogicDAG
 from problog.ddnnf_formula import DDNNF
 from problog.cnf_formula import CNF
 from problog.logic import Constant,Term
-from problog import get_evaluatable
+from problog.tasks import sample
 
 def main(width, height, turns, board_samples, uniform, samples):
     logic_program = """
@@ -523,17 +523,17 @@ def main(width, height, turns, board_samples, uniform, samples):
 
 
     if(uniform):
-        strategies = ['uniform', 'color_ratio', 'possible_score', 'possible_score_improved', 'possible_score_improved_python']
+        strategies = ['uniform', 'color_ratio', 'possible_score', 'possible_score_improved']
     else:
-        strategies = ['color_ratio', 'possible_score', 'possible_score_improved', 'possible_score_improved_python']
+        strategies = ['color_ratio', 'possible_score', 'possible_score_improved']
 
     logic_program += 'width(' + str(width - 1) + ').\n'
     logic_program += 'height(' + str(height - 1) + ').\n'
+    prepareDB(logic_program, width, height, board_samples, strategies, turns,samples)
 
-    prepareDB(logic_program, width, height, board_samples, strategies, turns)
 
 
-def prepareDB(logic_program, width, height, board_samples, strategies, turns):
+def prepareDB(logic_program, width, height, board_samples, strategies, turns, samples):
     boardconfigurationsFileName = str(width) + 'x' + str(height) + '.txt'
 
     evidenceStrings = []
@@ -558,23 +558,42 @@ def prepareDB(logic_program, width, height, board_samples, strategies, turns):
                 evidence.append((Term('block', Term(block), Constant(j), Constant((height - 1 - i))), True))
         evidences.append(evidence)
 
-    engine = DefaultEngine(label_all=True)
     p = PrologString(logic_program)
-    start_time = time.time()
-    db = engine.prepare(p)
-    print('%s: %.4fs' % ('parsing initial', time.time() - start_time))
+
+    if(samples == -1):
+        engine = DefaultEngine(label_all=True)
+        start_time = time.time()
+        db = engine.prepare(p)
+        print('%s: %.4fs' % ('parsing initial', time.time() - start_time))
 
     import itertools
     s = [strategies, [evidences]]
     permutations = list(itertools.product(*s))
     for strategy in strategies:
-        # add strategy fact to the program
-        dbPerm = db.extend()
-        dbPerm += Term('strategy', Term(strategy))
-        perm_string = 'turn:' + str(turns) + ' strategy:' + strategy + ' size:' + str(width) + 'x' + str(height) + ' '
+        if (samples == -1):
+            # add strategy fact to the program
+            dbPerm = db.extend()
+            dbPerm += Term('strategy', Term(strategy))
+            perm_string = 'turn:' + str(turns) + ' strategy:' + strategy + ' size:' + str(width) + 'x' + str(height) + ' '
+            problogChain(engine, dbPerm, evidences, turns, perm_string)
+        else:
+            logic_program += "strategy(" + strategy + ").\n"
+            sampleModel(logic_program, samples, turns, strategy, evidences)
 
-        problogChain(engine, dbPerm, evidences, turns, perm_string)
-
+def sampleModel(logic_program, samples, turns, strategy, evidences):
+    logic_program += str(Term('query', Term('score_of_turn', Constant(turns), None))) + '.\n'
+    print(strategy)
+    for evidence in evidences:
+        print('evidence: ' + str(evidence))
+        for evidenceTerm in evidence:
+            logic_program += "evidence" + str(evidenceTerm).lower() + ".\n"
+        model = PrologString(logic_program)
+        start_time = time.time()
+        result = sample.sample(model, n=samples, propagate_evidence=True)
+        elapsed_time = time.time() - start_time
+        print('%s: %.4fs' % ('samples', elapsed_time))
+        for i,r in enumerate(result):
+            print(str(i) + r)
 
 
 def problogChain(engine, dbPerm, evidences, turns, perm_string):
@@ -664,10 +683,10 @@ def problogChain(engine, dbPerm, evidences, turns, perm_string):
     print()
 
 if __name__ == '__main__':
-    width = 4
-    height = 4
+    width = 3
+    height = 3
     turns = 1
     boardconfiguration_samples = 2
     uniform_included = False
-    samples = -1
+    samples = 4
     main(width,height,turns,boardconfiguration_samples,uniform_included, samples)
