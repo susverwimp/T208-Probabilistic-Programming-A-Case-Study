@@ -577,17 +577,20 @@ def prepareDB(logic_program, width, height, board_samples, strategies, turns, sa
             perm_string = 'turn:' + str(turns) + ' strategy:' + strategy + ' size:' + str(width) + 'x' + str(height) + ' '
             problogChain(engine, dbPerm, evidences, turns, perm_string)
         else:
-            logic_program += "strategy(" + strategy + ").\n"
             sampleModel(logic_program, samples, turns, strategy, evidences)
 
 def sampleModel(logic_program, samples, turns, strategy, evidences):
-    logic_program += str(Term('query', Term('score_of_turn', Constant(turns), None))) + '.\n'
+    logic_program_copy = logic_program + "strategy(" + strategy + ").\n"
+    logic_program_copy += str(Term('query', Term('score_of_turn', Constant(turns), None))) + '.\n'
     print(strategy)
     for evidence in evidences:
+        logic_program_copy2 = logic_program_copy
         print('evidence: ' + str(evidence))
         for evidenceTerm in evidence:
-            logic_program += "evidence" + str(evidenceTerm).lower() + ".\n"
-        model = PrologString(logic_program)
+            logic_program_copy2 += "evidence" + str(evidenceTerm).lower() + ".\n"
+
+        print(logic_program_copy2)
+        model = PrologString(logic_program_copy2)
         start_time = time.time()
         result = sample.sample(model, n=samples, propagate_evidence=True)
         elapsed_time = time.time() - start_time
@@ -688,5 +691,5 @@ if __name__ == '__main__':
     turns = 1
     boardconfiguration_samples = 2
     uniform_included = False
-    samples = 4
+    samples = 1
     main(width,height,turns,boardconfiguration_samples,uniform_included, samples)
