@@ -1,7 +1,6 @@
 from __future__ import print_function
 import time
 
-from problog.logic import Constant,Term
 from problog.program import PrologString
 from files.evidence import getEvidences
 from problog.tasks import sample
@@ -42,20 +41,21 @@ def main(width, height, turns, board_samples, uniform_included, samples):
                     average_score_dict_of_samples[key] += 1
                 else:
                     average_score_dict_of_samples[key] = 1
-                print('%s %i: %s' % ("sample",i,r))
+                # print('%s %i: %s' % ("sample",i,r))
 
             for keys, values in average_score_dict_of_samples.items():
                 values /= float(samples)
-                print('%s: %.12f' % ('average ' + perm_string + 'score of ' + keys, values))
+                print('%s: %.5f' % (perm_string + 'score of ' + keys, values))
             elapsed_time = time.time() - start_time
-            print('%s %i: %.4fs' % (perm_string + 'samples evidence', evidence_index, elapsed_time))
+            print('%s: %.4fs' % (perm_string + 'total time', elapsed_time))
+            print('%s: %.4fs/sample' % (perm_string + 'time per sample', (elapsed_time / samples)))
 
 
 if __name__ == '__main__':
     width = 3
     height = 3
     turns = 2
-    boardconfiguration_samples = 2
+    boardconfiguration_samples = 1
     uniform_included = False
-    samples = 5
+    samples = 25
     main(width, height, turns, boardconfiguration_samples, uniform_included, samples)

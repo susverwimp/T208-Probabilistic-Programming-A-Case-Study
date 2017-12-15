@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5eaec465-6bf4-40df-8654-65129ca7d72c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/files/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/files/evidence.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/files/model_problog.pl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/python_model_exact.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/python_model_sample.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/files/2x2.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/model_compile_once.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/10x10.txt" afterPath="$PROJECT_DIR$/files/10x10.txt" />
-      <change beforePath="$PROJECT_DIR$/3x3.txt" afterPath="$PROJECT_DIR$/files/3x3.txt" />
-      <change beforePath="$PROJECT_DIR$/4x4.txt" afterPath="$PROJECT_DIR$/files/4x4.txt" />
-      <change beforePath="$PROJECT_DIR$/5x5.txt" afterPath="$PROJECT_DIR$/files/5x5.txt" />
-      <change beforePath="$PROJECT_DIR$/6x6.txt" afterPath="$PROJECT_DIR$/files/6x6.txt" />
-      <change beforePath="$PROJECT_DIR$/7x7.txt" afterPath="$PROJECT_DIR$/files/7x7.txt" />
-      <change beforePath="$PROJECT_DIR$/8x8.txt" afterPath="$PROJECT_DIR$/files/8x8.txt" />
-      <change beforePath="$PROJECT_DIR$/9x9.txt" afterPath="$PROJECT_DIR$/files/9x9.txt" />
-      <change beforePath="$PROJECT_DIR$/python_model.py" afterPath="$PROJECT_DIR$/python_model.py" />
+      <change beforePath="$PROJECT_DIR$/python_model.py" afterPath="$PROJECT_DIR$/model.py" />
+      <change beforePath="$PROJECT_DIR$/python_model_exact.py" afterPath="$PROJECT_DIR$/model_exact.py" />
+      <change beforePath="$PROJECT_DIR$/python_model_sample.py" afterPath="$PROJECT_DIR$/model_sample.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="python_model.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/python_model.py">
+      <file leaf-file-name="model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="162" column="43" lean-forward="true" selection-start-line="162" selection-start-column="43" selection-end-line="162" selection-end-column="43" />
+            <state relative-caret-position="305">
+              <caret line="83" column="21" lean-forward="false" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -39,46 +30,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="python_model_exact.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python_model_exact.py">
+      <file leaf-file-name="model_exact.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model_exact.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="52" column="26" lean-forward="false" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model_compile_once.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/model_compile_once.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="28" column="88" lean-forward="false" selection-start-line="28" selection-start-column="88" selection-end-line="28" selection-end-column="88" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model_sample.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model_sample.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="90" column="12" lean-forward="true" selection-start-line="90" selection-start-column="12" selection-end-line="97" selection-end-column="39" />
+              <caret line="21" column="118" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="118" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="3x3.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/files/3x3.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="2" lean-forward="false" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="python_model_sample.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python_model_sample.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="35" column="30" lean-forward="false" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sample.py" pinned="false" current-in-tab="false">
-        <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/tasks/sample.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="505" column="21" lean-forward="true" selection-start-line="505" selection-start-column="21" selection-end-line="505" selection-end-column="21" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -110,6 +93,10 @@
         <option value="$PROJECT_DIR$/files/__init__.py" />
         <option value="$PROJECT_DIR$/python_model_exact.py" />
         <option value="$PROJECT_DIR$/python_model_sample.py" />
+        <option value="$PROJECT_DIR$/model_exact.py" />
+        <option value="$PROJECT_DIR$/model_sample.py" />
+        <option value="$PROJECT_DIR$/files/2x2.txt" />
+        <option value="$PROJECT_DIR$/model_compile_once.py" />
       </list>
     </option>
   </component>
@@ -154,7 +141,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -171,6 +157,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -179,11 +166,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\susve\Desktop\T208-Probabilistic-Programming-A-Case-Study\programming\problog\python\files" />
+      <recent name="C:\Users\susve\Desktop\T208-Probabilistic-Programming-A-Case-Study\programming\problog\python" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\susve\Desktop\T208-Probabilistic-Programming-A-Case-Study\programming\problog\python\files" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\susve\Desktop\T208-Probabilistic-Programming-A-Case-Study\programming\problog\python" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -198,8 +186,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.python_model_sample">
-    <configuration name="boardconfiguration" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.model_compile_once">
+    <configuration name="model" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -211,13 +199,13 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boardconfiguration.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/model.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="python_model" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="model_compile_once" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -229,7 +217,25 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_model.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/model_compile_once.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="model_exact" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/model_exact.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -247,7 +253,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_model_exact.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\susve\Desktop\T208-Probabilistic-Programming-A-Case-Study\programming\problog\python\model_exact.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -265,44 +271,26 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_model_sample.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="python" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\susve\Desktop\T208-Probabilistic-Programming-A-Case-Study\programming\problog\python\model_sample.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.python_model" />
-      <item index="1" class="java.lang.String" itemvalue="Python.boardconfiguration" />
-      <item index="2" class="java.lang.String" itemvalue="Python.test" />
-      <item index="3" class="java.lang.String" itemvalue="Python.python_model_exact" />
-      <item index="4" class="java.lang.String" itemvalue="Python.python_model_sample" />
+      <item index="0" class="java.lang.String" itemvalue="Python.python_model_exact" />
+      <item index="1" class="java.lang.String" itemvalue="Python.python_model_sample" />
+      <item index="2" class="java.lang.String" itemvalue="Python.model_exact" />
+      <item index="3" class="java.lang.String" itemvalue="Python.model" />
+      <item index="4" class="java.lang.String" itemvalue="Python.model_compile_once" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.python_model_sample" />
-        <item index="1" class="java.lang.String" itemvalue="Python.python_model_exact" />
-        <item index="2" class="java.lang.String" itemvalue="Python.python_model" />
-        <item index="3" class="java.lang.String" itemvalue="Python.test" />
-        <item index="4" class="java.lang.String" itemvalue="Python.boardconfiguration" />
+        <item index="0" class="java.lang.String" itemvalue="Python.model_compile_once" />
+        <item index="1" class="java.lang.String" itemvalue="Python.model" />
+        <item index="2" class="java.lang.String" itemvalue="Python.model_exact" />
+        <item index="3" class="java.lang.String" itemvalue="Python.python_model_sample" />
+        <item index="4" class="java.lang.String" itemvalue="Python.python_model_exact" />
       </list>
     </recent_temporary>
   </component>
@@ -355,31 +343,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/files/model_problog.pl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/10x10.txt">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="17">
-          <caret line="1" column="97" lean-forward="false" selection-start-line="1" selection-start-column="97" selection-end-line="1" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/files/3x3.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -392,7 +355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700000">
           <caret line="100000" column="112" lean-forward="false" selection-start-line="100000" selection-start-column="112" selection-end-line="100000" selection-end-column="112" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -400,13 +362,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_model.py">
+    <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11118">
           <caret line="666" column="13" lean-forward="false" selection-start-line="666" selection-start-column="13" selection-end-line="666" selection-end-column="13" />
@@ -435,9 +394,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -445,11 +401,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700000">
           <caret line="100000" column="112" lean-forward="false" selection-start-line="100000" selection-start-column="112" selection-end-line="100000" selection-end-column="112" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_model.py">
+    <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -463,13 +418,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_model.py">
+    <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -483,13 +435,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_model.py">
+    <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -503,13 +452,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_model.py">
+    <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -523,9 +469,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -536,7 +479,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_model.py">
+    <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9350">
           <caret line="560" column="75" lean-forward="false" selection-start-line="560" selection-start-column="75" selection-end-line="560" selection-end-column="75" />
@@ -550,14 +493,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py" />
-    <entry file="file://$PROJECT_DIR$/python_model.py">
+    <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9350">
           <caret line="560" column="75" lean-forward="false" selection-start-line="560" selection-start-column="75" selection-end-line="560" selection-end-column="75" />
@@ -571,13 +511,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_model.py">
+    <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -591,13 +528,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="35" column="4" lean-forward="true" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_model.py">
+    <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -608,13 +542,6 @@
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
-    <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="160" column="0" lean-forward="false" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py" />
     <entry file="file://$PROJECT_DIR$/test.txt" />
     <entry file="file://$PROJECT_DIR$/test2.txt" />
@@ -625,31 +552,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="73" column="33" lean-forward="false" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/dd_formula.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="447" column="8" lean-forward="false" selection-start-line="447" selection-start-column="8" selection-end-line="447" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/evaluator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="360" column="8" lean-forward="false" selection-start-line="360" selection-start-column="8" selection-end-line="360" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/ddnnf_formula.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="106" column="8" lean-forward="false" selection-start-line="106" selection-start-column="8" selection-end-line="106" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -678,7 +584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700000">
           <caret line="100000" column="112" lean-forward="false" selection-start-line="100000" selection-start-column="112" selection-end-line="100000" selection-end-column="112" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -686,15 +591,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/files/model_problog.pl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="221">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
@@ -710,14 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/files/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/files/3x3.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -726,38 +627,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_model_exact.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="90" column="12" lean-forward="true" selection-start-line="90" selection-start-column="12" selection-end-line="97" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python_model_sample.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="35" column="30" lean-forward="false" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/tasks/sample.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="505" column="21" lean-forward="true" selection-start-line="505" selection-start-column="21" selection-end-line="505" selection-end-column="21" />
+        <state relative-caret-position="17">
+          <caret line="505" column="21" lean-forward="false" selection-start-line="505" selection-start-column="21" selection-end-line="505" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_model.py">
+    <entry file="file://$PROJECT_DIR$/model_sample.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="162" column="43" lean-forward="true" selection-start-line="162" selection-start-column="43" selection-end-line="162" selection-end-column="43" />
+        <state relative-caret-position="255">
+          <caret line="21" column="118" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="118" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="83" column="21" lean-forward="false" selection-start-line="83" selection-start-column="21" selection-end-line="83" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/evaluator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="386" column="6" lean-forward="false" selection-start-line="386" selection-start-column="6" selection-end-line="386" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="73" column="35" lean-forward="false" selection-start-line="73" selection-start-column="35" selection-end-line="73" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/2x2.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="256" column="36" lean-forward="false" selection-start-line="256" selection-start-column="36" selection-end-line="256" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/ddnnf_formula.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-63">
+          <caret line="299" column="4" lean-forward="false" selection-start-line="299" selection-start-column="4" selection-end-line="299" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/programmas/Python27/Lib/site-packages/problog/engine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-114">
+          <caret line="379" column="8" lean-forward="false" selection-start-line="379" selection-start-column="8" selection-end-line="379" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model_exact.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="52" column="26" lean-forward="false" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model_compile_once.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="28" column="88" lean-forward="false" selection-start-line="28" selection-start-column="88" selection-end-line="28" selection-end-column="88" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
