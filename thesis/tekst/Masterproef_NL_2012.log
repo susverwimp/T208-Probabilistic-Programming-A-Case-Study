@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6400 64-bit) (preloaded format=pdflatex 2017.10.29)  27 NOV 2017 14:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.16)  16 DEC 2017 18:43
 entering extended mode
 **./Masterproef_NL_2012.tex
 (Masterproef_NL_2012.tex
 LaTeX2e <2017-04-15>
-Babel <3.14> and hyphenation patterns for 75 language(s) loaded.
+Babel <3.15> and hyphenation patterns for 75 language(s) loaded.
 ("D:\programmas\MiKTeX 2.9\tex\latex\base\fix-cm.sty"
 Package: fix-cm 2015/01/14 v1.1t fixes to LaTeX
 
@@ -47,7 +47,7 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
 ("D:\programmas\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
-File: pdftex.def 2017/06/24 v1.0g Graphics/color driver for pdftex
+File: pdftex.def 2017/12/07 v1.0i Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
@@ -200,10 +200,10 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \Hy@SectionHShift=\skip43
 )
 ("D:\programmas\MiKTeX 2.9\tex\generic\babel\babel.sty"
-Package: babel 2017/10/04 3.14 The Babel package
+Package: babel 2017/11/03 3.15 The Babel package
 
 ("D:\programmas\MiKTeX 2.9\tex\generic\babel\switch.def"
-File: switch.def 2017/10/04 3.14 Babel switching mechanism
+File: switch.def 2017/11/03 3.15 Babel switching mechanism
 )
 *************************************
 * Local config file bblopts.cfg used
@@ -216,10 +216,10 @@ File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
 Language: dutch 2005/03/30 v3.8i Dutch support from the babel system
 
 ("D:\programmas\MiKTeX 2.9\tex\generic\babel\babel.def"
-File: babel.def 2017/10/04 3.14 Babel common definitions
+File: babel.def 2017/11/03 3.15 Babel common definitions
 
 ("D:\programmas\MiKTeX 2.9\tex\generic\babel\switch.def"
-File: switch.def 2017/10/04 3.14 Babel switching mechanism
+File: switch.def 2017/11/03 3.15 Babel switching mechanism
 )
 \babel@savecnt=\count98
 \U@D=\dimen115
@@ -310,10 +310,8 @@ Overfull \hbox (26.96353pt too wide) in paragraph at lines 59--60
 <LogoKULeuven.png, id=51, 401.5pt x 143.53625pt>
 File: LogoKULeuven.png Graphic file (type png)
 <use LogoKULeuven.png>
-Package pdftex.def Info: LogoKULeuven.png  used on input line 64. on input line
- 64.
-Package pdftex.def Info: Requested size: 157.58296pt x 56.33646pt on input line
- 64.
+Package pdftex.def Info: LogoKULeuven.png  used on input line 64.
+(pdftex.def)             Requested size: 157.58296pt x 56.33646pt.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <14> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 79.
 
@@ -377,10 +375,8 @@ l.173 	\item H
 <bayes_rule.png, id=117, 310.91156pt x 225.84375pt>
 File: bayes_rule.png Graphic file (type png)
 <use bayes_rule.png>
-Package pdftex.def Info: bayes_rule.png  used on input line 183. on input line 
-183.
-Package pdftex.def Info: Requested size: 215.44481pt x 156.49014pt on input lin
-e 183.
+Package pdftex.def Info: bayes_rule.png  used on input line 183.
+(pdftex.def)             Requested size: 215.44481pt x 156.49014pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 180--190
 
@@ -405,17 +401,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 218--220
 <game_change_blocks.png, id=134, 486.31688pt x 255.95625pt>
 File: game_change_blocks.png Graphic file (type png)
 <use game_change_blocks.png>
-Package pdftex.def Info: game_change_blocks.png  used on input line 228. on inp
-ut line 228.
-Package pdftex.def Info: Requested size: 297.32814pt x 156.49014pt on input lin
-e 228.
+Package pdftex.def Info: game_change_blocks.png  used on input line 228.
+(pdftex.def)             Requested size: 297.32814pt x 156.49014pt.
 <game_score.png, id=136, 487.8225pt x 158.09062pt>
 File: game_score.png Graphic file (type png)
 <use game_score.png>
-Package pdftex.def Info: game_score.png  used on input line 236. on input line 
-236.
-Package pdftex.def Info: Requested size: 158.03427pt x 51.21495pt on input line
- 236.
+Package pdftex.def Info: game_score.png  used on input line 236.
+(pdftex.def)             Requested size: 158.03427pt x 51.21495pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 232--240
 
@@ -435,9 +427,8 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <7> not available
 <sedes.png, id=160, 402.5439pt x 683.6742pt>
 File: sedes.png Graphic file (type png)
 <use sedes.png>
-Package pdftex.def Info: sedes.png  used on input line 279. on input line 279.
-Package pdftex.def Info: Requested size: 27.64043pt x 46.94704pt on input line 
-279.
+Package pdftex.def Info: sedes.png  used on input line 279.
+(pdftex.def)             Requested size: 27.64043pt x 46.94704pt.
 
 Overfull \hbox (18.18004pt too wide) in paragraph at lines 283--284
 [][][] 
@@ -454,10 +445,10 @@ Package rerunfilecheck Info: File `Masterproef_NL_2012.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 285.
  ) 
 Here is how much of TeX's memory you used:
- 6603 strings out of 493318
- 98178 string characters out of 3140290
- 186953 words of memory out of 3000000
- 10035 multiletter control sequences out of 15000+200000
+ 6613 strings out of 493312
+ 98864 string characters out of 3140194
+ 187148 words of memory out of 3000000
+ 10049 multiletter control sequences out of 15000+200000
  19890 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  28i,7n,35p,582b,390s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -468,7 +459,7 @@ msfonts/cm/cmsl12.pfb><D:/programmas/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb><D:/programmas/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><D:/pr
 ogrammas/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><D:/programmas/MiKTeX 2
 .9/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Masterproef_NL_2012.pdf (14 pages, 238353 bytes).
+Output written on Masterproef_NL_2012.pdf (14 pages, 238477 bytes).
 PDF statistics:
  200 PDF objects out of 1000 (max. 8388607)
  36 named destinations out of 1000 (max. 500000)
