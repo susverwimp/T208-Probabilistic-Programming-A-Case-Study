@@ -7,6 +7,7 @@ from problog.formula import LogicDAG
 from problog.ddnnf_formula import DDNNF
 from problog.cnf_formula import CNF
 from problog.logic import Constant,Term
+from board import printBoard
 
 from files.evidence import getEvidences
 
@@ -29,7 +30,7 @@ def main(width, height, turns, board_samples, uniform_included):
         strategies = ['color_ratio', 'possible_score', 'possible_score_improved']
 
     query = Term('score_of_turn', Constant(turns), None)
-    evidences = getEvidences("files/" + str(width) + "x" + str(height) + ".txt", board_samples, [0])
+    evidences = getEvidences("files/" + str(width) + "x" + str(height) + ".txt", board_samples, [])
 
     for strategy in strategies:
         dbPerm = db.extend()
@@ -46,7 +47,7 @@ def main(width, height, turns, board_samples, uniform_included):
         average_score_dict = {}
 
         for evidence in evidences:
-            print('evidence: ' + str(evidence))
+            printBoard(evidence)
             # print('\n=== Ground Program ===')
             total_time = 0
             start_time = time.time()

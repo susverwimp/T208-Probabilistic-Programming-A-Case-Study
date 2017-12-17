@@ -294,6 +294,9 @@ board(T,Board,Score,Positions) :-
     board(TT,Board,Score,Positions),
     press(Board,X,Y,Color,TT,false).
 
+score_of_turn(T,Score) :-
+    board(T,Board,Score,Positions).
+
 score_of_turn(T,Score,Positions) :-
     board(T,Board,Score,Positions).
 

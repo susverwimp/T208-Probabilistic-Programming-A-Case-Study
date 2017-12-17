@@ -11,6 +11,7 @@ def getEvidences(board_file, board_samples, sample_indexes):
             print('There are more samples than board configurations. New sample size is: ' + str(board_samples))
         if(not sample_indexes):
             sample_indexes = random.sample(range(0, total), board_samples)
+        print(sample_indexes)
         for i, line in enumerate(fp):
             if i in sample_indexes:
                 evidenceStrings.append(line.strip())

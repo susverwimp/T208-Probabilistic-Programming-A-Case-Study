@@ -4,6 +4,7 @@ import time
 from problog.program import PrologString
 from files.evidence import getEvidences
 from problog.tasks import sample
+from board import printBoard
 
 def main(width, height, turns, board_samples, uniform_included, samples):
     with open("files/model_problog.pl") as prologfile:
@@ -16,7 +17,7 @@ def main(width, height, turns, board_samples, uniform_included, samples):
     else:
         strategies = ['color_ratio', 'possible_score', 'possible_score_improved']
 
-    evidences = getEvidences("files/" + str(width) + "x" + str(height) + ".txt", board_samples)
+    evidences = getEvidences("files/" + str(width) + "x" + str(height) + ".txt", board_samples, [])
 
     for strategy in strategies:
         perm_string = 'turn:' + str(turns) + ' strategy:' + strategy + ' size:' + str(width) + 'x' + str(height) + ' '
@@ -25,9 +26,9 @@ def main(width, height, turns, board_samples, uniform_included, samples):
 
         average_score_dict_of_evidences = {}
         for evidence in evidences:
+            printBoard(evidence)
             average_score_dict_of_samples = {}
             logic_program_evidence = logic_program_strategy
-            print('evidence: ' + str(evidence))
             for evidenceTerm in evidence:
                 logic_program_evidence += "evidence" + str(evidenceTerm).lower() + ".\n"
             model = PrologString(logic_program_evidence)
