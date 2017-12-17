@@ -2,16 +2,17 @@ import random
 
 from problog.logic import Constant,Term
 
-def getEvidences(board_file, board_samples):
+def getEvidences(board_file, board_samples, sample_indexes):
     evidenceStrings = []
     with open(board_file, 'r') as fp:
         total = int(fp.readline().strip())
         if (board_samples > total):
             board_samples = total
             print('There are more samples than board configurations. New sample size is: ' + str(board_samples))
-        sampleIndexes = random.sample(range(0, total), board_samples)
+        if(not sample_indexes):
+            sample_indexes = random.sample(range(0, total), board_samples)
         for i, line in enumerate(fp):
-            if i in sampleIndexes:
+            if i in sample_indexes:
                 evidenceStrings.append(line.strip())
 
     evidences = []

@@ -78,14 +78,14 @@ create_row(X,Y,Row,RowAcc) :-
 %%%%%%%%%%%%%%%%%
 % strategy(uniform).
 % strategy(color_ratio).
-% strategy(possible_score).
-strategy(possible_score_improved).
+strategy(possible_score).
+% strategy(possible_score_improved).
 
 %%%%%%%%%%%%%%%%%
 % QUERIES
 %%%%%%%%%%%%%%%%%
 % query(board(1,Board,Score,Positions)). % geeft de juiste werelden met de juiste kansen weer.
-query(score_of_turn(1,S)). % geeft de juiste werelden weer met de VERKEERDE kansen (BUG).
+query(score_of_turn(2,S,P)). % geeft de juiste werelden weer met de VERKEERDE kansen (BUG).
 
 %%%%%%%%%%%%%%%%%
 % RANDOM EVENTS
@@ -413,7 +413,7 @@ board(T,Board,Score,Positions) :-
 	board(TT,Board,Score,Positions),
 	press(Board,X,Y,Color,TT,false).
 	
-score_of_turn(T,Score) :-
+score_of_turn(T,Score,Positions) :-
 	board(T,Board,Score,Positions).
 	
 change_color_in_board(Board, X, Y, NewColor, NewBoard) :-

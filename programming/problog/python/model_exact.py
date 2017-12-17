@@ -29,7 +29,7 @@ def main(width, height, turns, board_samples, uniform_included):
         strategies = ['color_ratio', 'possible_score', 'possible_score_improved']
 
     query = Term('score_of_turn', Constant(turns), None)
-    evidences = getEvidences("files/" + str(width) + "x" + str(height) + ".txt", board_samples)
+    evidences = getEvidences("files/" + str(width) + "x" + str(height) + ".txt", board_samples, [0])
 
     for strategy in strategies:
         dbPerm = db.extend()
