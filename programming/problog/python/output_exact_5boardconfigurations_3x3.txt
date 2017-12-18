@@ -1,0 +1,238 @@
+parsing initial: 0.0970s
+[51566, 70997, 8661, 22486, 95928]
+evidence:
+blue	yellow	yellow
+blue	green 	green 
+red 	green 	yellow
+turn:2 strategy:color_ratio size:3x3 ground: 3.0370s
+turn:2 strategy:color_ratio size:3x3 acyclic: 0.0420s
+turn:2 strategy:color_ratio size:3x3 convert to CNF: 0.0270s
+turn:2 strategy:color_ratio size:3x3 compile: 0.1000s
+turn:2 strategy:color_ratio size:3x3 evaluate: 0.1120s
+score_of_turn(2,3) : 0.518518518519
+score_of_turn(2,0) : 0.444444444444
+score_of_turn(2,6) : 0.037037037037
+turn:2 strategy:color_ratio size:3x3 total time: 3.3180s
+evidence:
+green	green 	yellow
+red  	yellow	yellow
+green	red   	green 
+turn:2 strategy:color_ratio size:3x3 ground: 2.8930s
+turn:2 strategy:color_ratio size:3x3 acyclic: 0.0130s
+turn:2 strategy:color_ratio size:3x3 convert to CNF: 0.0040s
+turn:2 strategy:color_ratio size:3x3 compile: 0.0770s
+turn:2 strategy:color_ratio size:3x3 evaluate: 0.0530s
+score_of_turn(2,3) : 0.666666666667
+score_of_turn(2,0) : 0.222222222222
+score_of_turn(2,6) : 0.111111111111
+turn:2 strategy:color_ratio size:3x3 total time: 3.0400s
+evidence:
+yellow	yellow	green
+green 	blue  	blue 
+blue  	green 	red  
+turn:2 strategy:color_ratio size:3x3 ground: 2.7860s
+turn:2 strategy:color_ratio size:3x3 acyclic: 0.1620s
+turn:2 strategy:color_ratio size:3x3 convert to CNF: 0.1310s
+turn:2 strategy:color_ratio size:3x3 compile: 0.2920s
+turn:2 strategy:color_ratio size:3x3 evaluate: 0.9550s
+score_of_turn(2,3) : 0.0246913580247
+score_of_turn(2,0) : 0.975308641975
+turn:2 strategy:color_ratio size:3x3 total time: 4.3260s
+evidence:
+red   	green 	green 
+green 	yellow	yellow
+yellow	red   	red   
+turn:2 strategy:color_ratio size:3x3 ground: 14.2090s
+turn:2 strategy:color_ratio size:3x3 acyclic: 0.3170s
+turn:2 strategy:color_ratio size:3x3 convert to CNF: 0.1850s
+turn:2 strategy:color_ratio size:3x3 compile: 0.7860s
+turn:2 strategy:color_ratio size:3x3 evaluate: 12.2270s
+score_of_turn(2,3) : 0.281207000344
+score_of_turn(2,0) : 0.656873495012
+score_of_turn(2,6) : 0.061919504644
+turn:2 strategy:color_ratio size:3x3 total time: 27.7240s
+evidence:
+blue  	red   	blue 
+red   	green 	blue 
+yellow	yellow	green
+turn:2 strategy:color_ratio size:3x3 ground: 7.0420s
+turn:2 strategy:color_ratio size:3x3 acyclic: 0.0630s
+turn:2 strategy:color_ratio size:3x3 convert to CNF: 0.0300s
+turn:2 strategy:color_ratio size:3x3 compile: 0.1450s
+turn:2 strategy:color_ratio size:3x3 evaluate: 0.5100s
+score_of_turn(2,3) : 0.37037037037
+score_of_turn(2,0) : 0.62962962963
+turn:2 strategy:color_ratio size:3x3 total time: 7.7900s
+
+average turn:2 strategy:color_ratio size:3x3 score of 0: 0.585695686657
+average turn:2 strategy:color_ratio size:3x3 score of 3: 0.372290782785
+average turn:2 strategy:color_ratio size:3x3 score of 6: 0.042013530558
+
+average turn:2 strategy:color_ratio size:3x3 ground: 5.9934s
+average turn:2 strategy:color_ratio size:3x3 acyclic: 0.1194s
+average turn:2 strategy:color_ratio size:3x3 convert to CNF: 0.0754s
+average turn:2 strategy:color_ratio size:3x3 compile: 0.2800s
+average turn:2 strategy:color_ratio size:3x3 evaluate: 2.7714s
+average turn:2 strategy:color_ratio size:3x3 total: 9.2396s
+--------------------------------
+--------------------------------
+evidence:
+blue	yellow	yellow
+blue	green 	green 
+red 	green 	yellow
+turn:2 strategy:possible_score size:3x3 ground: 20.6410s
+turn:2 strategy:possible_score size:3x3 acyclic: 0.9250s
+turn:2 strategy:possible_score size:3x3 convert to CNF: 0.7730s
+turn:2 strategy:possible_score size:3x3 compile: 6.3600s
+turn:2 strategy:possible_score size:3x3 evaluate: 212.2870s
+score_of_turn(2,3) : 0.455555555556
+score_of_turn(2,0) : 0.433333333333
+score_of_turn(2,6) : 0.111111111111
+turn:2 strategy:possible_score size:3x3 total time: 240.9860s
+evidence:
+green	green 	yellow
+red  	yellow	yellow
+green	red   	green 
+turn:2 strategy:possible_score size:3x3 ground: 16.5890s
+turn:2 strategy:possible_score size:3x3 acyclic: 0.2550s
+turn:2 strategy:possible_score size:3x3 convert to CNF: 0.1890s
+turn:2 strategy:possible_score size:3x3 compile: 2.2610s
+turn:2 strategy:possible_score size:3x3 evaluate: 61.0330s
+score_of_turn(2,0) : 0.334722222222
+score_of_turn(2,3) : 0.526388888889
+score_of_turn(2,6) : 0.138888888889
+turn:2 strategy:possible_score size:3x3 total time: 80.3270s
+evidence:
+yellow	yellow	green
+green 	blue  	blue 
+blue  	green 	red  
+turn:2 strategy:possible_score size:3x3 ground: 3.8110s
+turn:2 strategy:possible_score size:3x3 acyclic: 0.0260s
+turn:2 strategy:possible_score size:3x3 convert to CNF: 0.0140s
+turn:2 strategy:possible_score size:3x3 compile: 0.1600s
+turn:2 strategy:possible_score size:3x3 evaluate: 1.3970s
+score_of_turn(2,0) : 0.444444444444
+score_of_turn(2,3) : 0.444444444444
+score_of_turn(2,6) : 0.111111111111
+turn:2 strategy:possible_score size:3x3 total time: 5.4080s
+evidence:
+red   	green 	green 
+green 	yellow	yellow
+yellow	red   	red   
+turn:2 strategy:possible_score size:3x3 ground: 6.2240s
+turn:2 strategy:possible_score size:3x3 acyclic: 0.0770s
+turn:2 strategy:possible_score size:3x3 convert to CNF: 0.0460s
+turn:2 strategy:possible_score size:3x3 compile: 0.5350s
+turn:2 strategy:possible_score size:3x3 evaluate: 12.2990s
+score_of_turn(2,3) : 0.407407407407
+score_of_turn(2,0) : 0.444444444444
+score_of_turn(2,5) : 0.037037037037
+score_of_turn(2,6) : 0.111111111111
+turn:2 strategy:possible_score size:3x3 total time: 19.1810s
+evidence:
+blue  	red   	blue 
+red   	green 	blue 
+yellow	yellow	green
+turn:2 strategy:possible_score size:3x3 ground: 5.4590s
+turn:2 strategy:possible_score size:3x3 acyclic: 0.0740s
+turn:2 strategy:possible_score size:3x3 convert to CNF: 0.0520s
+turn:2 strategy:possible_score size:3x3 compile: 0.3990s
+turn:2 strategy:possible_score size:3x3 evaluate: 7.3660s
+score_of_turn(2,3) : 0.62037037037
+score_of_turn(2,0) : 0.268518518519
+score_of_turn(2,6) : 0.111111111111
+turn:2 strategy:possible_score size:3x3 total time: 13.3500s
+
+average turn:2 strategy:possible_score size:3x3 score of 0: 0.385092592593
+average turn:2 strategy:possible_score size:3x3 score of 3: 0.490833333333
+average turn:2 strategy:possible_score size:3x3 score of 5: 0.007407407407
+average turn:2 strategy:possible_score size:3x3 score of 6: 0.116666666667
+
+average turn:2 strategy:possible_score size:3x3 ground: 10.5448s
+average turn:2 strategy:possible_score size:3x3 acyclic: 0.2714s
+average turn:2 strategy:possible_score size:3x3 convert to CNF: 0.2148s
+average turn:2 strategy:possible_score size:3x3 compile: 1.9430s
+average turn:2 strategy:possible_score size:3x3 evaluate: 58.8764s
+average turn:2 strategy:possible_score size:3x3 total: 71.8504s
+--------------------------------
+--------------------------------
+evidence:
+blue	yellow	yellow
+blue	green 	green 
+red 	green 	yellow
+turn:2 strategy:possible_score_improved size:3x3 ground: 21.6140s
+turn:2 strategy:possible_score_improved size:3x3 acyclic: 0.8220s
+turn:2 strategy:possible_score_improved size:3x3 convert to CNF: 0.6900s
+turn:2 strategy:possible_score_improved size:3x3 compile: 3.9670s
+turn:2 strategy:possible_score_improved size:3x3 evaluate: 133.8040s
+score_of_turn(2,0) : 0.4
+score_of_turn(2,3) : 0.488888888889
+score_of_turn(2,6) : 0.111111111111
+turn:2 strategy:possible_score_improved size:3x3 total time: 160.8970s
+evidence:
+green	green 	yellow
+red  	yellow	yellow
+green	red   	green 
+turn:2 strategy:possible_score_improved size:3x3 ground: 4.0500s
+turn:2 strategy:possible_score_improved size:3x3 acyclic: 0.0080s
+turn:2 strategy:possible_score_improved size:3x3 convert to CNF: 0.0030s
+turn:2 strategy:possible_score_improved size:3x3 compile: 0.0490s
+turn:2 strategy:possible_score_improved size:3x3 evaluate: 0.0070s
+score_of_turn(2,6) : 0.222222222222
+score_of_turn(2,3) : 0.666666666667
+score_of_turn(2,0) : 0.111111111111
+turn:2 strategy:possible_score_improved size:3x3 total time: 4.1170s
+evidence:
+yellow	yellow	green
+green 	blue  	blue 
+blue  	green 	red  
+turn:2 strategy:possible_score_improved size:3x3 ground: 4.0840s
+turn:2 strategy:possible_score_improved size:3x3 acyclic: 0.0270s
+turn:2 strategy:possible_score_improved size:3x3 convert to CNF: 0.0140s
+turn:2 strategy:possible_score_improved size:3x3 compile: 0.2430s
+turn:2 strategy:possible_score_improved size:3x3 evaluate: 1.6660s
+score_of_turn(2,3) : 0.444444444444
+score_of_turn(2,0) : 0.444444444444
+score_of_turn(2,6) : 0.111111111111
+turn:2 strategy:possible_score_improved size:3x3 total time: 6.0340s
+evidence:
+red   	green 	green 
+green 	yellow	yellow
+yellow	red   	red   
+turn:2 strategy:possible_score_improved size:3x3 ground: 6.6280s
+turn:2 strategy:possible_score_improved size:3x3 acyclic: 0.0500s
+turn:2 strategy:possible_score_improved size:3x3 convert to CNF: 0.0240s
+turn:2 strategy:possible_score_improved size:3x3 compile: 0.4460s
+turn:2 strategy:possible_score_improved size:3x3 evaluate: 7.8260s
+score_of_turn(2,3) : 0.333333333333
+score_of_turn(2,0) : 0.444444444444
+score_of_turn(2,6) : 0.111111111111
+score_of_turn(2,5) : 0.111111111111
+turn:2 strategy:possible_score_improved size:3x3 total time: 14.9740s
+evidence:
+blue  	red   	blue 
+red   	green 	blue 
+yellow	yellow	green
+turn:2 strategy:possible_score_improved size:3x3 ground: 3.3260s
+turn:2 strategy:possible_score_improved size:3x3 acyclic: 0.0370s
+turn:2 strategy:possible_score_improved size:3x3 convert to CNF: 0.0260s
+turn:2 strategy:possible_score_improved size:3x3 compile: 0.0930s
+turn:2 strategy:possible_score_improved size:3x3 evaluate: 0.1380s
+score_of_turn(2,0) : 0.111111111111
+score_of_turn(2,3) : 0.777777777778
+score_of_turn(2,6) : 0.111111111111
+turn:2 strategy:possible_score_improved size:3x3 total time: 3.6200s
+
+average turn:2 strategy:possible_score_improved size:3x3 score of 0: 0.302222222222
+average turn:2 strategy:possible_score_improved size:3x3 score of 3: 0.542222222222
+average turn:2 strategy:possible_score_improved size:3x3 score of 5: 0.022222222222
+average turn:2 strategy:possible_score_improved size:3x3 score of 6: 0.133333333333
+
+average turn:2 strategy:possible_score_improved size:3x3 ground: 7.9404s
+average turn:2 strategy:possible_score_improved size:3x3 acyclic: 0.1888s
+average turn:2 strategy:possible_score_improved size:3x3 convert to CNF: 0.1514s
+average turn:2 strategy:possible_score_improved size:3x3 compile: 0.9596s
+average turn:2 strategy:possible_score_improved size:3x3 evaluate: 28.6882s
+average turn:2 strategy:possible_score_improved size:3x3 total: 37.9284s
+--------------------------------
+--------------------------------

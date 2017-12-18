@@ -47,7 +47,7 @@ def main(width, height, turns, board_samples, uniform_included):
         average_score_dict = {}
 
         for evidence in evidences:
-            printBoard(evidence)
+            printBoard(width, height, evidence)
             # print('\n=== Ground Program ===')
             total_time = 0
             start_time = time.time()
