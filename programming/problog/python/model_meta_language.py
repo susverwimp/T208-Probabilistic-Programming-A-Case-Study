@@ -16,7 +16,7 @@ def main(width, height, turns, board_samples):
         logic_program = prologfile.read()
     logic_program += '\nwidth(' + str(width - 1) + ').\n'
     logic_program += 'height(' + str(height - 1) + ').\n'
-    logic_program += 'strategy(possible_score).\n'
+    logic_program += 'strategy(uniform).\n'
     p = PrologString(logic_program)
 
     engine = DefaultEngine(label_all=True)
@@ -26,7 +26,7 @@ def main(width, height, turns, board_samples):
 
     evidences = getEvidences("files/" + str(width) + "x" + str(height) + ".txt", board_samples, [65411])
 
-    perm_string = 'turn:' + str(turns) + ' strategy:possible_score size:' + str(width) + 'x' + str(height) + ' '
+    perm_string = 'turn:' + str(turns) + ' strategy:uniform size:' + str(width) + 'x' + str(height) + ' '
 
     total_2_turns = turns / 2
     total_1_turns = turns % 2
@@ -39,16 +39,20 @@ def main(width, height, turns, board_samples):
         average_evaluate_time = 0
         average_total_time = 0
 
+        query = "query(board(1,_,_,_))."
+        db_extend = db.extend()
+        for statement in PrologString(query):
+            db_extend += statement
+
         evidence_copy = evidence
-        printBoard(width,height,evidence_copy)
-        query = Term('score_of_turn', Constant(2), None, None)
-        query = Term('score_of_turn', Constant(2), None, Constant('[[0, 2], [0, 2]]'))
-        for i in range(0,total_2_turns):
-            perm_string = 'turn:2 strategy:uniform size:' + str(width) + 'x' + str(height) + ' '
+
+        for i in range(0,turns - 1):
+            printBoard(width, height, evidence_copy)
+            perm_string = 'turn:1 strategy:uniform size:' + str(width) + 'x' + str(height) + ' '
 
             total_time = 0
             start_time = time.time()
-            gp = engine.ground_all(db, queries=[query], evidence=evidence_copy, propagate_evidence=True)
+            gp = engine.ground_all(db_extend, evidence=evidence_copy, propagate_evidence=True)
             elapsed_time = time.time() - start_time
             total_time += elapsed_time
             average_ground_time += elapsed_time
@@ -88,48 +92,6 @@ def main(width, height, turns, board_samples):
             for it in result.items():
                 print('%s : %s' % (it))
             print('%s: %.4fs' % (perm_string + 'total time', total_time))
-
-        query = Term('score_of_turn', Constant(1), None, None)
-        printBoard(width, height, evidence_copy)
-        for i in range(0,total_1_turns):
-            perm_string = 'turn:1 strategy:possible_score size:' + str(width) + 'x' + str(height) + ' '
-
-            total_time = 0
-            start_time = time.time()
-            gp = engine.ground_all(db, queries=[query], evidence=evidence_copy, propagate_evidence=True)
-            elapsed_time = time.time() - start_time
-            total_time += elapsed_time
-            print('%s: %.4fs' % (perm_string + 'ground', elapsed_time))
-
-            # print('\n=== Acyclic Ground Program ===')
-            start_time = time.time()
-            dag = LogicDAG.create_from(gp)
-            elapsed_time = time.time() - start_time
-            total_time += elapsed_time
-            print('%s: %.4fs' % (perm_string + 'acyclic', elapsed_time))
-
-            # print('\n=== Conversion to CNF ===')
-            start_time = time.time()
-            cnf = CNF.createFrom(dag)
-            elapsed_time = time.time() - start_time
-            total_time += elapsed_time
-            print('%s: %.4fs' % (perm_string + 'convert to CNF', elapsed_time))
-
-            # print('\n=== Compile to d-DNNF ===')
-            start_time = time.time()
-            nnf = DDNNF.createFrom(cnf)
-            elapsed_time = time.time() - start_time
-            total_time += elapsed_time
-            print('%s: %.4fs' % (perm_string + 'compile', elapsed_time))
-
-            # print('\n=== Evaluation result ===')
-            start_time = time.time()
-            result = nnf.evaluate()
-            elapsed_time = time.time() - start_time
-            total_time += elapsed_time
-            print('%s: %.4fs' % (perm_string + 'evaluate', elapsed_time))
-            for it in result.items():
-                print('%s : %s' % (it))
 
 
 
