@@ -6,7 +6,7 @@ from problog.engine import DefaultEngine
 from problog.formula import LogicDAG
 from problog.ddnnf_formula import DDNNF
 from problog.cnf_formula import CNF
-from problog.logic import Constant,Term
+from problog.logic import Constant,Term,list2term
 from board import printBoard
 
 from files.evidence import getEvidences
@@ -39,20 +39,24 @@ def main(width, height, turns, board_samples):
         average_evaluate_time = 0
         average_total_time = 0
 
-        query = "query(board(1,_,_,_))."
-        db_extend = db.extend()
-        for statement in PrologString(query):
-            db_extend += statement
-
         evidence_copy = evidence
+
+        positions = []
 
         for i in range(0,turns - 1):
             printBoard(width, height, evidence_copy)
             perm_string = 'turn:1 strategy:uniform size:' + str(width) + 'x' + str(height) + ' '
 
+            query = Term('score_of_turn', Constant(3), None,
+                         list2term([list2term([Constant(0), Constant(0)]), list2term([Constant(0), Constant(1)]), list2term([Constant(0), Constant(1)])]))
+            # query = Term('board', Constant(1), None, None, None)
+            # query = Term('score_of_turn', Constant(1), None, None)
+            # query = Term('score_of_initial_board_with_position', None, None)
+
+
             total_time = 0
             start_time = time.time()
-            gp = engine.ground_all(db_extend, evidence=evidence_copy, propagate_evidence=True)
+            gp = engine.ground_all(db, queries=[query], evidence=evidence_copy, propagate_evidence=True)
             elapsed_time = time.time() - start_time
             total_time += elapsed_time
             average_ground_time += elapsed_time
@@ -97,8 +101,8 @@ def main(width, height, turns, board_samples):
 
 
 if __name__ == '__main__':
-    width = 3
-    height = 3
+    width = 4
+    height = 4
     turns = 3
     boardconfiguration_samples = 1
     main(width, height, turns, boardconfiguration_samples)

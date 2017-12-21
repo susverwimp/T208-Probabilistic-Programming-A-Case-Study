@@ -279,6 +279,7 @@ board(0,Board,0,[]) :-
     initial_board(Board).
 board(T,Board,Score,Positions) :-
     T > 0,
+    var(Positions),
     TT is T - 1,
     board(TT,PreviousBoard,PreviousScore,PreviousPositions),
     press(PreviousBoard,X,Y,Color,TT,true),
@@ -290,15 +291,38 @@ board(T,Board,Score,Positions) :-
 
 board(T,Board,Score,Positions) :-
     T > 0,
+    var(Positions),
     TT is T - 1,
     board(TT,Board,Score,Positions),
     press(Board,X,Y,Color,TT,false).
+
+board(T,Board,Score,Positions) :-
+    T > 0,
+    \+ var(Positions),
+    TT is T - 1,
+    nth0(TT,Positions,[X,Y]),
+    list_butlast(Positions,PreviousPositions),
+    board(TT,PreviousBoard,PreviousScore,PreviousPositions),
+    find_block_in_board(block(Color,X,Y),PreviousBoard),
+    board2(TT,PreviousBoard,X,Y,Color,PreviousScore,Board,Score).
+
+board2(TT,PreviousBoard,X,Y,Color,PreviousScore,Board,Score) :-
+    pressable_color(Color),
+    change_color(Color,NewColor,TT),
+    change_color_in_board(PreviousBoard,X,Y,NewColor,ColorChangedBoard),
+    remove_and_drop(ColorChangedBoard, Board, CurrentScore),
+    Score is PreviousScore + CurrentScore.
+board2(TT,PreviousBoard,X,Y,Color,PreviousScore,Board,Score) :-
+    \+ pressable_color(Color),
+    Board = PreviousBoard,
+    Score = PreviousScore.
 
 score_of_turn(T,Score) :-
     board(T,Board,Score,Positions).
 
 score_of_turn(T,Score,Positions) :-
     board(T,Board,Score,Positions).
+
 
 initial_board(Board) :-
     create_board(Board).
@@ -506,3 +530,10 @@ remv(X, [X|T], T1) :- remv(X, T, T1).
 remv(X, [H|T], [H|T1]) :-
     X \= H,
     remv(X, T, T1).
+
+list_butlast([X|Xs], Ys) :-                 % use auxiliary predicate ...
+   list_butlast_prev(Xs, Ys, X).            % ... which lags behind by one item
+
+list_butlast_prev([], [], _).
+list_butlast_prev([X1|Xs], [X0|Ys], X0) :-
+   list_butlast_prev(Xs, Ys, X1).           % lag behind by one
