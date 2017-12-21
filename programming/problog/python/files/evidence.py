@@ -1,4 +1,5 @@
 import random
+from problog.logic import term2list
 
 from problog.logic import Constant,Term
 
@@ -28,3 +29,10 @@ def getEvidences(board_file, board_samples, sample_indexes):
         evidences.append(evidence)
 
     return evidences
+
+def changeBoardToEvidence(board):
+    evidence = []
+    for row in term2list(board):
+        for block in row:
+            evidence.append((block,True))
+    return evidence

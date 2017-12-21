@@ -15,7 +15,7 @@ pressable_color(yellow).
 %%%%%%%%%%%%%%%%%
 % RANDOM EVENTS
 %%%%%%%%%%%%%%%%%
-1/4::uniform_color(red,X,Y);1/4::uniform_color(green,X,Y);1/4::uniform_color(blue,X,Y);1/4::uniform_color(yellow,X,Y).
+1/5::uniform_color(red,X,Y);1/5::uniform_color(green,X,Y);1/5::uniform_color(blue,X,Y);1/5::uniform_color(yellow,X,Y);1/5::uniform_color(white,X,Y).
 
 block(Color,X,Y) :-
     position(X,Y),
@@ -296,23 +296,35 @@ board(T,Board,Score,Positions) :-
     board(TT,Board,Score,Positions),
     press(Board,X,Y,Color,TT,false).
 
-board(T,Board,Score,Positions) :-
+board_without_press(0, Board, 0, []) :-
+    initial_board(Board).
+board_without_press(T,Board,Score,Positions) :-
     T > 0,
     \+ var(Positions),
     TT is T - 1,
     nth0(TT,Positions,[X,Y]),
     list_butlast(Positions,PreviousPositions),
-    board(TT,PreviousBoard,PreviousScore,PreviousPositions),
+    board_without_press(TT,PreviousBoard,PreviousScore,PreviousPositions),
     find_block_in_board(block(Color,X,Y),PreviousBoard),
-    board2(TT,PreviousBoard,X,Y,Color,PreviousScore,Board,Score).
+    board_change(TT,PreviousBoard,X,Y,Color,PreviousScore,Board,Score).
 
-board2(TT,PreviousBoard,X,Y,Color,PreviousScore,Board,Score) :-
+board_without_press(T,Board,Score,Positions) :-
+    T > 0,
+    var(Positions),
+    TT is T - 1,
+    board_without_press(TT,PreviousBoard,PreviousScore,PreviousPositions),
+    find_block_in_board(block(Color,X,Y),PreviousBoard),
+    pressable_color(Color),
+    append(PreviousPositions,[[X,Y]],Positions),
+    board_change(TT,PreviousBoard,X,Y,Color,PreviousScore,Board,Score).
+
+board_change(TT,PreviousBoard,X,Y,Color,PreviousScore,Board,Score) :-
     pressable_color(Color),
     change_color(Color,NewColor,TT),
     change_color_in_board(PreviousBoard,X,Y,NewColor,ColorChangedBoard),
     remove_and_drop(ColorChangedBoard, Board, CurrentScore),
     Score is PreviousScore + CurrentScore.
-board2(TT,PreviousBoard,X,Y,Color,PreviousScore,Board,Score) :-
+board_change(TT,PreviousBoard,X,Y,Color,PreviousScore,Board,Score) :-
     \+ pressable_color(Color),
     Board = PreviousBoard,
     Score = PreviousScore.
@@ -323,6 +335,8 @@ score_of_turn(T,Score) :-
 score_of_turn(T,Score,Positions) :-
     board(T,Board,Score,Positions).
 
+score_of_turn_without_press(T,Score,Positions) :-
+    board_without_press(T,Board,Score,Positions).
 
 initial_board(Board) :-
     create_board(Board).
