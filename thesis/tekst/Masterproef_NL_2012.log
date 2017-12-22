@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.16)  16 DEC 2017 18:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.22)  22 DEC 2017 18:19
 entering extended mode
 **./Masterproef_NL_2012.tex
 (Masterproef_NL_2012.tex
@@ -226,7 +226,7 @@ File: switch.def 2017/11/03 3.15 Babel switching mechanism
 )
 Package babel Info: Making " an active character on input line 132.
 ))
-(Masterproef_NL_2012.aux)
+No file Masterproef_NL_2012.aux.
 \openout1 = `Masterproef_NL_2012.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
@@ -245,7 +245,6 @@ LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
-
 ("D:\programmas\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count99
@@ -286,8 +285,6 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 42.
 LaTeX Info: Redefining \pageref on input line 42.
 LaTeX Info: Redefining \nameref on input line 42.
-
-(Masterproef_NL_2012.out) (Masterproef_NL_2012.out)
 \@outlinefile=\write3
 \openout3 = `Masterproef_NL_2012.out'.
 
@@ -307,7 +304,7 @@ Overfull \hbox (26.96353pt too wide) in paragraph at lines 59--60
 [][][][][][][] 
  []
 
-<LogoKULeuven.png, id=51, 401.5pt x 143.53625pt>
+<LogoKULeuven.png, id=3, 401.5pt x 143.53625pt>
 File: LogoKULeuven.png Graphic file (type png)
 <use LogoKULeuven.png>
 Package pdftex.def Info: LogoKULeuven.png  used on input line 64.
@@ -343,7 +340,7 @@ Missing character: There is no ™ in font phvr7t!
 
 ] [3
 
-] (Masterproef_NL_2012.toc)
+]
 \tf@toc=\write4
 \openout4 = `Masterproef_NL_2012.toc'.
 
@@ -351,6 +348,12 @@ Missing character: There is no ™ in font phvr7t!
 
 ]
 Hoofdstuk 1.
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ˜ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 152.
 
 ("D:\programmas\MiKTeX 2.9\tex\latex\base\omscmr.fd"
@@ -358,8 +361,61 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 152.
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--170
+Underfull \hbox (badness 10000) in paragraph at lines 155--163
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--163
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--163
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--163
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--163
 
  []
 
@@ -367,18 +423,34 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.173 	\item H
-              et vergemakkelijken van het modelleer proces [1
+l.163 
+       [1
 
 
 ]
-<bayes_rule.png, id=117, 310.91156pt x 225.84375pt>
+Underfull \hbox (badness 10000) in paragraph at lines 178--184
+
+ []
+
+
+LaTeX Warning: Reference `fig:bayes_rule' on page 2 undefined on input line 194
+.
+
+<bayes_rule.png, id=48, 310.91156pt x 225.84375pt>
 File: bayes_rule.png Graphic file (type png)
 <use bayes_rule.png>
-Package pdftex.def Info: bayes_rule.png  used on input line 183.
+Package pdftex.def Info: bayes_rule.png  used on input line 197.
 (pdftex.def)             Requested size: 215.44481pt x 156.49014pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--190
+LaTeX Warning: Reference `subsec:problog2' on page 2 undefined on input line 20
+1.
+
+
+LaTeX Warning: Reference `subsec:anglican' on page 2 undefined on input line 20
+1.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 194--204
 
  []
 
@@ -386,34 +458,47 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.194 
-       [2 <./bayes_rule.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 203--206
+l.204 \subsection
+                 {ProbLog2} [2]
+Underfull \hbox (badness 10000) in paragraph at lines 217--220
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 218--220
+[3 <./bayes_rule.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 232--234
 
  []
 
-[3]
-<game_change_blocks.png, id=134, 486.31688pt x 255.95625pt>
+[4]
+<game_change_blocks.png, id=73, 486.31688pt x 255.95625pt>
 File: game_change_blocks.png Graphic file (type png)
 <use game_change_blocks.png>
-Package pdftex.def Info: game_change_blocks.png  used on input line 228.
+Package pdftex.def Info: game_change_blocks.png  used on input line 242.
 (pdftex.def)             Requested size: 297.32814pt x 156.49014pt.
-<game_score.png, id=136, 487.8225pt x 158.09062pt>
+
+
+LaTeX Warning: Reference `fig:game_change_blocks' on page 5 undefined on input 
+line 246.
+
+<game_score.png, id=74, 487.8225pt x 158.09062pt>
 File: game_score.png Graphic file (type png)
 <use game_score.png>
-Package pdftex.def Info: game_score.png  used on input line 236.
+Package pdftex.def Info: game_score.png  used on input line 250.
 (pdftex.def)             Requested size: 158.03427pt x 51.21495pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 232--240
+LaTeX Warning: Reference `fig:game_change_blocks' on page 5 undefined on input 
+line 251.
+
+
+LaTeX Warning: Reference `fig:game_change_blocks' on page 5 undefined on input 
+line 251.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--254
 
  []
 
-[4 <./game_change_blocks.png>] [5 <./game_score.png>]
+[5 <./game_change_blocks.png> <./game_score.png>]
 Hoofdstuk 2.
 [6
 
@@ -423,35 +508,48 @@ Hoofdstuk 3.
 
 ]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <7> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 269.
-<sedes.png, id=160, 402.5439pt x 683.6742pt>
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 284.
+<sedes.png, id=94, 402.5439pt x 683.6742pt>
 File: sedes.png Graphic file (type png)
 <use sedes.png>
-Package pdftex.def Info: sedes.png  used on input line 279.
+Package pdftex.def Info: sedes.png  used on input line 294.
 (pdftex.def)             Requested size: 27.64043pt x 46.94704pt.
 
-Overfull \hbox (18.18004pt too wide) in paragraph at lines 283--284
+Overfull \hbox (18.18004pt too wide) in paragraph at lines 298--299
 [][][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 285.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 300.
 [8 <./sedes.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 285.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 300.
  (Masterproef_NL_2012.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 285.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 285.
-Package rerunfilecheck Info: File `Masterproef_NL_2012.out' has not changed.
-(rerunfilecheck)             Checksum: 8D17F1A94425C548CCCA005C4BB02B36;717.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 285.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 300.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 300.
+
+
+Package rerunfilecheck Warning: File `Masterproef_NL_2012.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Masterproef_NL_2012.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  8D17F1A94425C548CCCA005C4BB02B36;717.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 300.
  ) 
 Here is how much of TeX's memory you used:
- 6613 strings out of 493312
- 98864 string characters out of 3140194
- 187148 words of memory out of 3000000
- 10049 multiletter control sequences out of 15000+200000
+ 6592 strings out of 493312
+ 98186 string characters out of 3140194
+ 188202 words of memory out of 3000000
+ 10036 multiletter control sequences out of 15000+200000
  19890 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,7n,35p,582b,390s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,7n,35p,686b,394s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/programmas/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<D:/programmas/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/programmas/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmr12.pfb><D:/programmas/MiKTeX 2.9/fonts/type1/public/a
@@ -459,9 +557,9 @@ msfonts/cm/cmsl12.pfb><D:/programmas/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb><D:/programmas/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><D:/pr
 ogrammas/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><D:/programmas/MiKTeX 2
 .9/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Masterproef_NL_2012.pdf (14 pages, 238477 bytes).
+Output written on Masterproef_NL_2012.pdf (14 pages, 231483 bytes).
 PDF statistics:
- 200 PDF objects out of 1000 (max. 8388607)
+ 133 PDF objects out of 1000 (max. 8388607)
  36 named destinations out of 1000 (max. 500000)
- 134 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
 

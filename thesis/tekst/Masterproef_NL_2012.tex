@@ -147,6 +147,20 @@ Voorafgaande schriftelijke toestemming van de promotor(en) is eveneens vereist v
 \setcounter{page}{0}
 \pagenumbering{arabic}
 \chapter{Inleiding}
+De grote interesse in het domein ‘onzekerheid’ in AI resulteerd in de ontwikkeling van verschillende programmeertalen. Deze talen worden probabilistische programmeertalen of PPL (Probabilistic Programming Language) genoemd. Een PPL heeft in grote lijnen 2 hoofdfuncties:
+\begin{itemize}
+	\item Het modelleren van een wereld met onzekerheid
+	\item Het redeneren/infereren van vragen over deze wereld
+\end{itemize}
+Voorheen was het zeer moeilijk als programmeur om werelden met onzekerheid te modelleren, laat staan het redeneren over deze werelden. Met de komst van PPL’s is dit probleem al een stuk makkelijker geworden.
+\\\\
+Elke PPL heeft zijn eigen manier van implementatie en wordt vaak geimplementeerd als extensie op een general-purpose programmeertaal. Dit zorgt er voor dat de PPL niet gelimiteerd is aan een kleine subset van de werelden die het kan modelleren. Veel van deze PPL’s streven naar een balans tussen performantie en expressiviteit. Het is belangrijk voor een PPL om genoeg werelden te kunnen simuleren en op een aanneembare tijd te kunnen redeneren over vragen over deze wereld.
+\\\\
+Omdat er zo veel PPL’s beschikbaar zijn de laatste jaren is het niet altijd duidelijk welke voordelen of nadelen ze hebben ten opzichte van andere PPL’s. Verschillende van deze PPL’s zijn in recente artikels vergeleken met elkaar aan de hand van eigenschappen en concepten van de taal (Probabilistic (Logic) Programming Concepts, Luc De Raedt - Angelika Kimmig). Andere artikels vergelijken PPL’s aan de hand van hun vorige iteratie of PPL’s met hetzelfde programmeerparadigma (Inference and Learning in Probabilistic Logic Programs using Weighted Boolean Formulas, LUC DE RAEDT et al). 
+\\\\
+In deze thesis ga ben ik van plan PPL’s met een verschillend programmeerparadigma te evalueren. ik ga deze PPL’s evalueren ten opzichte van elkaar aan de hand van qualitatieve en quantitatieve criteria. Omdat het niet triviaal is om programmeertalen te vergelijken die totaal anders geimplementeerd zijn maak ik gebruik van een case study. Ik begin met het verzinnen van een onzekerheidsprobleem waarna ik uitleg geef waarom ik gekozen heb voor dit probleem. Daarna evalueer ik de implementatie van het probleem in de verschillende PPL’s aan de hand van vooropgestelde criteria. Ten slotte volgt een evaluatie van de PPL’s ten opzichte van elkaar. 
+\\\\
+
 Onzekerheid in artifici\"{e}le intelligentie is een van de invloedrijkste domeinen van artifici\"{e}le intelligentie. De reden hiervoor is omdat de wereld van nature veel onzekerheid bevat. Denk aan de volgende punten:
 \begin{itemize}
 	\item Kennis (we kunnen niet alles van de wereld weten)
@@ -243,6 +257,7 @@ De evaluatiecriteria kunnen gecategorizeerd worden in qualitatieve en quantitati
 
 \chapter{Resultaten}
 \chapter{Conclusie}
+
 
 \newpage
 % ----------------------- Achterblad ------------------------------
