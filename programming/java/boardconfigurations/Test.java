@@ -13,7 +13,7 @@ public class Test {
 		this.height = height;
 		this.maxSampleIndex = maxSampleIndex;
 		blocks = new String[height][width];
-		choose(0, 0, createInitial(width, height));
+		choose(height, 0, createInitial(width, height));
 	}
 	
 	public String[][][] createInitial(int width, int height){
@@ -64,20 +64,20 @@ public class Test {
 					
 				}
 			}
-			if(i > 0){
-				if(i < height - 1 && color.equals(blocks[i-1][j])){
+			if(i < height - 1){
+				if(i > 0 && color.equals(blocks[i-1][j])){
 					switch(color) {
 					case "red":
-						copy[i+1][j][0] = null;
+						copy[i-1][j][0] = null;
 						break;
 					case "green":
-						copy[i+1][j][1] = null;
+						copy[i-1][j][1] = null;
 						break;
 					case "blue":
-						copy[i+1][j][2] = null;
+						copy[i-1][j][2] = null;
 						break;
 					case "yellow":
-						copy[i+1][j][3] = null;
+						copy[i-1][j][3] = null;
 						break;
 					}
 				}
@@ -85,9 +85,9 @@ public class Test {
 			if(j < width - 1)
 				choose(i,j+1,copy);
 			else if(j == width - 1)
-				if(i < height - 1)
-					choose(i+1, 0,copy);
-				else if(i == height - 1) {
+				if(i > 0)
+					choose(i-1, 0,copy);
+				else if(i == 0) {
 					System.out.println(Arrays.deepToString(blocks));
 					if(maxSampleIndex > 0 && ++sampleIndex == maxSampleIndex + 1)
 						System.exit(0);
