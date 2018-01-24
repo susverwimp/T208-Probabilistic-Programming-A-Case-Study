@@ -85,7 +85,7 @@ strategy(possible_score).
 % QUERIES
 %%%%%%%%%%%%%%%%%
 % query(board(1,Board,Score,Positions)). % geeft de juiste werelden met de juiste kansen weer.
-query(score_of_turn(2,S,P)). % geeft de juiste werelden weer met de VERKEERDE kansen (BUG).
+query(score_of_turn(1,S,P)). % geeft de juiste werelden weer met de VERKEERDE kansen (BUG).
 
 %%%%%%%%%%%%%%%%%
 % RANDOM EVENTS
