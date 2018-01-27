@@ -1,3 +1,21 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{barberBRML2012}
+D.~Barber.
+\newblock {\em {Bayesian Reasoning and Machine Learning}}.
+\newblock {Cambridge University Press}, 2012.
+
+\bibitem{plpinferencelearningwbf}
+D.~Fierens, G.~Van den Broeck, J.~Renkens, D.~Shterionov, B.~Gutmann, I.~Thon,
+  G.~Janssens, and L.~De Raedt.
+\newblock Inference and learning in probabilistic logic programs using weighted
+  boolean formulas.
+\newblock {\em Theory and Practice of Logic Programming}, 15(3):pp. 358 -- 401,
+  2015.
+
+\bibitem{plpconcepts}
+L.~De Raedt and A.~Kimmig.
+\newblock Probabilistic (logic) programming concepts.
+\newblock {\em Machine Learning}, 100(1):pp. 5 -- 47, 2015.
 
 \end{thebibliography}

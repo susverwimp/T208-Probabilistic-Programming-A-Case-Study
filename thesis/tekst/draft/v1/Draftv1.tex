@@ -12,12 +12,24 @@
 % als je dit titelblad integreert met de rest van thesis.
 % -------------------------------------------------------------------
 \usepackage{graphicx,xcolor,textpos}
+\graphicspath{{images/}}
+
 \usepackage{helvet}
+
 \usepackage[linktoc=all]{hyperref}
+
 \usepackage[dutch]{babel}
+
 \usepackage{slashbox}
 
-\graphicspath{{images/}}
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{exmp}{Voorbeeld}[section]
+
+
+
+\newcommand{\quotes}[1]{``#1''}
 
 % -------------------- Pagina-instellingen --------------------------
 % Indien je deze wijzigt, zal het titelblad ook wijzigen.  Dit dien je
@@ -150,54 +162,64 @@ Voorafgaande schriftelijke toestemming van de promotor(en) is eveneens vereist v
 \pagenumbering{arabic}
 
 \chapter{Inleiding}
-De grote interesse in het domein ‘onzekerheid’ in AI resulteert in de ontwikkeling van verschillende programmeertalen. Deze talen worden probabilistische programmeertalen of PPL (Probabilistic Programming Language) genoemd. Een PPL heeft in grote lijnen 2 hoofdfuncties:
+De grote interesse in het redeneren met onzekerheid in Artifici\"{e}le Intelligentie resulteert in de ontwikkeling van verschillende programmeertalen. Deze talen worden probabilistische programmeertalen of PPL (Probabilistic Programming Language) genoemd. Een PPL heeft in grote lijnen 2 hoofddooelen:
 \begin{itemize}
-  \item Het modelleren van een wereld met onzekerheid
-  \item Het redeneren/infereren van vragen over deze wereld
+  \item Het modelleren van een wereld met onzekerheid.
+  \item Het redeneren/infereren van vragen over deze wereld met behulp van dit model.
 \end{itemize}
-Voorheen was het zeer moeilijk als programmeur om werelden met onzekerheid te modelleren, laat staan het redeneren over deze werelden. Met de komst van PPL’s is dit probleem al een stuk makkelijker geworden.
-Elke PPL heeft zijn eigen manier van implementatie en wordt vaak geïmplementeerd als extensie op een general-purpose programmeertaal. Dit zorgt ervoor dat de PPL niet gelimiteerd is aan een kleine subset van de werelden die het kan modelleren. Veel van deze PPL’s streven naar een balans tussen performantie en expressiviteit. Het is belangrijk voor een PPL om genoeg werelden te kunnen simuleren en op een aanneembare tijd te kunnen redeneren over vragen over deze wereld.
+Voorheen was het zeer moeilijk als programmeur om werelden met onzekerheid te modelleren. Probabilistische problemen werden geprogrammeerd aan de hand van grafische modellen zoals bayesiaanse netwerken. Het redeneren over deze modellen gebeurde met inferentie methodes die speciaal werden opgesteld voor het gemodelleerde probleem. Dit zorgde ervoor dat code voor een model niet herbruikbaar was en elke inferentie methode opnieuw ge\"{i}mplementeerd moest worden voor elk probleem. Met de komst van PPL’s zijn deze problemen opgelost. Elke PPL heeft zijn eigen manier van implementatie en wordt vaak ge\"{i}mplementeerd als extensie op een general-purpose programmeertaal. Dit zorgt ervoor dat een PPL expressiever wordt. Gebruikers van een PPL kunnen een probabilistisch probleem volledig specifieren in het model en de bestaande inferentie methodes gebruiken om te redeneren over dit probleem. De general-purpose programmeertaal zorgt voor het hergebruiken van bestaande libraries en modellen. Algemene inferentiealgoritmes worden eenmalig gemaakt voor deze PPL zodat deze werkt voor alle modellen in deze PPL. Veel van deze PPL’s streven naar een balans tussen performantie en expressiviteit. Het is belangrijk voor een PPL om problemen te kunnen modelleren en tegelijkertijd op een aanvaardbare tijd te kunnen redeneren over vragen over dit model.
 \\\\
-Omdat er zo veel PPL’s beschikbaar zijn de laatste jaren is het niet altijd duidelijk welke voordelen of nadelen ze hebben ten opzichte van andere PPL’s. Verschillende van deze PPL’s zijn in recente artikels vergeleken met elkaar aan de hand van eigenschappen en concepten van de taal (Probabilistic (Logic) Programming Concepts, Luc De Raedt - Angelika Kimmig). Andere artikels vergelijken PPL’s aan de hand van hun vorige iteratie of PPL’s met hetzelfde programmeerparadigma (Inference and Learning in Probabilistic Logic Programs using Weighted Boolean Formulas, LUC DE RAEDT et al). Deze artikels evalueren PPL’s met hetzelfde programmeerparadigma zoals logische probabilistische programmeertalen of functionele probabilistische programmeertalen.
+Sinds de laatste jaren zijn er veel verschillende PPL's beschikbaar zoals ProbLog, Anglican,... De url \url{http://probabilistic-programming.org/wiki/Home} geeft een overzicht van de verschillende PPL's die momenteel beschikbaar zijn.
+Omdat er zo veel PPL’s beschikbaar zijn, is het niet altijd duidelijk wat de voordelen of nadelen ten opzichte van elkaar zijn. Verschillende van deze PPL’s zijn in recente artikels vergeleken met elkaar op het vlak van eigenschappen en concepten van de taal \cite{plpconcepts}. Andere artikels vergelijken vorige iteraties van dezelfde taal of PPL’s met hetzelfde programmeerparadigma (bvb. logische of functionele programmeren) \cite{plpinferencelearningwbf}. Het probleem bij deze vergelijkingen en evaluaties is dat er nooit evaluaties gedaan worden voor PPL's met een verschillend programmeerparadigma.
 \\\\
-In deze thesis ben ik van plan PPL’s met verschillende programmeerparadigma zoals ProbLog en Anglican te evalueren. ik ga deze PPL’s evalueren ten opzichte van elkaar aan de hand van qualitatieve en quantitatieve criteria zoals: performantie, expressiviteit, geheugengebruik, uitbreidbaarheid, tools beschikbaar, moeilijkheidsgraag,... Omdat het niet triviaal is om programmeertalen te vergelijken die totaal anders geïmplementeerd zijn maak ik gebruik van een case study. Ik begin met het verzinnen van een onzekerheidsprobleem waarna ik uitleg geef waarom ik gekozen heb voor dit probleem. Daarna evalueer ik de implementatie van het probleem in de verschillende PPL’s aan de hand van vooropgestelde criteria. Ten slotte volgt een evaluatie van de PPL’s ten opzichte van elkaar. Uiteindelijk wil ik kunnen aantonen welke PPL het best presteert in welke criteria aan de hand van het opgegeven probleem.
+In deze thesis ben ik van plan PPL’s met verschillende programmeerparadigma zoals ProbLog en Anglican te vergelijken en evalueren. het is de bedoeling deze PPL’s te evalueren ten opzichte van elkaar aan de hand van qualitatieve en quantitatieve criteria zoals: performantie, expressiviteit, geheugengebruik, uitbreidbaarheid, beschikbare tools, moeilijkheidsgraad,... Omdat het niet triviaal is om programmeertalen te vergelijken die totaal anders geïmplementeerd zijn gebeurd de evaluatie aan de hand van een case study. De implementatie van deze case-study in ProbLog en Anglican vormt het vertrekpunt voor een vergelijking van deze twee programmeertalen op basis van de hogervernoemde criteria. Uiteindelijk zal deze thesis kunnen aantonen welke PPL het best presteert in welke criteria aan de hand van het opgegeven probleem.
 
 \chapter{Achtergrond}
 In deze sectie geef ik de nodige achtergrondinformatie om de rest van mijn thesis te begrijpen.
-Onzekerheid in artificiele intelligentie is één van de invloedrijkste domeinen van artificiele intelligentie. De reden hiervoor is omdat de wereld van nature veel onzekerheid bevat. Denk aan de volgende punten:
+\\\\
+Onzekerheid in Artifici\"{e}le Intelligentie is \'{e}\'{e}n van de invloedrijkste domeinen van Artifici\"{e}le Intelligentie. De reden hiervoor is omdat het universum van nature veel onzekerheid bevat. Denk aan de volgende punten:
 \begin{itemize}
-	\item Kennis (we kunnen niet alles van de wereld weten)
-	\item Incomplete modellen (verschijnselen die niet onder het model vallen)
-	\item Sensoren (we kunnen de wereld enkel observeren met de tools die beschikbaar zijn en deze zijn meestal nog foutgevoelig.)
-	\item Acties (we kunnen niet elke actie uitvoeren)
+	\item Kennis (We kunnen niet alles van het toepassingsdomein weten.)
+	\item Onvolledige modellen (verschijnselen die niet onder het model vallen)
+	\item Sensoren (We kunnen de wereld enkel observeren met de tools die geen exacte resultaten geven.)
 \end{itemize}
-Als we spreken over werken met onzekerheid bedoelen we het opstellen van een hypothese, en deze hypothese (zo goed mogelijk) bewijzen aan de hand van het gegeven bewijs van de wereld.
 Er zijn 3 belangrijke kwesties in verband met het werken met onzekerheid:
 \begin{itemize}
-	\item Representeren van onzekerheid
-	\item Redeneren over onzekerheid
+	\item Voorstellen van onzekerheid
+	\item Redeneren met onzekerheid
 	\item Leren aan de hand van onzekerheid
 \end{itemize}
-Het representeren van onzekerheid gebeurt in het model. Een model is een weergave van een onzekerheidsprobleem waarbij elke wereld kan gesimuleerd worden.
-\\\\
-Bij het redeneren over onzekerheid maken we gebruik van het model om vragen te stellen over mogelijke hypotheses. (vb. wat is de kans dat we een eerlijk muntstuk hebben als we deze 20 keer tossen en 15 keer hoofd en 5 keer munt verkrijgen). In dit voorbeeld is de hypothese “of het muntstuk eerlijk is”. Het bewijs dat we hebben is dat we 20 keer tossen en 15 keer hoofd en 5 keer munt kregen. Wat we willen is de kans dat de hypothese klopt, m.a.w. de kans dat het muntstuk eerlijk is.
-\\\\\
-Een manier om te berekenen wat de kans is of een munt eerlijk is, is het gebruik maken van de Bayes’s rule:
+Het voorstellen van onzekerheid gebeurt in een model van een onzekerheidsprobleem. Een model is een weergave van een onzekerheidsprobleem waarbij iedere mogelijke wereld kan gesimuleerd worden (zie voorbeeld~\ref{exmp:faircoin}). Onzekerheidsproblemen zijn problemen waar er weinig of geen zekerheid is over de uitkomst van een actie. 
+\begin{exmp}
+\label{exmp:faircoin}
+Een voorbeeld van een onzekerheidsprobleem met weinig zekerheid is het tossen van een eerlijk muntstuk. Het resultaat van deze tos kan kop of munt zijn, maar er is geen zekerheid wat het resultaat is. In dit onzekerheidsprobleem zijn er twee resultaten mogelijk, of twee mogelijke werelden, die bestaan als de tos actie wordt uitgevoerd: namelijk de wereld waar de munt land op kop en de wereld waar het muntstuk land op munt. Bij een eerlijke munt is de kans dat de wereld bestaat waar het muntstuk op kop land 50\% en de kans dat de wereld bestaat waar het muntstuk op munt land 50\%.
+\end{exmp}
+\begin{exmp}
+Een voorbeeld van een onzekerheidsprobleem met geen zekerheid is het tossen van een random muntstuk. Hier weten we niet of het een eerlijk muntstuk is of een muntstuk waar mee geknoeid is. In dit onzekerheidsprobleem zijn er nog steeds twee mogelijke werelden die bestaan als de tos actie wordt uitgevoerd. Het verschil met het vorige voorbeeld is dat de munt nu een random munt is, dus de werelden die kunnen bestaan een andere kansverdeling kunnen hebben. Een onzekerheidsprobleem met geen zekerheid wordt zo gemodelleerd dat het de kansverdeling leert van interpretaties, in dit geval de resultaten van alle tossen. Dit komt niet voor in mijn thesis.
+\end{exmp}
+Het redeneren onzekerheid maakt gebruik van het model. Het model stelt de kansdistributie voor elke mogelijke wereld die kan bestaan in het model voor. Het redeneren over dit model stelt vragen over specifieke werelden. 
+\begin{exmp}
+Wat is de kans dat we een eerlijk muntstuk hebben als we deze 20 keer tossen en 15 keer kop en 5 keer munt verkrijgen?. In dit voorbeeld is de vraag: \quotes{Wat is de kans dat we een eerlijk muntstuk hebben?}. Het bewijsmateriaal dat we hebben is: \quotes{20 keer tossen en 15 keer hoofd en 5 keer munt}. Wat we willen is de kans dat de hypothese klopt, m.a.w. de kans dat het muntstuk eerlijk is.
+\end{exmp}
+Om te berekenen wat de kans is of een muntstuk eerlijk is, kunnen we gebruik maken van de regel van Bayes:
 \begin{equation} 
 	\label{eq:bayesrule}
 	P(Hypothese|Bewijs) = \frac{P(Bewijs|Hypothese)P(Hypothese)}{P(Bewijs)}
 \end{equation}
+Voor het voorbeeld waar we de kans willen weten dat een muntstuk eerlijk is na 20 keer tossen en 15 keer kop en 5 keer munt te verkrijgen:
+\begin{equation} 
+	\label{eq:bayesruleexample}
+	P(Eerlijk|15kop\&5munt) = \frac{P(15kop\&5munt|Eerlijk)P(Eerlijk)}{P(15kop\&5munt)}
+\end{equation}
+De regel van Bayes geeft de kans dat een hypothese waar is in een wereld waar er al dan niet bewijsmateriaal is dat directe of indirecte influentie heeft op de kans van de hypothese. Voor meer informatie verwijs ik naar het boek \cite{barberBRML2012}. PPL's berekenen hetzelfde aan de hand van het inferentieproces dat de taal implementeert. Hoe ze dit doen verschilt voor elke PPL. (!!!!!voorbeeld van inferentieproces)
 \\\\
-Bayes' rule geeft de kans dat een hypothese waar is in een wereld waar er al dan niet bewijs is over deze wereld. Voor meer informatie verwijs ik naar het boek (Bayesian Reasoning and Machine Learning). PPL's kunnen hetzelfde berekenen aan de hand van een inferentie proces dat de taal implementeert. Elke PPL heeft een methode om de inferentie te bereken. Hoe ze dit doen verschilt voor elke PPL.
-Het berekenen van de inferentie is een zeer krachtig, maar een zeer kostelijk proces qua rekenkracht. Veel PPL's zoeken een balans tussen hoe efficient ze inferentie kunnen berekenen en welke problemen ze kunnen modelleren (hoe expressief de taal is).
-\\\\
-Omdat het modelleren van een onzekerheidsprobleem, het redeneren over dit probleem en het leren aan de hand van de redeneringen een intensief proces is, is het beter om hiervoor computerkracht te gebruiken. Hierdoor werden er Probabilistische programmeertalen ontworpen.
+Het berekenen van de inferentie is een zeer krachtig, maar een zeer rekenintensief proces. Veel PPL's zoeken een balans tussen hoe efficient ze inferentie kunnen berekenen en welke problemen ze kunnen modelleren (hoe expressief de taal is).
 
 \section{Probabilistische programmeertalen}
 Probabilistische programmeertalen (of PPL's van Probabilistic Programming Languages) zijn programmeertalen met 2 hoofdfuncties:
 \begin{itemize}
-	\item Het modelleren van een wereld met onzekerheid
-	\item Het redeneren/infereren van vragen over deze wereld
+  \item Het modelleren van een wereld met onzekerheid.
+  \item Het redeneren/infereren van vragen over deze wereld met behulp van dit model.
 \end{itemize}
 Er zijn PPL implementaties die een volledig nieuwe taal hebben geïmplementeerd speciaal voor het modelleren en redeneren, maar de meesten zijn geïmplementeerd als extensie op een bestaande general-purpose programmeertaal. In deze thesis maak ik gebruik van 2 PPL’s, namelijk: ProbLog2 en Anglican.
 \subsection{ProbLog2}
