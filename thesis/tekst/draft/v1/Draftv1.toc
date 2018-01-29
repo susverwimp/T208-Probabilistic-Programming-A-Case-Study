@@ -4,14 +4,24 @@
 \contentsline {chapter}{Lijst van afkortingen en lijst van symbolen}{iii}{chapter*.3}
 \contentsline {chapter}{\numberline {1}Inleiding}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Achtergrond}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Probabilistische programmeertalen}{4}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}ProbLog2}{5}{subsection.2.1.1}
-\contentsline {subsubsection}{Inferentie}{5}{section*.5}
-\contentsline {chapter}{\numberline {3}Uitwerking}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Probleem verzinnen}{7}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Spel}{7}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Strategi\"{e}n}{8}{subsection.3.1.2}
-\contentsline {subsubsection}{Uniforme strategie}{8}{section*.6}
-\contentsline {subsubsection}{Kleuren ratio strategie}{10}{section*.7}
-\contentsline {subsubsection}{Mogelijke score strategie}{10}{section*.8}
-\contentsline {subsubsection}{Gewogen score strategie}{10}{section*.9}
+\contentsline {section}{\numberline {2.1}Redeneren met onzekerheid}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Probabilistische Programmeertalen}{6}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}ProbLog2}{6}{subsection.2.2.1}
+\contentsline {subsubsection}{Modelleren in ProbLog2}{6}{section*.5}
+\contentsline {subsubsection}{Inferentie}{7}{section*.6}
+\contentsline {subsection}{\numberline {2.2.2}Anglican}{8}{subsection.2.2.2}
+\contentsline {subsubsection}{Modelleren in Anglican}{8}{section*.7}
+\contentsline {subsubsection}{Inferentie}{8}{section*.8}
+\contentsline {chapter}{\numberline {3}Uitwerking}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Probleem verzinnen}{9}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Spel}{9}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Strategi\"{e}n}{10}{subsection.3.1.2}
+\contentsline {subsubsection}{Uniforme strategie}{10}{section*.9}
+\contentsline {subsubsection}{Kleuren ratio strategie}{12}{section*.10}
+\contentsline {subsubsection}{Mogelijke score strategie}{12}{section*.11}
+\contentsline {subsubsection}{Gewogen score strategie}{12}{section*.12}
+\contentsline {chapter}{\numberline {4}Evaluatie}{14}{chapter.4}
+\contentsline {section}{\numberline {4.1}ProbLog2}{14}{section.4.1}
+\contentsline {section}{\numberline {4.2}Anglican}{14}{section.4.2}
+\contentsline {chapter}{\numberline {5}Conclusie}{15}{chapter.5}
+\contentsline {section}{\numberline {5.1}Toekomstig werk}{15}{section.5.1}

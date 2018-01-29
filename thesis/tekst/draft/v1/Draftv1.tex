@@ -27,6 +27,8 @@
 \theoremstyle{definition}
 \newtheorem{exmp}{Voorbeeld}[section]
 
+\usepackage{listings}
+
 
 
 \newcommand{\quotes}[1]{``#1''}
@@ -167,17 +169,17 @@ De grote interesse in het redeneren met onzekerheid in Artifici\"{e}le Intellige
   \item Het modelleren van een wereld met onzekerheid.
   \item Het redeneren/infereren van vragen over deze wereld met behulp van dit model.
 \end{itemize}
-Voorheen was het zeer moeilijk als programmeur om werelden met onzekerheid te modelleren. Probabilistische problemen werden geprogrammeerd aan de hand van grafische modellen zoals bayesiaanse netwerken. Het redeneren over deze modellen gebeurde met inferentie methodes die speciaal werden opgesteld voor het gemodelleerde probleem. Dit zorgde ervoor dat code voor een model niet herbruikbaar was en elke inferentie methode opnieuw ge\"{i}mplementeerd moest worden voor elk probleem. Met de komst van PPL’s zijn deze problemen opgelost. Elke PPL heeft zijn eigen manier van implementatie en wordt vaak ge\"{i}mplementeerd als extensie op een general-purpose programmeertaal. Dit zorgt ervoor dat een PPL expressiever wordt. Gebruikers van een PPL kunnen een probabilistisch probleem volledig specifieren in het model en de bestaande inferentie methodes gebruiken om te redeneren over dit probleem. De general-purpose programmeertaal zorgt voor het hergebruiken van bestaande libraries en modellen. Algemene inferentiealgoritmes worden eenmalig gemaakt voor deze PPL zodat deze werkt voor alle modellen in deze PPL. Veel van deze PPL’s streven naar een balans tussen performantie en expressiviteit. Het is belangrijk voor een PPL om problemen te kunnen modelleren en tegelijkertijd op een aanvaardbare tijd te kunnen redeneren over vragen over dit model.
+Voorheen was het zeer moeilijk als programmeur om werelden met onzekerheid te modelleren. Probabilistische problemen werden geprogrammeerd aan de hand van grafische modellen zoals onder andere bayesiaanse netwerken. Het redeneren over deze modellen gebeurde met inferentie methodes die speciaal werden opgesteld voor het gemodelleerde probleem. Dit zorgde ervoor dat code voor een model niet herbruikbaar was en elke inferentie methode opnieuw ge\"{i}mplementeerd moest worden voor elk probleem. Met de komst van PPL's zijn deze problemen opgelost. Elke PPL heeft zijn eigen manier van implementatie en wordt vaak ge\"{i}mplementeerd als extensie op een general-purpose programmeertaal. Dit zorgt ervoor dat een PPL expressiever wordt. Gebruikers van een PPL kunnen een probabilistisch probleem volledig specifieren in het model en de bestaande inferentie methodes gebruiken om te redeneren over dit probleem. De general-purpose programmeertaal zorgt voor het hergebruiken van bestaande libraries en modellen. Algemene inferentiealgoritmes worden eenmalig gemaakt voor deze PPL zodat deze werkt voor alle modellen. Veel van deze PPL’s streven naar een balans tussen performantie en expressiviteit. Het is belangrijk voor een PPL om problemen te kunnen modelleren en tegelijkertijd op een aanvaardbare tijd te kunnen redeneren over vragen over dit model.
 \\\\
-Sinds de laatste jaren zijn er veel verschillende PPL's beschikbaar zoals ProbLog, Anglican,... De url \url{http://probabilistic-programming.org/wiki/Home} geeft een overzicht van de verschillende PPL's die momenteel beschikbaar zijn.
-Omdat er zo veel PPL’s beschikbaar zijn, is het niet altijd duidelijk wat de voordelen of nadelen ten opzichte van elkaar zijn. Verschillende van deze PPL’s zijn in recente artikels vergeleken met elkaar op het vlak van eigenschappen en concepten van de taal \cite{plpconcepts}. Andere artikels vergelijken vorige iteraties van dezelfde taal of PPL’s met hetzelfde programmeerparadigma (bvb. logische of functionele programmeren) \cite{plpinferencelearningwbf}. Het probleem bij deze vergelijkingen en evaluaties is dat er nooit evaluaties gedaan worden voor PPL's met een verschillend programmeerparadigma.
+Sinds de laatste jaren zijn er veel verschillende PPL's beschikbaar zoals ProbLog2, Anglican,... De url \url{http://probabilistic-programming.org/wiki/Home} geeft een overzicht van de verschillende PPL's die momenteel beschikbaar zijn.
+Omdat er zo veel PPL's beschikbaar zijn, is het niet altijd duidelijk wat de voordelen of nadelen ten opzichte van elkaar zijn. Verschillende van deze PPL's zijn in recente artikels vergeleken met elkaar op het vlak van eigenschappen en concepten van de taal \cite{plpconcepts}. Andere artikels vergelijken vorige iteraties van dezelfde taal of PPL's met hetzelfde programmeerparadigma (bvb. logische of functionele programmeren) \cite{plpinferencelearningwbf}. Het probleem bij deze vergelijkingen en evaluaties is dat er nooit evaluaties gedaan worden voor PPL's met een verschillend programmeerparadigma.
 \\\\
-In deze thesis ben ik van plan PPL’s met verschillende programmeerparadigma zoals ProbLog en Anglican te vergelijken en evalueren. het is de bedoeling deze PPL’s te evalueren ten opzichte van elkaar aan de hand van qualitatieve en quantitatieve criteria zoals: performantie, expressiviteit, geheugengebruik, uitbreidbaarheid, beschikbare tools, moeilijkheidsgraad,... Omdat het niet triviaal is om programmeertalen te vergelijken die totaal anders geïmplementeerd zijn gebeurd de evaluatie aan de hand van een case study. De implementatie van deze case-study in ProbLog en Anglican vormt het vertrekpunt voor een vergelijking van deze twee programmeertalen op basis van de hogervernoemde criteria. Uiteindelijk zal deze thesis kunnen aantonen welke PPL het best presteert in welke criteria aan de hand van het opgegeven probleem.
+In deze thesis ben ik van plan PPL's met verschillende programmeerparadigma zoals ProbLog2 en Anglican te vergelijken en evalueren. het is de bedoeling deze PPL's te evalueren ten opzichte van elkaar aan de hand van qualitatieve en quantitatieve criteria zoals: performantie, expressiviteit, geheugengebruik, uitbreidbaarheid, beschikbare tools, moeilijkheidsgraad,... Omdat het niet triviaal is om programmeertalen te vergelijken die totaal anders ge\"{i}mplementeerd zijn gebeurd de evaluatie aan de hand van een case study. De implementatie van deze case-study in ProbLog2 en Anglican vormt het vertrekpunt voor een vergelijking van deze twee programmeertalen op basis van de hogervernoemde criteria. Uiteindelijk zal deze thesis aantonen welke PPL het best presteert in welke criteria aan de hand van het opgegeven probleem.
 
 \chapter{Achtergrond}
-In deze sectie geef ik de nodige achtergrondinformatie om de rest van mijn thesis te begrijpen.
-\\\\
-Onzekerheid in Artifici\"{e}le Intelligentie is \'{e}\'{e}n van de invloedrijkste domeinen van Artifici\"{e}le Intelligentie. De reden hiervoor is omdat het universum van nature veel onzekerheid bevat. Denk aan de volgende punten:
+In deze sectie vindt u de nodige achtergrondinformatie om de rest van deze thesis te begrijpen.
+\section{Redeneren met onzekerheid}
+Redeneren met onzekerheid is \'{e}\'{e}n van de invloedrijkste domeinen van Artifici\"{e}le Intelligentie. De reden hiervoor is omdat het universum van nature veel onzekerheid bevat. Denk aan de volgende punten:
 \begin{itemize}
 	\item Kennis (We kunnen niet alles van het toepassingsdomein weten.)
 	\item Onvolledige modellen (verschijnselen die niet onder het model vallen)
@@ -189,60 +191,125 @@ Er zijn 3 belangrijke kwesties in verband met het werken met onzekerheid:
 	\item Redeneren met onzekerheid
 	\item Leren aan de hand van onzekerheid
 \end{itemize}
-Het voorstellen van onzekerheid gebeurt in een model van een onzekerheidsprobleem. Een model is een weergave van een onzekerheidsprobleem waarbij iedere mogelijke wereld kan gesimuleerd worden (zie voorbeeld~\ref{exmp:faircoin}). Onzekerheidsproblemen zijn problemen waar er weinig of geen zekerheid is over de uitkomst van een actie. 
+Het voorstellen van onzekerheid gebeurt in een model van een onzekerheidsprobleem. Een model is een weergave van een onzekerheidsprobleem waarbij iedere mogelijke wereld kan gesimuleerd worden (zie voorbeeld~\ref{exmp:faircoin}). Onzekerheidsproblemen zijn problemen waar er weinig of geen zekerheid is over de uitkomst van een actie.
 \begin{exmp}
 \label{exmp:faircoin}
-Een voorbeeld van een onzekerheidsprobleem met weinig zekerheid is het tossen van een eerlijk muntstuk. Het resultaat van deze tos kan kop of munt zijn, maar er is geen zekerheid wat het resultaat is. In dit onzekerheidsprobleem zijn er twee resultaten mogelijk, of twee mogelijke werelden, die bestaan als de tos actie wordt uitgevoerd: namelijk de wereld waar de munt land op kop en de wereld waar het muntstuk land op munt. Bij een eerlijke munt is de kans dat de wereld bestaat waar het muntstuk op kop land 50\% en de kans dat de wereld bestaat waar het muntstuk op munt land 50\%.
+Een voorbeeld van een onzekerheidsprobleem met weinig zekerheid is het tossen van een eerlijk muntstuk. Hier zijn we zeker dat als we het muntstuk tossen dat het 50\% kans heeft om te landen op kop of munt, maar er is geen zekerheid wat het resultaat is. De actie is hier het tossen van een munt. Deze actie heeft twee mogelijke resultaten, of twee mogelijke werelden: namelijk de wereld waar het muntstuk land op kop en de wereld waar het muntstuk land op munt. Bij een eerlijke munt is de kans dat de eerste wereld bestaat 50\% en de kans dat de tweede wereld 50\%. We weten pas wat het resultaat is als we het resultaat zien. Het resultaat van de actie verandert dan in een gegeven of bewijsmateriaal van het model.
 \end{exmp}
 \begin{exmp}
-Een voorbeeld van een onzekerheidsprobleem met geen zekerheid is het tossen van een random muntstuk. Hier weten we niet of het een eerlijk muntstuk is of een muntstuk waar mee geknoeid is. In dit onzekerheidsprobleem zijn er nog steeds twee mogelijke werelden die bestaan als de tos actie wordt uitgevoerd. Het verschil met het vorige voorbeeld is dat de munt nu een random munt is, dus de werelden die kunnen bestaan een andere kansverdeling kunnen hebben. Een onzekerheidsprobleem met geen zekerheid wordt zo gemodelleerd dat het de kansverdeling leert van interpretaties, in dit geval de resultaten van alle tossen. Dit komt niet voor in mijn thesis.
+Een voorbeeld van een onzekerheidsprobleem met geen zekerheid is het tossen van een random muntstuk. Hier weten we niet of het een eerlijk muntstuk is of een muntstuk waar met geknoeid is. In dit onzekerheidsprobleem zijn er nog steeds twee mogelijke werelden die bestaan als de tos actie wordt uitgevoerd. Het verschil met het vorige voorbeeld is dat de munt nu een random munt is, dus de werelden die kunnen bestaan kunnen een andere kansverdeling hebben. Een onzekerheidsprobleem met geen zekerheid wordt zo gemodelleerd dat het model de kansverdeling leert van interpretaties, in dit geval de resultaten van alle tossen. Het leren van interpretaties wordt niet toegepast in deze thesis.
 \end{exmp}
-Het redeneren onzekerheid maakt gebruik van het model. Het model stelt de kansdistributie voor elke mogelijke wereld die kan bestaan in het model voor. Het redeneren over dit model stelt vragen over specifieke werelden. 
+Bij het redeneren over het onzekerheidsprobleem gebruiken we een model waar we vragen kunnen over stellen. Een model modelleert alle mogelijke werelden die kunnen bestaan in het onzekerheidsprobleem. Bij het redeneren zijn we op zoek naar de kans dat de vraag die we stellen waar is in het onzekerheidsprobleem. Voorbeeld~\ref{exmp:inferentiaexample} is een simpel voorbeeld voor het tossen van een eerlijk muntstuk.
 \begin{exmp}
-Wat is de kans dat we een eerlijk muntstuk hebben als we deze 20 keer tossen en 15 keer kop en 5 keer munt verkrijgen?. In dit voorbeeld is de vraag: \quotes{Wat is de kans dat we een eerlijk muntstuk hebben?}. Het bewijsmateriaal dat we hebben is: \quotes{20 keer tossen en 15 keer hoofd en 5 keer munt}. Wat we willen is de kans dat de hypothese klopt, m.a.w. de kans dat het muntstuk eerlijk is.
+\label{exmp:inferentiaexample}
+We hebben een eerlijk muntstuk. Wat is de kans dat we na 3 keer tossen 3 keer kop verkrijgen. Hier weten we dat het muntstuk eerlijk is dus 50\% kans heeft om op kop of munt te landen. De kans dat we 3 keer tossen en 3 keer munt verkrijgen is dus:
+\\\\
+$P(c1=kop \& c2=kop \& c3=kop) = \frac{1}{2} * \frac{1}{2} * \frac{1}{2} = \frac{1}{8}$
+\\\\
+Stel dat we het resultaat van de eerste tos weten en deze op kop landt. Omdat we dit weten kunnen we dit aan het model meegeven als bewijsmateriaal van het model.
+\\\\
+c1 = kop
+\\
+$P(c1=kop \& c2=kop \& c3=kop) = 1 * \frac{1}{2} * \frac{1}{2} = \frac{1}{4}$
 \end{exmp}
-Om te berekenen wat de kans is of een muntstuk eerlijk is, kunnen we gebruik maken van de regel van Bayes:
+Voor kleine onzekerheidsproblemen als deze is dit nog makkelijk op te lossen met eenvoudige kans regels. Als het onzekerheidsprobleem groter is wordt het al moeilijker om dit te berekenen. In voorbeeld~\ref{exmp:inferentiaexamplealarm} stellen we een voorbeeld voor dat al moeilijker op te lossen is met simpele kans regels.
+\begin{exmp}
+\label{exmp:inferentiaexamplealarm}
+Stel dat we in een huis wonen in een regio waar er 20\% kans is op een aardbeving en 70\% kans is op een inbraak in het huis. We installeren een alarm in het huis. Op de verpakking van het alarm staan de kansen dat het alarm afgaat:
+\begin{itemize}
+	\item 90\% van de tijd gaat het alarm af als er een inbraak en een aardbeving is.
+	\item 80\% van de tijd gaat het alarm af als er een inbraak is.
+	\item 10\% van de tijd gaat het alarm af als er een aardbeving is.
+	\item Als er geen inbraak of aardbeving is gaat het alarm niet af.
+\end{itemize} 
+Stel dat we het alarm horen afgaan. Wat is de kans dat er een aardbeving is als het alarm afgaat?
+\end{exmp}
+Elementen in het onzekerheidsprobleem die onderheven zijn aan kansen noemen we variabelen. In voorbeeld~\ref{exmp:inferentiaexamplealarm} zijn de variabelen:
+\begin{itemize}
+	\item Aardbeving
+	\item Inbraak
+	\item Alarm
+\end{itemize}
+Aardbeving en Inbraak hebben niets met elkaar te maken en als we iets weten over het \'{e}\'{e}n zorgt er niet voor dat we meer weten over het andere. Dit wilt zeggen dat deze variabelen conditioneel onafhankelijk zijn van elkaar. Alarm is conditioneel afhankelijk van Inbraak en Aardbeving. Als we weten dat er inbraak is kunnen we zeggen dat de kans dat het alarm afgaat vergroot. Hetzelfde gebeurd als er een aardbeving is.
+\\\\
+Dit probleem kunnen we visueel illustreren met een bayesiaans netwerk. Een bayesiaans netwerk illustreert alle variabelen van een onzekerheidsprobleem in cirkels en de pijlen tussen de cirkels stellen de afhankelijkheid van een variabele ten opzichte van een andere variabele voor. Figuur~\ref{figure:alarmearthquakeburglary} is een voorbeeld van een bayesiaans netwerk voor voorbeeld~\ref{exmp:inferentiaexamplealarm}. 
+\begin{figure}
+	\centering
+	\includegraphics[height=60truemm]{alarm\string_earthquake\string_burglary}
+	\caption{Bayesiaans netwerk van een onzekerheidsprobleem. Alarm is conditioneel afhankelijk van Inbraak en Aardbeving.}
+	\label{figure:alarmearthquakeburglary}
+\end{figure}
+\\\\
+Om het onzekerheidsprobleem uit voorbeeld~\ref{exmp:inferentiaexamplealarm} op te lossen maken we gebruik van de regel van Bayes.
 \begin{equation} 
 	\label{eq:bayesrule}
 	P(Hypothese|Bewijs) = \frac{P(Bewijs|Hypothese)P(Hypothese)}{P(Bewijs)}
 \end{equation}
-Voor het voorbeeld waar we de kans willen weten dat een muntstuk eerlijk is na 20 keer tossen en 15 keer kop en 5 keer munt te verkrijgen:
+Als we de benamingen van figuur~\ref{figure:alarmearthquakeburglary} gebruiken wordt dit:
 \begin{equation} 
-	\label{eq:bayesruleexample}
-	P(Eerlijk|15kop\&5munt) = \frac{P(15kop\&5munt|Eerlijk)P(Eerlijk)}{P(15kop\&5munt)}
+	\label{eq:bayesrule}
+	P(AA=true|A=true) = \frac{P(A=true|AA=true)P(AA=true)}{P(A=true)}
 \end{equation}
-De regel van Bayes geeft de kans dat een hypothese waar is in een wereld waar er al dan niet bewijsmateriaal is dat directe of indirecte influentie heeft op de kans van de hypothese. Voor meer informatie verwijs ik naar het boek \cite{barberBRML2012}. PPL's berekenen hetzelfde aan de hand van het inferentieproces dat de taal implementeert. Hoe ze dit doen verschilt voor elke PPL. (!!!!!voorbeeld van inferentieproces)
+De regel van Bayes geeft de kans dat een hypothese waar is in het model waar er al dan niet bewijsmateriaal is dat influentie heeft op de kans dat de hypothese waar is. Meer informatie over bayesiaanse netwerken en het redeneren over deze netwerken in het boek \quotes{Bayesian Reasoning and Machine Learning} \cite{barberBRML2012}. 
 \\\\
-Het berekenen van de inferentie is een zeer krachtig, maar een zeer rekenintensief proces. Veel PPL's zoeken een balans tussen hoe efficient ze inferentie kunnen berekenen en welke problemen ze kunnen modelleren (hoe expressief de taal is).
+PPL's berekenen hetzelfde aan de hand van het inferentieproces dat de taal implementeert. Hoe ze dit doen verschilt voor elke PPL en wordt duidelijk uitgelegd in secties~\ref{subsubsec:inferentieProbLog2} en ~\ref{subsubsec:inferentieAnglican}. Het berekenen van de inferentie is een zeer krachtig, maar een zeer rekenintensief proces. Veel PPL's zoeken een balans tussen hoe efficient ze inferentie kunnen berekenen en welke problemen ze kunnen modelleren (hoe expressief de taal is).
 
-\section{Probabilistische programmeertalen}
-Probabilistische programmeertalen (of PPL's van Probabilistic Programming Languages) zijn programmeertalen met 2 hoofdfuncties:
+\section{Probabilistische Programmeertalen}
+Probabilistische programmeertalen (of PPL's van Probabilistic Programming Languages) zijn programmeertalen met 2 hoofddoelen:
 \begin{itemize}
   \item Het modelleren van een wereld met onzekerheid.
   \item Het redeneren/infereren van vragen over deze wereld met behulp van dit model.
 \end{itemize}
-Er zijn PPL implementaties die een volledig nieuwe taal hebben geïmplementeerd speciaal voor het modelleren en redeneren, maar de meesten zijn geïmplementeerd als extensie op een bestaande general-purpose programmeertaal. In deze thesis maak ik gebruik van 2 PPL’s, namelijk: ProbLog2 en Anglican.
+PPL's worden meestal ge\"{i}mplementeerd als extensie op bestaande general-purpose programmeertalen. PPL's zoals Anglican en Church zijn gebasseerd op een dialect van LISP (een functionele programmeertaal). ProbLog2 en PRISM zijn gebasseerd op Prolog (een logische programmeertaal). Voor sommige talen zoals Stan is een speciale taal ontwikkeld die niet gebasseerd is op een bestaande programmeertaal.
+Deze thesis behandelt 2 PPL's, namelijk: ProbLog2 en Anglican. De secties~\ref{sec:ProbLog2} en~\ref{sec:Anglican} geven meer informatie over deze twee PPL's en hoe het modelleer- en inferentieproces werkt.
 \subsection{ProbLog2}
-ProbLog2 is een PPL die gebaseerd is op de Sato’s distribution semantics (Sato 1995). Het kan beschouwd worden als een Prolog programma met probabilistische aspecten geïmplementeerd. Een ProbLog programma bestaat uit feiten geannotteerd met kansen.
-0.5 :: heads(C) :- coin(C).
+\label{sec:ProbLog2}
+ProbLog2 is een PPL gebaseerd op Prolog en gebruikt dus een logisch programmeerparadigma. 
+\subsubsection{Modelleren in ProbLog2} 
+Een ProbLog2 programma maakt, zoals in Prolog, gebruik van feiten en logische regels. Het verschil met Prolog is dat deze feiten en logische regels geannoteerd zijn met kansen. In een prolog programma kunnen we feiten voorstellen als \quotes{head(parameters).}. logische regels worden voorgesteld met de volgende syntax: \quotes{head(parameters) :- body.}.
+\begin{lstlisting}
 coin(c1).
+head(C) :- coin(C).
+\end{lstlisting}
+In bovenstaande code is \quotes{coin(c1).} een feit en \quotes{head(C) :- coin(C).}. In de bovenstaande code is c1 een muntstuk en als de variabel C een muntstuk is, is de regel head(C) logisch waar in het programma.
 \\\\
-In het bovenstaande voorbeeld hebben we 1 feit: coin(c1). en 1 probabilistisch predicaat: 0.5 :: heads(C) :- coin(C). wat dit programma zegt is dat het predicaat heads(C) waar is in de wereld met 50% kans voor elke munt die geïnstantieerd is als coin(C).
-\\\\
-We kunnen ook gebruik maken van “annotated disjunction” wat eigenlijk syntactische suiker is om hetzelfde te bereiken. Als we het vorige voorbeeld schrijven met “annotated disjunction” komen we tot:
-0.5 :: heads(C, true); 0.5:: heads(C, false) :- coin(C).
+In ProbLog2 worden feiten en logische regels geannotteerd met kansen. We stellen feiten voor als \quotes{x::head(parameters).} en logische regels als \quotes{x::head(parameters) :- body.}. x is hier de kans dat het feit waar is in het model en is een waarde tussen [0,1]. Als we de bovenstaande Prolog code schrijven in ProbLog2 code wordt dit:
+\begin{lstlisting}
+1::coin(c1).
+1::head(C) :- coin(C).
+\end{lstlisting}
+Deze code doet hetzelfde als de Prolog code. c1 is nog steeds een muntstuk en als de variabel C een muntstuk is, is head(C) logisch waar in het model. Omdat we het feit en de regel beide een kans van 100\% geven kunnen we dit weglaten en wordt de code:
+\begin{lstlisting}
 coin(c1).
+head(C) :- coin(C).
+\end{lstlisting}
+In ProbLog2 is dit hetzelfde als feiten en regels annoteren met 1.
 \\\\
-In dit voorbeeld geeft het heads predicaat voor een bepaalde munt true voor 50% van de tijd en false voor 50% van de tijd. De totale kans voor het predicaat heads is 100%. Stel dat we heads(C,false). een kans geven van 0.4, dan hebben we 50% kans op true als parameter voor heads, 40% kans op false als parameter voor heads en 10% kans dat het predicaat zelf false terug geeft. Voor dit klein programma lijkt dit onnodig maar voor grotere probabilistische problemen kan “annotated disjunction” zeer handig zijn om een beter inzicht te krijgen over wat de probabilistische predicaten doen.
+Een interessanter voorbeeld van een ProbLog2 model is het modelleren van een muntstuk:
+\begin{lstlisting}
+coin(c1).
+0.5::heads(C) :- coin(C).
+\end{lstlisting}
+In het bovenstaand programma hebben we het feit: \quotes{coin(c1).} en de probabilistische regel: \quotes{0.5::heads(C) :- coin(C).}. In dit model is c1 nog steeds een muntstuk. Het verschil met de vorige code is dat de regel heads(C) waar is in het model met 50\% kans voor elke munt C als coin(C) waar is.
 \\\\
-De combinatie van deze regels en het logic programmeer systeem prolog geeft ons de mogelijkheid om zeer uitgebreide probabilistische werelden te modelleren. We kunnen vragen stellen aan deze modellen en aan de hand van de inferentie machine van ProbLog worden deze vragen opgelost.
+We kunnen ook gebruik maken van \quotes{annotated disjunction}. Dit is syntactische suiker om hetzelfde te bereiken. Als we een munt willen modelleren die 45\% kans heeft op kop, 45\% kans heeft op munt en 10\% kans heeft om op zijn rand te landen modelleren we dit als volgt:
+\begin{lstlisting}
+coin(c1).
+0.45::heads(C); 0.45::tails(C); 0.1::side(C) :- coin(C).
+\end{lstlisting}
+In de bovenstaande code is c1 nog steeds een muntstuk. De tweede regel is een voorbeeld van \quotes{annotated disjunction}. Deze regel moet gelezen worden als: \quotes{heads(C) is voor 45\% kans waar in het model, tails(C) is voor 45\% kans waar in het model en side(C) is voor 10\% kans waar in het model voor elk muntstuk C waar coin(C) waar is. Er kan altijd maar 1 van de 3 waar zijn in het model.}
+In dit voorbeeld geeft het de regel heads(C) voor een muntstuk C waar voor 50\% van de tijd en niet waar voor 50\% van de tijd. De totale kans voor het predicaat heads is 100\%. Stel dat we heads(C,false). een kans geven van 0.4, dan hebben we 50\% kans op true als parameter voor heads, 40\% kans op false als parameter voor heads en 10\% kans dat het predicaat zelf false terug geeft. Voor dit klein programma lijkt dit onnodig maar voor grotere probabilistische problemen kan “annotated disjunction” zeer handig zijn om een beter inzicht te krijgen over wat de probabilistische predicaten doen.
+\\\\
+De combinatie van deze regels en het logisch programmeer systeem Prolog geeft ons de mogelijkheid om zeer uitgebreide probabilistische problemen te modelleren. We kunnen vragen stellen aan deze modellen en deze vragen aan de hand van de inferentie machine van ProbLog2 oplossen. De volgende sectie legt uit hoe deze vragen worden opgelost in ProbLog2.
 \subsubsection{Inferentie}
+\label{subsubsec:inferentieProbLog2}
 Om vragen te stellen over het model maken we gebruik van queries en bewijzen. Als we willen berekenen hoeveel kans we hebben dat we 2 munten tossen en ze beiden op hoofd landen kunnen we dit doen aan de hand van het volgende programma:
+\begin{lstlisting}
 0.5 :: heads1.
 0.5 :: heads2.
-two\textunderscore heads :- heads1, heads2.
-query(two\textunderscore heads).
-\\\\
+two_heads :- heads1, heads2.
+query(two_heads).
+\end{lstlisting}
 Dit geeft het resultaat 0.25 wat uiteindelijk de kans is van ( ) ( ).
 We kunnen het resultaat van de query manipuleren door bewijs te geven aan dit model. Stel dat we weten dat de eerste munt zeker hoofd als resultaat heeft, dan kunnen we dit als bewijs meegeven aan het model op de volgende manier:
 0.5 :: heads1.
@@ -251,17 +318,23 @@ two\textunderscore heads :- heads1, heads2.
 Evidence(heads1, true).
 query(two\textunderscore heads).
 \\\\
-Dit geeft het resultaat 0.5. Omdat we weten dat de eerste munt zeker in hoofd resulteert is de uitkomst gewoon de kans dat de tweede munt op hoofd resulteert. Dit is voor de munt in het model 0.5. Voor meer voorbeelden verwijs ik naar de tutorials van de ProbLog website: https://dtai.cs.kuleuven.be/problog/tutorial.html
+Dit geeft het resultaat 0.5. Omdat we weten dat de eerste munt zeker in hoofd resulteert is de uitkomst gewoon de kans dat de tweede munt op hoofd resulteert. Dit is voor de munt in het model 0.5. Voor meer voorbeelden verwijs ik naar de tutorials van de ProbLog2 website: https://dtai.cs.kuleuven.be/problog/tutorial.html
 \\\\
-De inferentiemachine in ProbLog is gebasseerd op “Knowledge Compilation”. Dit houdt verschillende stappen in:
+De inferentiemachine in ProbLog2 is gebasseerd op “Knowledge Compilation”. Dit houdt verschillende stappen in:
 \begin{enumerate}
 	\item Het “gronden” van het programma. Dit wil zeggen alle variabelen in het programma vervangen door de termen die deze variabelen kunnen bevatten. Dit houdt enkel rekening met de queries dus predicaten in het systeem die niet aangesproken worden, worden ook niet gegrond.
 	\item Het gegronde programma converteren naar een equivallente booleaanse formula.
 	\item Het bewijs en gewogen functies gebruiken om de booleaanse formula te converteren naar een gewogen booleaanse formula.
 \end{enumerate}
-Om de succes probabiliteit (SUCC), de conditionele probabiliteit (MARG) en de meest waarschijnlijke probabiliteit (MPE) te verkrijgen gebruiken we de gewogen booleaanse formula in combinatie met verschillende algoritmes zoals bijvoorbeeld “Weighted Model Counting (WMC)” om deze te berekenen. Meer informatie over het ProbLog Systeem en de inferentiemachine kunt u terugvinden in het artikel (Inference and Learning in Probabilistic Logic Programs using Weighted Boolean Formulas).
+Om de succes probabiliteit (SUCC), de conditionele probabiliteit (MARG) en de meest waarschijnlijke probabiliteit (MPE) te verkrijgen gebruiken we de gewogen booleaanse formula in combinatie met verschillende algoritmes zoals bijvoorbeeld “Weighted Model Counting (WMC)” om deze te berekenen. Meer informatie over het ProbLog2 Systeem en de inferentiemachine kunt u terugvinden in het artikel (Inference and Learning in Probabilistic Logic Programs using Weighted Boolean Formulas).
 \\\\
-De API van het ProbLog systeem kan ook gebruikt worden via Python. Hierdoor kunnen we gebruik maken van Python om het inferentie process te manipuleren. Dit zorgt voor extra uitbreidbaarheid van verschillende problemen en dus extra expressiviteit van het systeem in totaal. De API is beschikbaar via de volgende URL: https://problog.readthedocs.io/en/latest/api.html
+De API van het ProbLog2 systeem kan ook gebruikt worden via Python. Hierdoor kunnen we gebruik maken van Python om het inferentie process te manipuleren. Dit zorgt voor extra uitbreidbaarheid van verschillende problemen en dus extra expressiviteit van het systeem in totaal. De API is beschikbaar via de volgende URL: https://problog.readthedocs.io/en/latest/api.html
+\subsection{Anglican}
+\label{sec:Anglican}
+\subsubsection{Modelleren in Anglican} 
+\subsubsection{Inferentie}
+\label{subsubsec:inferentieAnglican}
+
 
 \chapter{Uitwerking}
 \section{Probleem verzinnen}
@@ -340,6 +413,13 @@ In de mogelijke score strategie wordt voor elke blok apart nagegaan of deze een 
 \end{figure}
 \subsubsection{Gewogen score strategie}
 De gewogen score strategie is een uitbreiding op de mogelijke score strategie waar we niet enkel naar de mogelijke score zien, maar naar de gewogen score. Elke blok kan veranderen van kleur aan de hand van een kansverdeling. De gewogen score strategie houdt rekening met deze kansverdeling. De gewogen score wordt berekend aan de hand van de score als een blok in Rood/Groen/Blauw/Geel verandert gewogen met de kans dat de blok verandert in Rood/Groen/Blauw/Geel.
+
+\chapter{Evaluatie}
+\section{ProbLog2}
+\section{Anglican}
+
+\chapter{Conclusie}
+\section{Toekomstig werk}
 
 \bibliographystyle{plain}
 \bibliography{./biblio}
