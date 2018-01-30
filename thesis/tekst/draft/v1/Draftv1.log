@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.22)  29 JAN 2018 18:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.22)  30 JAN 2018 16:52
 entering extended mode
 **./Draftv1.tex
 (Draftv1.tex
@@ -370,7 +370,7 @@ Overfull \hbox (26.96353pt too wide) in paragraph at lines 75--76
 [][][][][][][] 
  []
 
-<images/LogoKULeuven.png, id=71, 401.5pt x 143.53625pt>
+<images/LogoKULeuven.png, id=79, 401.5pt x 143.53625pt>
 File: images/LogoKULeuven.png Graphic file (type png)
 <use images/LogoKULeuven.png>
 Package pdftex.def Info: images/LogoKULeuven.png  used on input line 80.
@@ -476,7 +476,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 205--214
  []
 
 [4]
-<images/alarm_earthquake_burglary.png, id=177, 650.43pt x 312.41719pt>
+<images/alarm_earthquake_burglary.png, id=189, 650.43pt x 312.41719pt>
 File: images/alarm_earthquake_burglary.png Graphic file (type png)
 <use images/alarm_earthquake_burglary.png>
 Package pdftex.def Info: images/alarm_earthquake_burglary.png  used on input li
@@ -493,37 +493,80 @@ Underfull \hbox (badness 10000) in paragraph at lines 233--244
  []
 
 
+LaTeX Warning: Reference `subsubsec:InferentieAnglican' on page 5 undefined on 
+input line 255.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 252--256
 
  []
 
-[5 <./images/alarm_earthquake_burglary.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 274--277
-
- []
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 286--289
+[5 <./images/alarm_earthquake_burglary.png>] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 289--296
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 293--296
+Underfull \hbox (badness 10000) in paragraph at lines 289--296
 
  []
 
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 300--304
+Underfull \hbox (badness 10000) in paragraph at lines 289--296
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--315
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--315
 
  []
 
 [7]
+Overfull \hbox (45.30505pt too wide) in paragraph at lines 329--331
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--343
+
+ []
+
+
+Overfull \hbox (45.30505pt too wide) in paragraph at lines 345--347
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (52.35504pt too wide) in paragraph at lines 347--348
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (45.30505pt too wide) in paragraph at lines 348--349
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (45.30505pt too wide) in paragraph at lines 349--350
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (45.30505pt too wide) in paragraph at lines 350--351
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (52.35504pt too wide) in paragraph at lines 351--353
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[8]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ú in font cmr12!
@@ -531,12 +574,12 @@ Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--324
+Underfull \hbox (badness 10000) in paragraph at lines 366--377
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--324
+Underfull \hbox (badness 10000) in paragraph at lines 366--377
 
  []
 
@@ -553,117 +596,114 @@ Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--332
+Underfull \hbox (badness 10000) in paragraph at lines 382--385
 
  []
 
 
-Overfull \hbox (103.72339pt too wide) in paragraph at lines 329--332
+Overfull \hbox (103.72339pt too wide) in paragraph at lines 382--385
 \OT1/cmr/m/n/12 teem in to-taal. De API is be-schik-baar via de vol-gende URL: 
 https://problog.readthedocs.io/en/latest/api.html 
  []
 
-[8]
+[9] [10]
 Hoofdstuk 3.
 Missing character: There is no √ in font cmr12!
 Missing character: There is no ´ in font cmr12!
-<images/grid_10x10_colors.png, id=234, 963.6pt x 963.6pt>
+<images/grid_10x10_colors.png, id=291, 963.6pt x 963.6pt>
 File: images/grid_10x10_colors.png Graphic file (type png)
 <use images/grid_10x10_colors.png>
-Package pdftex.def Info: images/grid_10x10_colors.png  used on input line 346.
+Package pdftex.def Info: images/grid_10x10_colors.png  used on input line 400.
 (pdftex.def)             Requested size: 170.70569pt x 170.71652pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 343--352
+Underfull \hbox (badness 10000) in paragraph at lines 397--406
 
  []
 
-<images/turn.png, id=235, 496.254pt x 359.54324pt>
+<images/turn.png, id=292, 496.254pt x 359.54324pt>
 File: images/turn.png Graphic file (type png)
 <use images/turn.png>
-Package pdftex.def Info: images/turn.png  used on input line 374.
+Package pdftex.def Info: images/turn.png  used on input line 428.
 (pdftex.def)             Requested size: 314.17882pt x 227.62204pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--378
+Underfull \hbox (badness 10000) in paragraph at lines 423--432
 
  []
 
-[9
+[11
 
  <./images/grid_10x10_colors.png (PNG copy)>]
 Missing character: There is no √ in font cmr12!
 Missing character: There is no ´ in font cmr12!
 Missing character: There is no √ in font cmr12!
 Missing character: There is no ´ in font cmr12!
-<images/uniform_strategy.png, id=242, 244.5135pt x 242.70676pt>
+<images/uniform_strategy.png, id=299, 244.5135pt x 242.70676pt>
 File: images/uniform_strategy.png Graphic file (type png)
 <use images/uniform_strategy.png>
-Package pdftex.def Info: images/uniform_strategy.png  used on input line 392.
+Package pdftex.def Info: images/uniform_strategy.png  used on input line 446.
 (pdftex.def)             Requested size: 200.6516pt x 199.16928pt.
-<images/color_ratio_strategy.png, id=243, 475.17525pt x 331.2375pt>
+<images/color_ratio_strategy.png, id=300, 475.17525pt x 331.2375pt>
 File: images/color_ratio_strategy.png Graphic file (type png)
 <use images/color_ratio_strategy.png>
-Package pdftex.def Info: images/color_ratio_strategy.png  used on input line 40
-1.
+Package pdftex.def Info: images/color_ratio_strategy.png  used on input line 45
+5.
 (pdftex.def)             Requested size: 285.7164pt x 199.16928pt.
- [10] [11 <./images/turn.png> <./images/uniform_strategy.png>]
-<images/possible_score_strategy.png, id=257, 332.442pt x 331.2375pt>
+ [12] [13 <./images/turn.png> <./images/uniform_strategy.png>]
+<images/possible_score_strategy.png, id=315, 332.442pt x 331.2375pt>
 File: images/possible_score_strategy.png Graphic file (type png)
 <use images/possible_score_strategy.png>
 Package pdftex.def Info: images/possible_score_strategy.png  used on input line
- 410.
+ 464.
 (pdftex.def)             Requested size: 199.89284pt x 199.16928pt.
- [12 <./images/color_ratio_strategy.png>]
-[13 <./images/possible_score_strategy.png>]
+ [14 <./images/color_ratio_strategy.png>]
+[15 <./images/possible_score_strategy.png>]
 Hoofdstuk 4.
-[14
+[16
 
 ]
 Hoofdstuk 5.
-(Draftv1.bbl [15
+(Draftv1.bbl [17
 
-]) [16
+]) [18
 
 ]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <7> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 449.
-<images/sedes.png, id=286, 402.5439pt x 683.6742pt>
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 504.
+<images/sedes.png, id=342, 402.5439pt x 683.6742pt>
 File: images/sedes.png Graphic file (type png)
 <use images/sedes.png>
-Package pdftex.def Info: images/sedes.png  used on input line 459.
+Package pdftex.def Info: images/sedes.png  used on input line 514.
 (pdftex.def)             Requested size: 27.64043pt x 46.94704pt.
 
-Overfull \hbox (18.18004pt too wide) in paragraph at lines 463--464
+Overfull \hbox (18.18004pt too wide) in paragraph at lines 518--519
 [][][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 465.
-[17 <./images/sedes.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 465.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 520.
+[19 <./images/sedes.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 520.
  (Draftv1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 465.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 465.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 520.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 520.
+Package rerunfilecheck Info: File `Draftv1.out' has not changed.
+(rerunfilecheck)             Checksum: 30A70641B82F0405B6592902B43A374A;1123.
 
 
-Package rerunfilecheck Warning: File `Draftv1.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: Checksums for `Draftv1.out':
-(rerunfilecheck)             Before: AC94691AD86C3532448E5D0B29E59643;993
-(rerunfilecheck)             After:  FD38C8070A6FA822126B9FE75ABC5407;1056.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 465.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 520.
  ) 
 Here is how much of TeX's memory you used:
- 8008 strings out of 493312
- 119443 string characters out of 3140194
- 212055 words of memory out of 3000000
- 11357 multiletter control sequences out of 15000+200000
+ 8049 strings out of 493312
+ 120059 string characters out of 3140194
+ 229111 words of memory out of 3000000
+ 11363 multiletter control sequences out of 15000+200000
  28640 words of font info for 65 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,14n,35p,1380b,856s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,14n,35p,1380b,1627s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/programmas/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<D:/programmas/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/programmas/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmmi12.pfb><D:/programmas/MiKTeX 2.9/fonts/type1/public/
@@ -676,9 +716,9 @@ pe1/public/amsfonts/cm/cmtt12.pfb><D:/programmas/MiKTeX 2.9/fonts/type1/public/
 amsfonts/latxfont/line10.pfb><D:/programmas/MiKTeX 2.9/fonts/type1/urw/helvetic
 /uhvb8a.pfb><D:/programmas/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><D:/p
 rogrammas/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Draftv1.pdf (23 pages, 443434 bytes).
+Output written on Draftv1.pdf (25 pages, 454727 bytes).
 PDF statistics:
- 356 PDF objects out of 1000 (max. 8388607)
- 89 named destinations out of 1000 (max. 500000)
- 189 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 420 PDF objects out of 1000 (max. 8388607)
+ 124 named destinations out of 1000 (max. 500000)
+ 205 words of extra memory for PDF output out of 10000 (max. 10000000)
 

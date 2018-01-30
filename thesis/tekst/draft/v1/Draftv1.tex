@@ -178,7 +178,7 @@ In deze thesis ben ik van plan PPL's met verschillende programmeerparadigma zoal
 
 \chapter{Achtergrond}
 In deze sectie vindt u de nodige achtergrondinformatie om de rest van deze thesis te begrijpen.
-\section{Redeneren met onzekerheid}
+\section{Redeneren met Onzekerheid}
 Redeneren met onzekerheid is \'{e}\'{e}n van de invloedrijkste domeinen van Artifici\"{e}le Intelligentie. De reden hiervoor is omdat het universum van nature veel onzekerheid bevat. Denk aan de volgende punten:
 \begin{itemize}
 	\item Kennis (We kunnen niet alles van het toepassingsdomein weten.)
@@ -252,7 +252,7 @@ Als we de benamingen van figuur~\ref{figure:alarmearthquakeburglary} gebruiken w
 \end{equation}
 De regel van Bayes geeft de kans dat een hypothese waar is in het model waar er al dan niet bewijsmateriaal is dat influentie heeft op de kans dat de hypothese waar is. Meer informatie over bayesiaanse netwerken en het redeneren over deze netwerken in het boek \quotes{Bayesian Reasoning and Machine Learning} \cite{barberBRML2012}. 
 \\\\
-PPL's berekenen hetzelfde aan de hand van het inferentieproces dat de taal implementeert. Hoe ze dit doen verschilt voor elke PPL en wordt duidelijk uitgelegd in secties~\ref{subsubsec:inferentieProbLog2} en ~\ref{subsubsec:inferentieAnglican}. Het berekenen van de inferentie is een zeer krachtig, maar een zeer rekenintensief proces. Veel PPL's zoeken een balans tussen hoe efficient ze inferentie kunnen berekenen en welke problemen ze kunnen modelleren (hoe expressief de taal is).
+PPL's berekenen hetzelfde aan de hand van het inferentieproces dat de taal implementeert. Hoe ze dit doen verschilt voor elke PPL en wordt duidelijk uitgelegd in secties~\ref{subsubsec:inferentieProbLog2} en ~\ref{subsubsec:InferentieAnglican}. Het berekenen van de inferentie is een zeer krachtig, maar een zeer rekenintensief proces. Veel PPL's zoeken een balans tussen hoe efficient ze inferentie kunnen berekenen en welke problemen ze kunnen modelleren (hoe expressief de taal is).
 
 \section{Probabilistische Programmeertalen}
 Probabilistische programmeertalen (of PPL's van Probabilistic Programming Languages) zijn programmeertalen met 2 hoofddoelen:
@@ -261,46 +261,99 @@ Probabilistische programmeertalen (of PPL's van Probabilistic Programming Langua
   \item Het redeneren/infereren van vragen over deze wereld met behulp van dit model.
 \end{itemize}
 PPL's worden meestal ge\"{i}mplementeerd als extensie op bestaande general-purpose programmeertalen. PPL's zoals Anglican en Church zijn gebasseerd op een dialect van LISP (een functionele programmeertaal). ProbLog2 en PRISM zijn gebasseerd op Prolog (een logische programmeertaal). Voor sommige talen zoals Stan is een speciale taal ontwikkeld die niet gebasseerd is op een bestaande programmeertaal.
-Deze thesis behandelt 2 PPL's, namelijk: ProbLog2 en Anglican. De secties~\ref{sec:ProbLog2} en~\ref{sec:Anglican} geven meer informatie over deze twee PPL's en hoe het modelleer- en inferentieproces werkt.
+Deze thesis behandelt 2 PPL's, namelijk: ProbLog2 en Anglican. Secties~\ref{sec:ProbLog2} en~\ref{sec:Anglican} geven meer informatie over deze twee PPL's en hoe het modelleer- en inferentieproces werkt.
 \subsection{ProbLog2}
 \label{sec:ProbLog2}
-ProbLog2 is een PPL gebaseerd op Prolog en gebruikt dus een logisch programmeerparadigma. 
-\subsubsection{Modelleren in ProbLog2} 
-Een ProbLog2 programma maakt, zoals in Prolog, gebruik van feiten en logische regels. Het verschil met Prolog is dat deze feiten en logische regels geannoteerd zijn met kansen. In een prolog programma kunnen we feiten voorstellen als \quotes{head(parameters).}. logische regels worden voorgesteld met de volgende syntax: \quotes{head(parameters) :- body.}.
-\begin{lstlisting}
-coin(c1).
-head(C) :- coin(C).
-\end{lstlisting}
-In bovenstaande code is \quotes{coin(c1).} een feit en \quotes{head(C) :- coin(C).}. In de bovenstaande code is c1 een muntstuk en als de variabel C een muntstuk is, is de regel head(C) logisch waar in het programma.
+ProbLog2 is een PPL gebaseerd op de programmeertaal Prolog. De volgende secties~\ref{subsubsec:ModellereninProbLog2} en~\ref{subsubsec:inferentieProbLog2} geeft meer informatie over het modelleer- en inferentieproces. De volgende onderwerpen komen aan bod in sectie~\ref{subsubsec:ModellereninProbLog2}:
+\begin{itemize}
+	\item Syntax van een ProbLog programma
+	\item Annotated Disjunction
+	\item Flexibele kansen
+\end{itemize} 
+De volgende onderwerpen komen aan bod in sectie~\ref{subsubsec:inferentieProbLog2}:
+\begin{itemize}
+	\item Exacte inferentie
+	\item benaderende inferentie
+	\item inferentieproces voor exacte en benaderende inferentie
+	\item stochastische memoisatie
+	\item inferentieproces manipuleren met Python
+\end{itemize} 
+\subsubsection{Modelleren in ProbLog2}
+\label{subsubsec:ModellereninProbLog2}
+Een ProbLog2 programma bestaat uit 3 delen:
+\begin{itemize}
+	\item Een verzameling van gegronde probabilistische feiten
+	\item Een logisch programma (verzameling van niet probabilistische regels)
+	\item vragen en bewijsmateriaal over het model
+\end{itemize}
+een gegrond probabilistisch feit ziet er uit als \lstinline{p::f}. p is de kans dat het feit f waar is in het model. Het is ook mogelijk om gegronde probabilistische feiten volgens te schrijven als \lstinline{p::f(X1,X2,...,Xn) :- body}. Het is belangrijk dat body het domein definieert van de variabelen X1, X2,..., Xn.
 \\\\
-In ProbLog2 worden feiten en logische regels geannotteerd met kansen. We stellen feiten voor als \quotes{x::head(parameters).} en logische regels als \quotes{x::head(parameters) :- body.}. x is hier de kans dat het feit waar is in het model en is een waarde tussen [0,1]. Als we de bovenstaande Prolog code schrijven in ProbLog2 code wordt dit:
-\begin{lstlisting}
-1::coin(c1).
-1::head(C) :- coin(C).
-\end{lstlisting}
-Deze code doet hetzelfde als de Prolog code. c1 is nog steeds een muntstuk en als de variabel C een muntstuk is, is head(C) logisch waar in het model. Omdat we het feit en de regel beide een kans van 100\% geven kunnen we dit weglaten en wordt de code:
-\begin{lstlisting}
-coin(c1).
-head(C) :- coin(C).
-\end{lstlisting}
-In ProbLog2 is dit hetzelfde als feiten en regels annoteren met 1.
+Een logisch programma bestaan uit niet probabilistische regels. Deze regels kunnen gebruik maken van probabilistische feiten.
 \\\\
-Een interessanter voorbeeld van een ProbLog2 model is het modelleren van een muntstuk:
-\begin{lstlisting}
-coin(c1).
-0.5::heads(C) :- coin(C).
-\end{lstlisting}
-In het bovenstaand programma hebben we het feit: \quotes{coin(c1).} en de probabilistische regel: \quotes{0.5::heads(C) :- coin(C).}. In dit model is c1 nog steeds een muntstuk. Het verschil met de vorige code is dat de regel heads(C) waar is in het model met 50\% kans voor elke munt C als coin(C) waar is.
+Vragen over het model komen in de vorm van \lstinline{query(f)} en bewijsmateriaal van het model komt in de vorm van \lstinline{evidence(f,Boolean)}. \lstinline{query(f)} vraagt aan ProbLog wat de kans is dat de regel f waar is in het model. \lstinline{evidence(f,Boolean)} geeft bewijs dat regel f waar is of niet waar is in het model.
 \\\\
-We kunnen ook gebruik maken van \quotes{annotated disjunction}. Dit is syntactische suiker om hetzelfde te bereiken. Als we een munt willen modelleren die 45\% kans heeft op kop, 45\% kans heeft op munt en 10\% kans heeft om op zijn rand te landen modelleren we dit als volgt:
+Als we het onzekerheidsprobleem met het alarm en de aardbeving en de inbraak van voorbeeld~\ref{exmp:inferentiaexamplealarm} willen schrijven in ProbLog ziet het er als volgt uit:
 \begin{lstlisting}
-coin(c1).
-0.45::heads(C); 0.45::tails(C); 0.1::side(C) :- coin(C).
+0.7::burglary.
+0.2::earthquake.
+0.9::p_alarm1.
+0.8::p_alarm2.
+0.1::p_alarm3.
+
+alarm :- burglary, earthquake, p_alarm1.
+alarm :- burglary, \+earthquake, p_alarm2.
+alarm :- \+burglary, earthquake, p_alarm3.
+
+evidence(alarm,true).
+query(earthquake).
 \end{lstlisting}
-In de bovenstaande code is c1 nog steeds een muntstuk. De tweede regel is een voorbeeld van \quotes{annotated disjunction}. Deze regel moet gelezen worden als: \quotes{heads(C) is voor 45\% kans waar in het model, tails(C) is voor 45\% kans waar in het model en side(C) is voor 10\% kans waar in het model voor elk muntstuk C waar coin(C) waar is. Er kan altijd maar 1 van de 3 waar zijn in het model.}
-In dit voorbeeld geeft het de regel heads(C) voor een muntstuk C waar voor 50\% van de tijd en niet waar voor 50\% van de tijd. De totale kans voor het predicaat heads is 100\%. Stel dat we heads(C,false). een kans geven van 0.4, dan hebben we 50\% kans op true als parameter voor heads, 40\% kans op false als parameter voor heads en 10\% kans dat het predicaat zelf false terug geeft. Voor dit klein programma lijkt dit onnodig maar voor grotere probabilistische problemen kan “annotated disjunction” zeer handig zijn om een beter inzicht te krijgen over wat de probabilistische predicaten doen.
+In bovenstaande code is het feit \lstinline{burglary}, \lstinline{earthquake}, \lstinline{p_alarm1},\lstinline{p_alarm2} en \lstinline{p_alarm3} geannotteerd met een kans. Dit zijn gegronde probabilistische feiten. \lstinline{0.7::burglary.} moet gelezen worden als: \quotes{er is 70\% kans dat inbraak waar is in het model}, Dit is analoog voor \lstinline{earthquake}, \lstinline{p_alarm1},\lstinline{p_alarm2} en \lstinline{p_alarm3}. Het feit \lstinline{alarm} is ook een gegrond probabilistisch feit maar deze is afgeleid van andere gegronde probabilistische feiten. Als de body van een afgeleid gegrond probabilistisch feit niet waar is, is het feit ook niet waar.
 \\\\
-De combinatie van deze regels en het logisch programmeer systeem Prolog geeft ons de mogelijkheid om zeer uitgebreide probabilistische problemen te modelleren. We kunnen vragen stellen aan deze modellen en deze vragen aan de hand van de inferentie machine van ProbLog2 oplossen. De volgende sectie legt uit hoe deze vragen worden opgelost in ProbLog2.
+We geven het model mee dat het alarm is afgegaan aan de hand van bewijsmateriaal (\lstinline{evidence(alarm,true).}). Daarna vragen we aan het model wat de kans is dat er een aardbeving is (\lstinline{query(earthquake).}).
+\\\\
+In de bovenstaande code maken we gebruik van gegronde probabilistische feiten zoals \lstinline{p_alarm1}, \lstinline{p_alarm2} en \lstinline{p_alarm3} om de kansen te bepalen dat het alarm afgaat bij bepaalde situaties zoals: \quotes{90\% kans dat het alarm afgaat als er een inbraak en een aardbeving is.}. Aan de hand van geannoteerde disjunctie kunnen we dit op een overzichtelijke manier schrijven. De code word dan:
+\begin{lstlisting}
+0.7::burglary.
+0.2::earthquake.
+
+0.9::alarm :- burglary, earthquake.
+0.8::alarm :- burglary, \+earthquake.
+0.1::alarm :- \+burglary, earthquake.
+
+evidence(alarm,true).
+query(earthquake).
+\end{lstlisting}
+geannoteerde disjunctie wordt ook gebruikt voor de kansverdeling te bepalen voor variabelen met een groter domein. In bovenstaande code is \lstinline{earthquake} terwijl waar of niet waar in het model. Als we dit willen uitbreiden naar 1\% kans op een zware aardbeving, 19\% kans op een lichte aardbeving en 80\% kans op geen aardbeving maken we gebruik van geannoteerde disjunctie. De code wordt dan:
+\begin{lstlisting}
+0.7::burglary.
+0.01::earthquake(heavy); 0.19::earthquake(mild); 0.8::earthquake(none).
+
+0.90::alarm :-   burglary, earthquake(heavy).
+0.85::alarm :-   burglary, earthquake(mild).
+0.80::alarm :-   burglary, earthquake(none).
+0.10::alarm :- \+burglary, earthquake(mild).
+0.30::alarm :- \+burglary, earthquake(heavy).
+
+evidence(alarm,true).
+query(earthquake(_)).
+\end{lstlisting}
+De puntkomma tussen de feiten \lstinline{earthquake} wilt zeggen dat er terwijl \lstinline{earthquake(heavy)}, \lstinline{earthquake(mild)} of \lstinline{earthquake(none)} waar is in het model maar nooit 2 van deze feiten.
+\\\\
+Stel dat de staat van het alarm degradeerd met de jaren en de kans dat het alarm afgaat vermindert met het aantal jaar dat het oud is. Dit kunnen we oplossen aan de hand van flexibele kansen. Flexibele kansen worden gebruikt als de kans dat een gegrond probabilistisch feit afhangt van andere waarden. De volgende code geeft een voorbeeld van een alarm systeem dat degradeerd met de jaren:
+\begin{lstlisting}
+0.7::burglary.
+0.01::earthquake(heavy); 0.19::earthquake(mild); 0.8::earthquake(none).
+
+P::alarm(Old) :- P is 0.90 - (Old / 100),   burglary, earthquake(heavy).
+P::alarm(Old) :- P is 0.85 - (Old / 100),   burglary, earthquake(mild).
+P::alarm(Old) :- P is 0.80 - (Old / 100),   burglary, earthquake(none).
+P::alarm(Old) :- P is 0.10 - (Old / 100), \+burglary, earthquake(mild).
+P::alarm(Old) :- P is 0.30 - (Old / 100), \+burglary, earthquake(heavy).
+
+evidence(alarm(10),true).
+query(earthquake(_)).
+\end{lstlisting}
+De combinatie van deze regels en het logisch programmeer systeem Prolog geeft ons de mogelijkheid om zeer uitgebreide onzekerheidsproblemen te modelleren. We kunnen vragen stellen aan deze modellen en deze vragen aan de hand van de inferentie machine van ProbLog2 oplossen. De volgende sectie~\ref{subsubsec:inferentieProbLog2} legt uit hoe deze vragen worden opgelost in ProbLog2.
 \subsubsection{Inferentie}
 \label{subsubsec:inferentieProbLog2}
 Om vragen te stellen over het model maken we gebruik van queries en bewijzen. Als we willen berekenen hoeveel kans we hebben dat we 2 munten tossen en ze beiden op hoofd landen kunnen we dit doen aan de hand van het volgende programma:
@@ -331,9 +384,10 @@ Om de succes probabiliteit (SUCC), de conditionele probabiliteit (MARG) en de me
 De API van het ProbLog2 systeem kan ook gebruikt worden via Python. Hierdoor kunnen we gebruik maken van Python om het inferentie process te manipuleren. Dit zorgt voor extra uitbreidbaarheid van verschillende problemen en dus extra expressiviteit van het systeem in totaal. De API is beschikbaar via de volgende URL: https://problog.readthedocs.io/en/latest/api.html
 \subsection{Anglican}
 \label{sec:Anglican}
-\subsubsection{Modelleren in Anglican} 
+\subsubsection{Modelleren in Anglican}
+\label{subsubsec:ModellerenInAnglican}
 \subsubsection{Inferentie}
-\label{subsubsec:inferentieAnglican}
+\label{subsubsec:InferentieAnglican}
 
 
 \chapter{Uitwerking}
@@ -417,6 +471,7 @@ De gewogen score strategie is een uitbreiding op de mogelijke score strategie wa
 \chapter{Evaluatie}
 \section{ProbLog2}
 \section{Anglican}
+\section{ProbLog2 - Anglican}
 
 \chapter{Conclusie}
 \section{Toekomstig werk}
