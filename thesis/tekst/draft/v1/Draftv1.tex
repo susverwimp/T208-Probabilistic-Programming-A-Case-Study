@@ -264,7 +264,7 @@ PPL's worden meestal ge\"{i}mplementeerd als extensie op bestaande general-purpo
 Deze thesis behandelt 2 PPL's, namelijk: ProbLog2 en Anglican. Secties~\ref{sec:ProbLog2} en~\ref{sec:Anglican} geven meer informatie over deze twee PPL's en hoe het modelleer- en inferentieproces werkt.
 \subsection{ProbLog2}
 \label{sec:ProbLog2}
-ProbLog2 is een PPL gebaseerd op de programmeertaal Prolog. De volgende secties~\ref{subsubsec:ModellereninProbLog2} en~\ref{subsubsec:inferentieProbLog2} geeft meer informatie over het modelleer- en inferentieproces. De volgende onderwerpen komen aan bod in sectie~\ref{subsubsec:ModellereninProbLog2}:
+ProbLog2 is een PPL gebaseerd op de programmeertaal Prolog. De volgende secties~\ref{subsubsec:ModellereninProbLog2} en~\ref{subsubsec:inferentieProbLog2} geven meer informatie over het modelleer- en inferentieproces. De volgende onderwerpen komen aan bod in sectie~\ref{subsubsec:ModellereninProbLog2}:
 \begin{itemize}
 	\item Syntax van een ProbLog programma
 	\item Annotated Disjunction
@@ -290,7 +290,7 @@ een gegrond probabilistisch feit ziet er uit als \lstinline{p::f}. p is de kans 
 \\\\
 Een logisch programma bestaan uit niet probabilistische regels. Deze regels kunnen gebruik maken van probabilistische feiten.
 \\\\
-Vragen over het model komen in de vorm van \lstinline{query(f)} en bewijsmateriaal van het model komt in de vorm van \lstinline{evidence(f,Boolean)}. \lstinline{query(f)} vraagt aan ProbLog wat de kans is dat de regel f waar is in het model. \lstinline{evidence(f,Boolean)} geeft bewijs dat regel f waar is of niet waar is in het model.
+Vragen over het model komen in de vorm van \lstinline{query(f)} en bewijsmateriaal van het model komt in de vorm van \lstinline{evidence(f,Boolean)}. \lstinline{query(f)} vraagt aan ProbLog wat de kans is dat de regel f waar is in het model. f is een query atoom van het model. \lstinline{evidence(f,Boolean)} geeft bewijs dat regel f waar is of niet waar is in het model naar gelang de booleanse waarde die meegegeven wordt.
 \\\\
 Als we het onzekerheidsprobleem met het alarm en de aardbeving en de inbraak van voorbeeld~\ref{exmp:inferentiaexamplealarm} willen schrijven in ProbLog ziet het er als volgt uit:
 \begin{lstlisting}
@@ -356,32 +356,27 @@ query(earthquake(_)).
 De combinatie van deze regels en het logisch programmeer systeem Prolog geeft ons de mogelijkheid om zeer uitgebreide onzekerheidsproblemen te modelleren. We kunnen vragen stellen aan deze modellen en deze vragen aan de hand van de inferentie machine van ProbLog2 oplossen. De volgende sectie~\ref{subsubsec:inferentieProbLog2} legt uit hoe deze vragen worden opgelost in ProbLog2.
 \subsubsection{Inferentie}
 \label{subsubsec:inferentieProbLog2}
-Om vragen te stellen over het model maken we gebruik van queries en bewijzen. Als we willen berekenen hoeveel kans we hebben dat we 2 munten tossen en ze beiden op hoofd landen kunnen we dit doen aan de hand van het volgende programma:
-\begin{lstlisting}
-0.5 :: heads1.
-0.5 :: heads2.
-two_heads :- heads1, heads2.
-query(two_heads).
-\end{lstlisting}
-Dit geeft het resultaat 0.25 wat uiteindelijk de kans is van ( ) ( ).
-We kunnen het resultaat van de query manipuleren door bewijs te geven aan dit model. Stel dat we weten dat de eerste munt zeker hoofd als resultaat heeft, dan kunnen we dit als bewijs meegeven aan het model op de volgende manier:
-0.5 :: heads1.
-0.5 :: heads2.
-two\textunderscore heads :- heads1, heads2.
-Evidence(heads1, true).
-query(two\textunderscore heads).
+De ProbLog2 inferentie machine kan verschillende inferentie taken oplossen, namelijk:
+\begin{itemize}
+	\item Marginale kansverdeling (MARG, Marginal)
+	\item Meest waarschijnlijke verklaring (MPE, Most Probable Explenation)
+	\item Leren van interpretaties
+\end{itemize}
+Deze thesis maakt enkel gebruik van het berekenen van de MARG.
 \\\\
-Dit geeft het resultaat 0.5. Omdat we weten dat de eerste munt zeker in hoofd resulteert is de uitkomst gewoon de kans dat de tweede munt op hoofd resulteert. Dit is voor de munt in het model 0.5. Voor meer voorbeelden verwijs ik naar de tutorials van de ProbLog2 website: https://dtai.cs.kuleuven.be/problog/tutorial.html
+ProbLog2 kan de exacte en benaderende MARG berekenen van alle query atomen van het model. De exacte inferentie berekent de exacte kans dat een query atoom waar is in het model rekening houdend met alle mogelijke werelden die kunnen bestaan in het model. Benaderende inferentie maakt gebruik van X aantal samples om de MARG van een query atoom te berekenen. X is hier een vrije keuze. Elke sample berekent de kans dat een query atoom waar is voor \'{e}\'{e}n mogelijke wereld van het model. Als we gebruik maken van een groot aantal samples convergeert de benaderende MARG naar de exacte MARG. Dit komt een groot aantal samples ervoor zorgt dat de kans groot is dat alle mogelijke werelden in het model gesampled worden.
 \\\\
-De inferentiemachine in ProbLog2 is gebasseerd op “Knowledge Compilation”. Dit houdt verschillende stappen in:
+Het inferentieproces voor het berekenen van de MARG in ProbLog2 maakt gebruik van een proces genaamd kennis compilatie (knowledge compilation). Het kennis compilatie proces volgt een aantal chronologische stappen. De volgende stappen zijn hetzelfde voor exacte en benaderende inferentie.
 \begin{enumerate}
-	\item Het “gronden” van het programma. Dit wil zeggen alle variabelen in het programma vervangen door de termen die deze variabelen kunnen bevatten. Dit houdt enkel rekening met de queries dus predicaten in het systeem die niet aangesproken worden, worden ook niet gegrond.
-	\item Het gegronde programma converteren naar een equivallente booleaanse formula.
-	\item Het bewijs en gewogen functies gebruiken om de booleaanse formula te converteren naar een gewogen booleaanse formula.
+	\item ProbLog2 genereert een lijst van de query atomen en bewijsmateriaal van het ProbLog2 programma.
+	\item Aan de hand van de query atomen wordt het ProbLog2 programma geconverteerd naar een ground programma.
+	\item Het ground programma wordt geconverteerd naar booleaans gewogen formules.
 \end{enumerate}
-Om de succes probabiliteit (SUCC), de conditionele probabiliteit (MARG) en de meest waarschijnlijke probabiliteit (MPE) te verkrijgen gebruiken we de gewogen booleaanse formula in combinatie met verschillende algoritmes zoals bijvoorbeeld “Weighted Model Counting (WMC)” om deze te berekenen. Meer informatie over het ProbLog2 Systeem en de inferentiemachine kunt u terugvinden in het artikel (Inference and Learning in Probabilistic Logic Programs using Weighted Boolean Formulas).
+Door gebruik te maken van de booleaans gewogen formules kunnen we gebruik maken van wel gekende algoritmes. het berekenen van de exacte MARG gebeurd door de booleaanse gewogen formules te converteren naar een rekenkring zoals een \quotes{deterministic, decomposable negation normal form (d-DNNF)} of een \quotes{Binary decision diagram (BDD)}. De exacte inferentie wordt berekent door \quotes{Weighted Model Counting (WMC)} uit te voeren op de rekenkring. De rekenkring zorgt ervoor dat WMC met een aanvaardbare tijdcomplexiteit uitgevoerd kan worden.
 \\\\
-De API van het ProbLog2 systeem kan ook gebruikt worden via Python. Hierdoor kunnen we gebruik maken van Python om het inferentie process te manipuleren. Dit zorgt voor extra uitbreidbaarheid van verschillende problemen en dus extra expressiviteit van het systeem in totaal. De API is beschikbaar via de volgende URL: https://problog.readthedocs.io/en/latest/api.html
+Benaderende inferentie wordt berekent aan de hand van een sampling techniek genaamd MC-SAT. Voor de ge\"{i}nteresseerde is er het artikel~\cite{plpinferencelearningwbf}. Dit artikel gaat dieper in op de verschillende stappen voor het berekenen van exacte en benaderende inferentie in ProbLog2. Voor deze thesis is het genoeg om te weten welke stappen er worden uitgevoerd tijdens het inferentieproces. Sectie~\ref{sec:evaluatieProbLog2} vertelt meer over de performantie van de verschillende stappen in het inferentieproces.
+\\\\
+Het ProbLog2 systeem kan gebruikt worden als een stand-alone tool of via Python. Via Python kan elke stap van het inferentieproces gemanipuleert worden. In sectie~\ref{sec:evaluatieProbLog2} staan verschillende voorbeelden waarom het gebruik maken van Python het inferentieproces kan versnellen voor de case study voorgesteld in sectie~\ref{subsec:uitwerkingSpel}.
 \subsection{Anglican}
 \label{sec:Anglican}
 \subsubsection{Modelleren in Anglican}
@@ -392,8 +387,10 @@ De API van het ProbLog2 systeem kan ook gebruikt worden via Python. Hierdoor kun
 
 \chapter{Uitwerking}
 \section{Probleem verzinnen}
+\label{sec:uitwerkingProblem}
 Als onzekerheidsprobleem heb ik gekozen om een spel te modelleren dat onderheven is aan probabilistische aspecten. Om het spel te spelen heb ik 4 spelstrategiën ontwikkeld die elks ook onderheven zijn aan probabilistische aspecten.
 \subsection{Spel}
+\label{subsec:uitwerkingSpel}
 Het spel bestaat uit een bord van 10 op 10 blokken. Wanneer het spel gestart wordt krijgen de blokken een random kleur toegewezen maar er kunnen geen 3 van dezelfde blokken op een rij staan (enkel verticaal en horizontaal). Er zijn 4 kleuren in totaal: rood, groen, geel, blauw. In figuur~\ref{figure:initialboard} ziet u een voorbeeld van een initi\"{e}el bord.
 \begin{figure}
 	\centering
@@ -469,9 +466,13 @@ In de mogelijke score strategie wordt voor elke blok apart nagegaan of deze een 
 De gewogen score strategie is een uitbreiding op de mogelijke score strategie waar we niet enkel naar de mogelijke score zien, maar naar de gewogen score. Elke blok kan veranderen van kleur aan de hand van een kansverdeling. De gewogen score strategie houdt rekening met deze kansverdeling. De gewogen score wordt berekend aan de hand van de score als een blok in Rood/Groen/Blauw/Geel verandert gewogen met de kans dat de blok verandert in Rood/Groen/Blauw/Geel.
 
 \chapter{Evaluatie}
+\label{ch:evaluatie}
 \section{ProbLog2}
+\label{sec:evaluatieProbLog2}
 \section{Anglican}
+\label{sec:evaluatieAnglican}
 \section{ProbLog2 - Anglican}
+\label{sec:evaluatieProbLog2Anglican}
 
 \chapter{Conclusie}
 \section{Toekomstig werk}
