@@ -385,13 +385,14 @@ Het ProbLog2 systeem kan gebruikt worden als een stand-alone tool of via Python.
 \label{subsubsec:InferentieAnglican}
 
 
-\chapter{Uitwerking}
-\section{Probleem verzinnen}
+\chapter{Uitwerking van de case-study}
+Omdat het niet triviaal is om PPL's te vergelijken en evalueren wordt er een case-study gebruikt. Aan de hand van deze case-study worden de PPL's ge\"{e}valueerd aan de hand van qualitatieve en quantitatieve criteria. Volgende secties~\ref{sec:uitwerkingProblem} en~\ref{sec:uitwerkingEvaluatiecriteria} geven meer informatie over het onzekerheidsprobleem van de case-study en de evaluatiecriteria.
+\section{Onzekerheidsprobleem}
 \label{sec:uitwerkingProblem}
-Als onzekerheidsprobleem heb ik gekozen om een spel te modelleren dat onderheven is aan probabilistische aspecten. Om het spel te spelen heb ik 4 spelstrategiën ontwikkeld die elks ook onderheven zijn aan probabilistische aspecten.
+Het onzekerheidsprobleem bestaat uit een speld dat dat be\"{i}nvloed word door probabilistische aspecten. Het spel wordt gespeeld aan de hand van vier verschillende strategie\"{e}n die elks ook be\"{i}nvloed worden door probabilistische aspecten.
 \subsection{Spel}
 \label{subsec:uitwerkingSpel}
-Het spel bestaat uit een bord van 10 op 10 blokken. Wanneer het spel gestart wordt krijgen de blokken een random kleur toegewezen maar er kunnen geen 3 van dezelfde blokken op een rij staan (enkel verticaal en horizontaal). Er zijn 4 kleuren in totaal: rood, groen, geel, blauw. In figuur~\ref{figure:initialboard} ziet u een voorbeeld van een initi\"{e}el bord.
+Het spel bestaat uit een bord van 10 bij 10 blokken. Wanneer het spel gestart wordt krijgen de blokken een random kleur toegewezen maar er kunnen geen 3 van dezelfde blokken op een rij staan (verticaal en horizontaal). Er zijn 4 mogelijke kleuren: rood, groen, geel, blauw. In figuur~\ref{figure:initialboard} ziet u een voorbeeld van een initi\"{e}el bord.
 \begin{figure}
 	\centering
 	\includegraphics[height=60truemm]{grid\string_10x10\string_colors}
@@ -399,8 +400,7 @@ Het spel bestaat uit een bord van 10 op 10 blokken. Wanneer het spel gestart wor
 	\label{figure:initialboard}
 \end{figure}
 \\\\
-De speler kan op elk van de blokken op het bord drukken. Als de speler op een blok drukt verandert deze van kleur. De kleur waar de blok in veranderd hangt af van de probabilistische distributie. Om het simpel te houden gebruik ik hier een uniforme distributie:
-
+De speler kan op elk van de blokken op het bord drukken. Als de speler op een blok drukt verandert dit van kleur. De kleur waar het blok in verandert hangt af van de probabilistische distributie. Om het simpel te houden wordt er voor een uniforme distributie gekozen. Tabel~\ref{tab:changecolordistribution} geeft de kansdistributie voor elk blok weer.
 \renewcommand{\arraystretch}{2}
 \begin{table}
 	\begin{center}
@@ -412,67 +412,91 @@ De speler kan op elk van de blokken op het bord drukken. Als de speler op een bl
 			\textbf{Blauw} &$\frac{1}{3}$&$\frac{1}{3}$&0&$\frac{1}{3}$\\[2ex]\hline
 			\textbf{Geel} &$\frac{1}{3}$&$\frac{1}{3}$&$\frac{1}{3}$&0\\[2ex]\hline
 		\end{tabular}
-		\caption{\label{tab:changecolordistribution}Probabilistische distributie voor het veranderen van kleuren.}		
+		\caption{\label{tab:changecolordistribution}Probabilistische distributie voor het veranderen van kleuren. Een rood blok heeft 1/3 kans dat het verandert in een groen blok, 1/3 kans dat het verandert in een blauw blok en 1/3 kans dat het verandert in een geel blok. Analoog voor een groen, blauw en geel blok.}		
 	\end{center}	
 \end{table}
 \renewcommand{\arraystretch}{1}
-
-In woorden betekent dit dat als er op een rode blok wordt gedrukt er 1/3 kans is dat deze blok in een groene verandert, 1/3 kans in een blauwe verandert en 1/3 kans in een gele verandert. Voor een groene, blauwe en gele blok is dit analoog.
 \\\\
-Als er drie of meer blokken van dezelfde kleur ofwel horizontaal naast elkaar liggen ofwel verticaal naast elkaar liggen verdwijnen ze en dit levert punten op. De blokken die zich boven de verdwenen blokken bevinden vallen naar beneden tot ze op een andere blok belanden ofwel op de bodem van het spelbord belanden. Voor elke blok die verwijderd wordt krijgt de speler 1 punt. De bedoeling van het spel is om in 5 beurten zoveel mogelijk punten te behalen waarin de speler in elke beurt 1 blok van kleur mag veranderen. De beurt eindigt wanneer er geen 3 blokken van dezelfde kleur meer op een rij staan. In figuur 3 ziet u het verloop van een beurt in een 10x10 bord.
+Als er drie of meer blokken van dezelfde kleur horizontaal of verticaal naast elkaar liggen verdwijnen ze en dit levert punten op. De blokken die zich boven de verdwenen blokken bevinden vallen naar beneden tot ze op een andere blok belanden ofwel op de bodem van het spelbord belanden. Voor elke blok die verwijderd wordt krijgt de speler 1 punt. De bedoeling van het spel is om in 5 beurten zoveel mogelijk punten te behalen waarin de speler in elke beurt 1 blok van kleur mag veranderen. De beurt eindigt wanneer er geen 3 blokken van dezelfde kleur meer op een rij staan. In figuur~\ref{figure:boardturn} ziet u het verloop van een beurt in een 10 bij 10 bord.
 \begin{figure}
 	\centering
 	\includegraphics[height=80truemm]{turn}
-	\caption{er wordt een blok gekozen om op te drukken, in dit geval een rode blok. De blok verandert met een 1/3 kans in een groene blok. Omdat er meer als 2 blokken van dezeflde kleur op een rij staan worden deze verwijderd en de bovenstaande blokken vallen naar beneden. Dit wordt herhaald tot er niet meer als 2 blokken van dezelfde kleur op een rij staan}
-	\label{figure:initialboard}
+	\caption{Er wordt een blok gekozen om op te drukken, in dit geval een rood blok. Het blok verandert met een 1/3 kans in een groene blok. Omdat er meer dan 2 groene blokken op een rij staan worden deze verwijderd en de bovenstaande blokken vallen naar beneden. Dit wordt herhaald tot er niet meer dan 2 blokken van dezelfde kleur op een rij staan}
+	\label{figure:boardturn}
 \end{figure}
-\subsection{Strategi\"{e}n}
+\subsection{Strategie\"{e}n}
 Ik heb 4 strategiën ontwikkeld om het spel te spelen.
 \begin{itemize}
-	\item Uniforme strategie
-	\item Kleuren ratio strategie
-	\item Mogelijke score strategie
-	\item Gewogen score strategie
+	\item uniforme strategie,
+	\item kleuren ratio strategie,
+	\item mogelijke score strategie en
+	\item gewogen score strategie.
 \end{itemize}
-Deze strategiën kunnen gebruikt worden om het spel te spelen op een bepaalde wijze. Elke strategie kiest altijd 1 blok uit de mogelijke blokken die beschikbaar zijn. Welk blok dit is hangt van de strategie af.
+Deze strategie\"{e}n worden gebruikt om het spel te spelen op een bepaalde wijze. Elke strategie kiest altijd \"{e}\"{e}n blok uit de mogelijke blokken die beschikbaar zijn. Welk blok dit is bepaalt de strategie.
 
 \subsubsection{Uniforme strategie}
-Als de uniforme strategie wordt toegepast is de kans dat een blok gekozen wordt uniform voor elk blok in het spelbord. Voor een 10x10 bord is de kans dat een blok wordt gekozen . In figuur 4 zien we alle mogelijke keuzes die de uniforme strategie kan kiezen in het gegeven bord.
+Als de uniforme strategie wordt toegepast is de kans dat een blok gekozen wordt uniform voor elk blok in het spelbord. Voor een 10 bij 10 bord is de kans dat een blok wordt gekozen dus $\frac{1}{10 * 10} = \frac{1}{100}$. Figuur~\ref{figure:uniformStrategy} toont alle mogelijke keuzes die de uniforme strategie kan kiezen in het gegeven bord.
 \begin{figure}
 	\centering
 	\includegraphics[height=70truemm]{uniform\string_strategy}
-	\caption{In de uniforme strategie kunnen alle blokken gekozen worden met een uniforme kans verdeling. De kans is 1/100 voor elke blok in dit geval}
-	\label{figure:initialboard}
+	\caption{In de uniforme strategie kunnen alle blokken gekozen worden met een uniforme kans verdeling. De kans is $\frac{1}{100}$ voor elke blok in dit geval.}
+	\label{figure:uniformStrategy}
 \end{figure}
 
 \subsubsection{Kleuren ratio strategie}
-Voor de kleuren ratio strategie worden eerst alle blokken met dezelfde kleur opgeteld. Uit de kleur met het minst aantal blokken wordt uniform een blok gekozen. In figuur 5 zien we dat de blauwe blokken in de minderheid zijn. De strategie zorgt ervoor dat er uniform een blauwe blok wordt gekozen.
+Voor de kleuren ratio strategie worden eerst alle blokken met dezelfde kleur opgeteld. Uit de kleur met het minst aantal blokken wordt uniform een blok gekozen. In figuur~\ref{figure:colorRatioStrategy} zien we dat de blauwe blokken in de minderheid zijn. De strategie zorgt ervoor dat er uniform een blauw blok wordt gekozen.
 \begin{figure}
 	\centering
 	\includegraphics[height=70truemm]{color\string_ratio\string_strategy}
-	\caption{In bovenstaande figuur is de kleuren ratio voor de blauwe blokken het minst. Hier wordt uniform een blauwe blok gekozen met een 1/17 kans voor elke blok}
-	\label{figure:initialboard}
+	\caption{De kleuren ratio voor de blauwe blokken is het minst. Hier wordt uniform een blauw blok gekozen met kans $\frac{1}{17}$ voor ieder blok.}
+	\label{figure:colorRatioStrategy}
 \end{figure}
 
 \subsubsection{Mogelijke score strategie}
-In de mogelijke score strategie wordt voor elke blok apart nagegaan of deze een mogelijke score kan hebben. Een blok kan een mogelijke score hebben als deze blok kan veranderen in een kleur die een score oplevert. In figuur 6 ziet u alle blokken aangeduid die een mogelijke score kunnen opleveren. Er wordt 1 blok uit deze blokken gekozen met een uniforme kansverdeling.
+In de mogelijke score strategie wordt voor elk blok apart nagegaan of deze een mogelijke score kan hebben. Een blok heeft een mogelijke score als deze blok kan veranderen in een kleur die een score oplevert. Figuur~\ref{figure:possibleScoreStrategy} toont alle blokken die een mogelijke score kunnen opleveren. De mogelijke score strategie zorgt ervoor dat er uniform \"{e}\"{e}n blok gekozen wordt uit de lijst van blokken met een mogelijke score.
 \begin{figure}
 	\centering
 	\includegraphics[height=70truemm]{possible\string_score\string_strategy}
-	\caption{In een mogelijke score strategie wordt er uniform een blok gekozen uit alle blokken met een mogelijke score. In dit geval zijn er 48 blokken met een mogelijke score dus de kansverdeling is 1/48 voor elke blok}
-	\label{figure:initialboard}
+	\caption{In een mogelijke score strategie wordt er uniform een blok gekozen uit alle blokken met een mogelijke score. In dit geval zijn er 48 blokken met een mogelijke score dus de kans is $\frac{1}{48}$ voor elke blok.}
+	\label{figure:possibleScoreStrategy}
 \end{figure}
 \subsubsection{Gewogen score strategie}
-De gewogen score strategie is een uitbreiding op de mogelijke score strategie waar we niet enkel naar de mogelijke score zien, maar naar de gewogen score. Elke blok kan veranderen van kleur aan de hand van een kansverdeling. De gewogen score strategie houdt rekening met deze kansverdeling. De gewogen score wordt berekend aan de hand van de score als een blok in Rood/Groen/Blauw/Geel verandert gewogen met de kans dat de blok verandert in Rood/Groen/Blauw/Geel.
+De gewogen score strategie is een uitbreiding op de mogelijke score strategie waar we niet enkel naar de mogelijke score zien, maar ook naar de gewogen score. Elk blok kan veranderen van kleur aan de hand van een kansverdeling zoals in tabel~\ref{tab:changecolordistribution}. De gewogen score strategie houdt rekening met deze kansverdeling. De gewogen score wordt berekend aan de hand van de score als een blok in Rood/Groen/Blauw/Geel verandert gewogen met de kans dat de blok verandert deze kleur.
+\section{Evaluatiecriteria}
+\label{sec:uitwerkingEvaluatiecriteria}
+\subsection{Performantie}
+\subsection{Expressiviteit}
+\subsection{Uitbreidbaarheid}
+\subsection{Geheugengebruik}
+\subsection{Beschikbare Tools}
+\subsection{Moeilijkheidsgraad}
 
 \chapter{Evaluatie}
 \label{ch:evaluatie}
 \section{ProbLog2}
 \label{sec:evaluatieProbLog2}
+\subsection{Performantie}
+\subsection{Expressiviteit}
+\subsection{Uitbreidbaarheid}
+\subsection{Geheugengebruik}
+\subsection{Beschikbare Tools}
+\subsection{Moeilijkheidsgraad}
 \section{Anglican}
 \label{sec:evaluatieAnglican}
+\subsection{Performantie}
+\subsection{Expressiviteit}
+\subsection{Uitbreidbaarheid}
+\subsection{Geheugengebruik}
+\subsection{Beschikbare Tools}
+\subsection{Moeilijkheidsgraad}
 \section{ProbLog2 - Anglican}
 \label{sec:evaluatieProbLog2Anglican}
+\subsection{Performantie}
+\subsection{Expressiviteit}
+\subsection{Uitbreidbaarheid}
+\subsection{Geheugengebruik}
+\subsection{Beschikbare Tools}
+\subsection{Moeilijkheidsgraad}
 
 \chapter{Conclusie}
 \section{Toekomstig werk}

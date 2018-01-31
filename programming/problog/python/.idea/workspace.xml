@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5eaec465-6bf4-40df-8654-65129ca7d72c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../thesis/tekst/draft/v1/Draftv1.aux" afterPath="$PROJECT_DIR$/../../../thesis/tekst/draft/v1/Draftv1.aux" />
-      <change beforePath="$PROJECT_DIR$/../../../thesis/tekst/draft/v1/Draftv1.log" afterPath="$PROJECT_DIR$/../../../thesis/tekst/draft/v1/Draftv1.log" />
-      <change beforePath="$PROJECT_DIR$/../../../thesis/tekst/draft/v1/Draftv1.pdf" afterPath="$PROJECT_DIR$/../../../thesis/tekst/draft/v1/Draftv1.pdf" />
-      <change beforePath="$PROJECT_DIR$/../../../thesis/tekst/draft/v1/Draftv1.synctex.gz" afterPath="$PROJECT_DIR$/../../../thesis/tekst/draft/v1/Draftv1.synctex.gz" />
-      <change beforePath="$PROJECT_DIR$/../../../thesis/tekst/draft/v1/Draftv1.tex" afterPath="$PROJECT_DIR$/../../../thesis/tekst/draft/v1/Draftv1.tex" />
-    </list>
+    <list default="true" id="5eaec465-6bf4-40df-8654-65129ca7d72c" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
