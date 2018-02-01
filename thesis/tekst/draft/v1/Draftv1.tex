@@ -164,7 +164,7 @@ Voorafgaande schriftelijke toestemming van de promotor(en) is eveneens vereist v
 \pagenumbering{arabic}
 
 \chapter{Inleiding}
-De grote interesse in het redeneren met onzekerheid in Artifici\"{e}le Intelligentie resulteert in de ontwikkeling van verschillende programmeertalen. Deze talen worden probabilistische programmeertalen of PPL (Probabilistic Programming Language) genoemd. Een PPL heeft in grote lijnen 2 hoofddooelen:
+De grote interesse in het redeneren met onzekerheid in Artifici\"{e}le Intelligentie resulteert in de ontwikkeling van verschillende programmeertalen. Deze talen worden probabilistische programmeertalen of PPL (Probabilistic Programming Language) genoemd. Een PPL heeft in grote lijnen 2 hoofddoelen:
 \begin{itemize}
   \item Het modelleren van een wereld met onzekerheid.
   \item Het redeneren/infereren van vragen over deze wereld met behulp van dit model.
@@ -174,7 +174,7 @@ Voorheen was het zeer moeilijk als programmeur om werelden met onzekerheid te mo
 Sinds de laatste jaren zijn er veel verschillende PPL's beschikbaar zoals ProbLog2, Anglican,... De url \url{http://probabilistic-programming.org/wiki/Home} geeft een overzicht van de verschillende PPL's die momenteel beschikbaar zijn.
 Omdat er zo veel PPL's beschikbaar zijn, is het niet altijd duidelijk wat de voordelen of nadelen ten opzichte van elkaar zijn. Verschillende van deze PPL's zijn in recente artikels vergeleken met elkaar op het vlak van eigenschappen en concepten van de taal \cite{plpconcepts}. Andere artikels vergelijken vorige iteraties van dezelfde taal of PPL's met hetzelfde programmeerparadigma (bvb. logische of functionele programmeren) \cite{plpinferencelearningwbf}. Het probleem bij deze vergelijkingen en evaluaties is dat er nooit evaluaties gedaan worden voor PPL's met een verschillend programmeerparadigma.
 \\\\
-In deze thesis ben ik van plan PPL's met verschillende programmeerparadigma zoals ProbLog2 en Anglican te vergelijken en evalueren. het is de bedoeling deze PPL's te evalueren ten opzichte van elkaar aan de hand van qualitatieve en quantitatieve criteria zoals: performantie, expressiviteit, geheugengebruik, uitbreidbaarheid, beschikbare tools, moeilijkheidsgraad,... Omdat het niet triviaal is om programmeertalen te vergelijken die totaal anders ge\"{i}mplementeerd zijn gebeurd de evaluatie aan de hand van een case study. De implementatie van deze case-study in ProbLog2 en Anglican vormt het vertrekpunt voor een vergelijking van deze twee programmeertalen op basis van de hogervernoemde criteria. Uiteindelijk zal deze thesis aantonen welke PPL het best presteert in welke criteria aan de hand van het opgegeven probleem.
+In deze thesis ben ik van plan PPL's met verschillende programmeerparadigma zoals ProbLog2 en Anglican te vergelijken en evalueren. het is de bedoeling deze PPL's te evalueren ten opzichte van elkaar aan de hand van kwalitatieve en kwantitatieve criteria zoals: performantie, expressiviteit, geheugengebruik, uitbreidbaarheid, beschikbare tools, moeilijkheidsgraad,... Omdat het niet triviaal is om programmeertalen te vergelijken die totaal anders ge\"{i}mplementeerd zijn gebeurd de evaluatie aan de hand van een case study. De implementatie van deze case-study in ProbLog2 en Anglican vormt het vertrekpunt voor een vergelijking van deze twee programmeertalen op basis van de hogervermelde criteria. Uiteindelijk zal deze thesis aantonen welke PPL het best presteert in welke criteria aan de hand van het opgegeven probleem.
 
 \chapter{Achtergrond}
 In deze sectie vindt u de nodige achtergrondinformatie om de rest van deze thesis te begrijpen.
@@ -191,7 +191,7 @@ Er zijn 3 belangrijke kwesties in verband met het werken met onzekerheid:
 	\item Redeneren met onzekerheid
 	\item Leren aan de hand van onzekerheid
 \end{itemize}
-Het voorstellen van onzekerheid gebeurt in een model van een onzekerheidsprobleem. Een model is een weergave van een onzekerheidsprobleem waarbij iedere mogelijke wereld kan gesimuleerd worden (zie voorbeeld~\ref{exmp:faircoin}). Onzekerheidsproblemen zijn problemen waar er weinig of geen zekerheid is over de uitkomst van een actie.
+Het voorstellen van onzekerheid gebeurt in een model van een onzekerheidsprobleem. Een model is een weergave van een onzekerheidsprobleem waar bij iedere mogelijke wereld kan gesimuleerd worden (zie voorbeeld~\ref{exmp:faircoin}). Onzekerheidsproblemen zijn problemen waar er weinig of geen zekerheid is over de uitkomst van een actie.
 \begin{exmp}
 \label{exmp:faircoin}
 Een voorbeeld van een onzekerheidsprobleem met weinig zekerheid is het tossen van een eerlijk muntstuk. Hier zijn we zeker dat als we het muntstuk tossen dat het 50\% kans heeft om te landen op kop of munt, maar er is geen zekerheid wat het resultaat is. De actie is hier het tossen van een munt. Deze actie heeft twee mogelijke resultaten, of twee mogelijke werelden: namelijk de wereld waar het muntstuk land op kop en de wereld waar het muntstuk land op munt. Bij een eerlijke munt is de kans dat de eerste wereld bestaat 50\% en de kans dat de tweede wereld 50\%. We weten pas wat het resultaat is als we het resultaat zien. Het resultaat van de actie verandert dan in een gegeven of bewijsmateriaal van het model.
@@ -224,7 +224,7 @@ Stel dat we in een huis wonen in een regio waar er 20\% kans is op een aardbevin
 \end{itemize} 
 Stel dat we het alarm horen afgaan. Wat is de kans dat er een aardbeving is als het alarm afgaat?
 \end{exmp}
-Elementen in het onzekerheidsprobleem die onderheven zijn aan kansen noemen we variabelen. In voorbeeld~\ref{exmp:inferentiaexamplealarm} zijn de variabelen:
+Elementen in het onzekerheidsprobleem die be\"{i}nvloed worden door kansen noemen we variabelen. In voorbeeld~\ref{exmp:inferentiaexamplealarm} zijn de variabelen:
 \begin{itemize}
 	\item Aardbeving
 	\item Inbraak
@@ -252,7 +252,7 @@ Als we de benamingen van figuur~\ref{figure:alarmearthquakeburglary} gebruiken w
 \end{equation}
 De regel van Bayes geeft de kans dat een hypothese waar is in het model waar er al dan niet bewijsmateriaal is dat influentie heeft op de kans dat de hypothese waar is. Meer informatie over bayesiaanse netwerken en het redeneren over deze netwerken in het boek \quotes{Bayesian Reasoning and Machine Learning} \cite{barberBRML2012}. 
 \\\\
-PPL's berekenen hetzelfde aan de hand van het inferentieproces dat de taal implementeert. Hoe ze dit doen verschilt voor elke PPL en wordt duidelijk uitgelegd in secties~\ref{subsubsec:inferentieProbLog2} en ~\ref{subsubsec:InferentieAnglican}. Het berekenen van de inferentie is een zeer krachtig, maar een zeer rekenintensief proces. Veel PPL's zoeken een balans tussen hoe efficient ze inferentie kunnen berekenen en welke problemen ze kunnen modelleren (hoe expressief de taal is).
+PPL's berekenen hetzelfde aan de hand van het inferentieproces dat de taal implementeert. Hoe ze dit doen verschilt voor elke PPL en wordt duidelijk uitgelegd in secties~\ref{subsubsec:inferentieProbLog2} en ~\ref{subsubsec:InferentieAnglican}. Het berekenen van de inferentie is een zeer krachtig, maar een zeer rekenintensief proces. Veel PPL's zoeken een balans tussen hoe effici\"{e}nt ze inferentie kunnen berekenen en welke problemen ze kunnen modelleren (hoe expressief de taal is).
 
 \section{Probabilistische Programmeertalen}
 Probabilistische programmeertalen (of PPL's van Probabilistic Programming Languages) zijn programmeertalen met 2 hoofddoelen:
@@ -260,23 +260,23 @@ Probabilistische programmeertalen (of PPL's van Probabilistic Programming Langua
   \item Het modelleren van een wereld met onzekerheid.
   \item Het redeneren/infereren van vragen over deze wereld met behulp van dit model.
 \end{itemize}
-PPL's worden meestal ge\"{i}mplementeerd als extensie op bestaande general-purpose programmeertalen. PPL's zoals Anglican en Church zijn gebasseerd op een dialect van LISP (een functionele programmeertaal). ProbLog2 en PRISM zijn gebasseerd op Prolog (een logische programmeertaal). Voor sommige talen zoals Stan is een speciale taal ontwikkeld die niet gebasseerd is op een bestaande programmeertaal.
+PPL's worden meestal ge\"{i}mplementeerd als extensie op bestaande general-purpose programmeertalen. PPL's zoals Anglican en Church zijn gebaseerd op een dialect van LISP (een functionele programmeertaal). ProbLog2 en PRISM zijn gebasseerd op Prolog (een logische programmeertaal). Voor sommige talen zoals Stan is een speciale taal ontwikkeld die niet gebaseerd is op een bestaande programmeertaal.
 Deze thesis behandelt 2 PPL's, namelijk: ProbLog2 en Anglican. Secties~\ref{sec:ProbLog2} en~\ref{sec:Anglican} geven meer informatie over deze twee PPL's en hoe het modelleer- en inferentieproces werkt.
 \subsection{ProbLog2}
 \label{sec:ProbLog2}
 ProbLog2 is een PPL gebaseerd op de programmeertaal Prolog. De volgende secties~\ref{subsubsec:ModellereninProbLog2} en~\ref{subsubsec:inferentieProbLog2} geven meer informatie over het modelleer- en inferentieproces. De volgende onderwerpen komen aan bod in sectie~\ref{subsubsec:ModellereninProbLog2}:
 \begin{itemize}
-	\item Syntax van een ProbLog programma
-	\item Annotated Disjunction
-	\item Flexibele kansen
+	\item Syntax van een ProbLog programma,
+	\item Geannoteerde disjunctie en
+	\item Flexibele kansen.
 \end{itemize} 
 De volgende onderwerpen komen aan bod in sectie~\ref{subsubsec:inferentieProbLog2}:
 \begin{itemize}
-	\item Exacte inferentie
-	\item benaderende inferentie
-	\item inferentieproces voor exacte en benaderende inferentie
-	\item stochastische memoisatie
-	\item inferentieproces manipuleren met Python
+	\item exacte inferentie,
+	\item benaderende inferentie,
+	\item inferentieproces voor exacte en benaderende inferentie,
+	\item stochastische memoisatie en
+	\item inferentieproces manipuleren met Python.
 \end{itemize} 
 \subsubsection{Modelleren in ProbLog2}
 \label{subsubsec:ModellereninProbLog2}
@@ -339,7 +339,7 @@ query(earthquake(_)).
 \end{lstlisting}
 De puntkomma tussen de feiten \lstinline{earthquake} wilt zeggen dat er terwijl \lstinline{earthquake(heavy)}, \lstinline{earthquake(mild)} of \lstinline{earthquake(none)} waar is in het model maar nooit 2 van deze feiten.
 \\\\
-Stel dat de staat van het alarm degradeerd met de jaren en de kans dat het alarm afgaat vermindert met het aantal jaar dat het oud is. Dit kunnen we oplossen aan de hand van flexibele kansen. Flexibele kansen worden gebruikt als de kans dat een gegrond probabilistisch feit afhangt van andere waarden. De volgende code geeft een voorbeeld van een alarm systeem dat degradeerd met de jaren:
+Stel dat de staat van het alarm verslechterd met de jaren en de kans dat het alarm afgaat vermindert met het aantal jaar dat het oud is. Dit kunnen we oplossen aan de hand van flexibele kansen. Flexibele kansen worden gebruikt als de kans dat een gegrond probabilistisch feit afhangt van andere waarden. De volgende code geeft een voorbeeld van een alarm systeem dat verslechterd met de jaren:
 \begin{lstlisting}
 0.7::burglary.
 0.01::earthquake(heavy); 0.19::earthquake(mild); 0.8::earthquake(none).
@@ -358,7 +358,7 @@ De combinatie van deze regels en het logisch programmeer systeem Prolog geeft on
 \label{subsubsec:inferentieProbLog2}
 De ProbLog2 inferentie machine kan verschillende inferentie taken oplossen, namelijk:
 \begin{itemize}
-	\item Marginale kansverdeling (MARG, Marginal)
+	\item Marginale kansverdeling (MARG)
 	\item Meest waarschijnlijke verklaring (MPE, Most Probable Explenation)
 	\item Leren van interpretaties
 \end{itemize}
@@ -386,10 +386,10 @@ Het ProbLog2 systeem kan gebruikt worden als een stand-alone tool of via Python.
 
 
 \chapter{Uitwerking van de case-study}
-Omdat het niet triviaal is om PPL's te vergelijken en evalueren wordt er een case-study gebruikt. Aan de hand van deze case-study worden de PPL's ge\"{e}valueerd aan de hand van qualitatieve en quantitatieve criteria. Volgende secties~\ref{sec:uitwerkingProblem} en~\ref{sec:uitwerkingEvaluatiecriteria} geven meer informatie over het onzekerheidsprobleem van de case-study en de evaluatiecriteria.
+Omdat het niet triviaal is om PPL's te vergelijken en evalueren wordt er een case-study gebruikt. Aan de hand van deze case-study worden de PPL's ge\"{e}valueerd aan de hand van kwalitatieve en kwantitatieve criteria. Volgende secties~\ref{sec:uitwerkingProblem} en~\ref{sec:uitwerkingEvaluatiecriteria} geven meer informatie over het onzekerheidsprobleem van de case-study en de evaluatiecriteria.
 \section{Onzekerheidsprobleem}
 \label{sec:uitwerkingProblem}
-Het onzekerheidsprobleem bestaat uit een speld dat dat be\"{i}nvloed word door probabilistische aspecten. Het spel wordt gespeeld aan de hand van vier verschillende strategie\"{e}n die elks ook be\"{i}nvloed worden door probabilistische aspecten.
+Het onzekerheidsprobleem bestaat uit een speld dat dat be\"{i}nvloed word door probabilistische aspecten. Het spel wordt gespeeld aan de hand van vier verschillende strategie\"{e}n die ieders ook be\"{i}nvloed worden door probabilistische aspecten.
 \subsection{Spel}
 \label{subsec:uitwerkingSpel}
 Het spel bestaat uit een bord van 10 bij 10 blokken. Wanneer het spel gestart wordt krijgen de blokken een random kleur toegewezen maar er kunnen geen 3 van dezelfde blokken op een rij staan (verticaal en horizontaal). Er zijn 4 mogelijke kleuren: rood, groen, geel, blauw. In figuur~\ref{figure:initialboard} ziet u een voorbeeld van een initi\"{e}el bord.
@@ -425,7 +425,7 @@ Als er drie of meer blokken van dezelfde kleur horizontaal of verticaal naast el
 	\label{figure:boardturn}
 \end{figure}
 \subsection{Strategie\"{e}n}
-Ik heb 4 strategiën ontwikkeld om het spel te spelen.
+Ik heb 4 strategie\"{e}n ontwikkeld om het spel te spelen.
 \begin{itemize}
 	\item uniforme strategie,
 	\item kleuren ratio strategie,
