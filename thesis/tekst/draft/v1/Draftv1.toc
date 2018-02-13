@@ -6,13 +6,13 @@
 \contentsline {chapter}{\numberline {2}Achtergrond}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Redeneren met Onzekerheid}{3}{section.2.1}
 \contentsline {section}{\numberline {2.2}Probabilistische Programmeertalen}{6}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}ProbLog2}{6}{subsection.2.2.1}
-\contentsline {subsubsection}{Modelleren in ProbLog2}{7}{section*.5}
+\contentsline {subsection}{\numberline {2.2.1}De Programmeertaal ProbLog2}{6}{subsection.2.2.1}
+\contentsline {subsubsection}{Modelleren in ProbLog2}{6}{section*.5}
 \contentsline {subsubsection}{Inferentie}{9}{section*.6}
 \contentsline {subsection}{\numberline {2.2.2}Anglican}{10}{subsection.2.2.2}
 \contentsline {subsubsection}{Modelleren in Anglican}{10}{section*.7}
 \contentsline {subsubsection}{Inferentie}{10}{section*.8}
-\contentsline {chapter}{\numberline {3}Uitwerking van de case-study}{11}{chapter.3}
+\contentsline {chapter}{\numberline {3}Uitwerking van de case study}{11}{chapter.3}
 \contentsline {section}{\numberline {3.1}Onzekerheidsprobleem}{11}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Spel}{11}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Strategie\"{e}n}{12}{subsection.3.1.2}
@@ -27,7 +27,7 @@
 \contentsline {subsection}{\numberline {3.2.4}Geheugengebruik}{15}{subsection.3.2.4}
 \contentsline {subsection}{\numberline {3.2.5}Beschikbare Tools}{15}{subsection.3.2.5}
 \contentsline {subsection}{\numberline {3.2.6}Moeilijkheidsgraad}{15}{subsection.3.2.6}
-\contentsline {chapter}{\numberline {4}Evaluatie}{16}{chapter.4}
+\contentsline {chapter}{\numberline {4}Evaluatie en Vergelijking van ProbLog2 en Anglican}{16}{chapter.4}
 \contentsline {section}{\numberline {4.1}ProbLog2}{17}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Performantie}{17}{subsection.4.1.1}
 \contentsline {subsection}{\numberline {4.1.2}Expressiviteit}{17}{subsection.4.1.2}

@@ -5,9 +5,9 @@
 \BOOKMARK [0][-]{chapter.2}{Achtergrond}{}% 5
 \BOOKMARK [1][-]{section.2.1}{Redeneren met Onzekerheid}{chapter.2}% 6
 \BOOKMARK [1][-]{section.2.2}{Probabilistische Programmeertalen}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.2.1}{ProbLog2}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.1}{De Programmeertaal ProbLog2}{section.2.2}% 8
 \BOOKMARK [2][-]{subsection.2.2.2}{Anglican}{section.2.2}% 9
-\BOOKMARK [0][-]{chapter.3}{Uitwerking van de case-study}{}% 10
+\BOOKMARK [0][-]{chapter.3}{Uitwerking van de case study}{}% 10
 \BOOKMARK [1][-]{section.3.1}{Onzekerheidsprobleem}{chapter.3}% 11
 \BOOKMARK [2][-]{subsection.3.1.1}{Spel}{section.3.1}% 12
 \BOOKMARK [2][-]{subsection.3.1.2}{Strategie\353n}{section.3.1}% 13
@@ -18,7 +18,7 @@
 \BOOKMARK [2][-]{subsection.3.2.4}{Geheugengebruik}{section.3.2}% 18
 \BOOKMARK [2][-]{subsection.3.2.5}{Beschikbare Tools}{section.3.2}% 19
 \BOOKMARK [2][-]{subsection.3.2.6}{Moeilijkheidsgraad}{section.3.2}% 20
-\BOOKMARK [0][-]{chapter.4}{Evaluatie}{}% 21
+\BOOKMARK [0][-]{chapter.4}{Evaluatie en Vergelijking van ProbLog2 en Anglican}{}% 21
 \BOOKMARK [1][-]{section.4.1}{ProbLog2}{chapter.4}% 22
 \BOOKMARK [2][-]{subsection.4.1.1}{Performantie}{section.4.1}% 23
 \BOOKMARK [2][-]{subsection.4.1.2}{Expressiviteit}{section.4.1}% 24
