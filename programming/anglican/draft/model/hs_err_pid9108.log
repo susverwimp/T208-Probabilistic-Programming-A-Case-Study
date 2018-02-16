@@ -1,0 +1,381 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (exceptions.cpp:427), pid=9108, tid=0x00000000000025e4
+#  fatal error: ExceptionMark destructor expects no pending exceptions
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_161-b12) (build 1.8.0_161-b12)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.161-b12 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000026ace000):  JavaThread "nREPL-worker-5" daemon [_thread_in_vm, id=9700, stack(0x0000000030030000,0x0000000030130000)]
+
+Stack: [0x0000000030030000,0x0000000030130000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  clojure.lang.RT.seqFrom(Ljava/lang/Object;)Lclojure/lang/ISeq;+11
+j  clojure.lang.RT.seq(Ljava/lang/Object;)Lclojure/lang/ISeq;+28
+j  clojure.core$seq__4357.invokeStatic(Ljava/lang/Object;)Ljava/lang/Object;+3
+j  clojure.core$nthnext.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+7
+J 7688 C2 clojure.core$update_in.doInvoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; (21 bytes) @ 0x0000000005394a68 [0x0000000005394940+0x128]
+J 7866 C2 anglican.lmh$eval24309$fn__24310.invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; (463 bytes) @ 0x0000000004e2d574 [0x0000000004e2cdc0+0x7b4]
+J 7838 C2 anglican.inference$exec.invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; (18 bytes) @ 0x0000000004f9f574 [0x0000000004f9f100+0x474]
+J 7901 C2 anglican.lmh$eval24342$fn__24344$sample_seq__24346$fn__24347.invoke()Ljava/lang/Object; (195 bytes) @ 0x0000000005bd0a44 [0x0000000005bcff80+0xac4]
+J 4370 C2 clojure.lang.LazySeq.seq()Lclojure/lang/ISeq; (53 bytes) @ 0x0000000005021e74 [0x0000000005021dc0+0xb4]
+J 7829 C2 clojure.core$drop$fn__4847.invoke()Ljava/lang/Object; (36 bytes) @ 0x00000000053cb4f8 [0x00000000053cb1c0+0x338]
+J 4370 C2 clojure.lang.LazySeq.seq()Lclojure/lang/ISeq; (53 bytes) @ 0x0000000005021e74 [0x0000000005021dc0+0xb4]
+J 7841 C2 clojure.core$take_nth$fn__5145.invoke()Ljava/lang/Object; (63 bytes) @ 0x0000000005b569c4 [0x0000000005b565e0+0x3e4]
+J 4370 C2 clojure.lang.LazySeq.seq()Lclojure/lang/ISeq; (53 bytes) @ 0x0000000005021e74 [0x0000000005021dc0+0xb4]
+J 4345 C2 clojure.core$seq__4357.invoke(Ljava/lang/Object;)Ljava/lang/Object; (7 bytes) @ 0x00000000059a936c [0x00000000059a92e0+0x8c]
+j  anglican.core$main.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+2116
+j  anglican.core$main.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+J 5218 C2 clojure.lang.RestFn.invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; (119 bytes) @ 0x0000000005c5ef88 [0x0000000005c5ee00+0x188]
+j  model.core$eval24467.invokeStatic()Ljava/lang/Object;+13
+j  model.core$eval24467.invoke()Ljava/lang/Object;+0
+J 7000 C2 clojure.lang.Compiler.eval(Ljava/lang/Object;Z)Ljava/lang/Object; (393 bytes) @ 0x00000000064282c4 [0x0000000006427060+0x1264]
+j  clojure.lang.Compiler.eval(Ljava/lang/Object;)Ljava/lang/Object;+2
+j  clojure.core$eval.invokeStatic(Ljava/lang/Object;)Ljava/lang/Object;+3
+j  clojure.core$eval.invoke(Ljava/lang/Object;)Ljava/lang/Object;+3
+j  clojure.main$repl$read_eval_print__7408$fn__7411.invoke()Ljava/lang/Object;+11
+j  clojure.main$repl$read_eval_print__7408.invoke()Ljava/lang/Object;+178
+j  clojure.main$repl$fn__7417.invoke()Ljava/lang/Object;+7
+j  clojure.main$repl.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+608
+j  clojure.main$repl.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+259
+j  clojure.tools.nrepl.middleware.interruptible_eval$evaluate$fn__644.invoke()Ljava/lang/Object;+273
+J 7101 C2 clojure.lang.AFn.applyToHelper(Lclojure/lang/IFn;Lclojure/lang/ISeq;)Ljava/lang/Object; (3238 bytes) @ 0x00000000064fbd9c [0x00000000064fac40+0x115c]
+J 6816 C2 clojure.lang.AFn.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object; (12 bytes) @ 0x0000000005f224d4 [0x0000000005f224a0+0x34]
+J 6560 C2 clojure.core$apply.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; (21 bytes) @ 0x0000000004ebb1f4 [0x0000000004ebb140+0xb4]
+j  clojure.core$with_bindings_STAR_.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Lclojure/lang/ISeq;)Ljava/lang/Object;+13
+j  clojure.core$with_bindings_STAR_.doInvoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+12
+J 5218 C2 clojure.lang.RestFn.invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; (119 bytes) @ 0x0000000005c5efc0 [0x0000000005c5ee00+0x1c0]
+j  clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+608
+j  clojure.tools.nrepl.middleware.interruptible_eval$evaluate.invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.tools.nrepl.middleware.interruptible_eval$interruptible_eval$fn__686$fn__689.invoke()Ljava/lang/Object;+105
+j  clojure.tools.nrepl.middleware.interruptible_eval$run_next$fn__681.invoke()Ljava/lang/Object;+7
+j  clojure.lang.AFn.run()V+1
+j  java.util.concurrent.ThreadPoolExecutor.runWorker(Ljava/util/concurrent/ThreadPoolExecutor$Worker;)V+95
+j  java.util.concurrent.ThreadPoolExecutor$Worker.run()V+5
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+=>0x0000000026ace000 JavaThread "nREPL-worker-5" daemon [_thread_in_vm, id=9700, stack(0x0000000030030000,0x0000000030130000)]
+  0x0000000026acd000 JavaThread "clojure-agent-send-pool-9" daemon [_thread_blocked, id=4724, stack(0x000000002fe30000,0x000000002ff30000)]
+  0x0000000026ace800 JavaThread "clojure-agent-send-pool-8" daemon [_thread_blocked, id=1348, stack(0x000000002fd30000,0x000000002fe30000)]
+  0x0000000026ac6800 JavaThread "clojure-agent-send-pool-7" daemon [_thread_blocked, id=7396, stack(0x000000002f150000,0x000000002f250000)]
+  0x0000000026ac5800 JavaThread "clojure-agent-send-pool-6" daemon [_thread_blocked, id=10396, stack(0x000000002e930000,0x000000002ea30000)]
+  0x0000000026ac2800 JavaThread "clojure-agent-send-pool-5" daemon [_thread_blocked, id=5092, stack(0x000000002e530000,0x000000002e630000)]
+  0x0000000026ac8000 JavaThread "clojure-agent-send-pool-4" daemon [_thread_blocked, id=5328, stack(0x000000002e230000,0x000000002e330000)]
+  0x0000000026ac7000 JavaThread "clojure-agent-send-pool-3" daemon [_thread_blocked, id=388, stack(0x000000002e130000,0x000000002e230000)]
+  0x0000000026ac2000 JavaThread "clojure-agent-send-pool-2" daemon [_thread_blocked, id=6156, stack(0x000000002e030000,0x000000002e130000)]
+  0x0000000026ac4000 JavaThread "clojure-agent-send-pool-1" daemon [_thread_blocked, id=9464, stack(0x000000002dbc0000,0x000000002dcc0000)]
+  0x0000000026ac1000 JavaThread "clojure-agent-send-pool-0" daemon [_thread_blocked, id=6816, stack(0x000000002d8c0000,0x000000002d9c0000)]
+  0x0000000023ec7800 JavaThread "clojure-agent-send-off-pool-6" [_thread_in_native, id=5112, stack(0x000000002d5c0000,0x000000002d6c0000)]
+  0x0000000023eca800 JavaThread "clojure-agent-send-off-pool-5" [_thread_in_native, id=276, stack(0x000000002afc0000,0x000000002b0c0000)]
+  0x0000000023ec5800 JavaThread "clojure-agent-send-off-pool-4" [_thread_blocked, id=12320, stack(0x0000000029a10000,0x0000000029b10000)]
+  0x0000000023ec7000 JavaThread "clojure-agent-send-off-pool-3" [_thread_blocked, id=5136, stack(0x0000000027390000,0x0000000027490000)]
+  0x000000002297e800 JavaThread "clojure-agent-send-off-pool-0" [_thread_in_native, id=5848, stack(0x0000000024200000,0x0000000024300000)]
+  0x0000000022573000 JavaThread "Thread-0" daemon [_thread_in_native, id=10892, stack(0x0000000022f30000,0x0000000023030000)]
+  0x00000000215db800 JavaThread "JDWP Command Reader" daemon [_thread_in_native, id=7260, stack(0x0000000021c60000,0x0000000021d60000)]
+  0x0000000020557000 JavaThread "Service Thread" daemon [_thread_blocked, id=3768, stack(0x0000000021260000,0x0000000021360000)]
+  0x00000000204c7800 JavaThread "C1 CompilerThread3" daemon [_thread_blocked, id=5984, stack(0x0000000021160000,0x0000000021260000)]
+  0x00000000204c7000 JavaThread "C2 CompilerThread2" daemon [_thread_blocked, id=3632, stack(0x0000000021060000,0x0000000021160000)]
+  0x00000000204c4000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=4296, stack(0x0000000020f60000,0x0000000021060000)]
+  0x00000000204be000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=32, stack(0x0000000020e60000,0x0000000020f60000)]
+  0x00000000204b3800 JavaThread "JDWP Event Helper Thread" daemon [_thread_blocked, id=7152, stack(0x0000000020d60000,0x0000000020e60000)]
+  0x00000000204ad800 JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_blocked, id=13128, stack(0x0000000020c60000,0x0000000020d60000)]
+  0x00000000204a3800 JavaThread "Attach Listener" daemon [_thread_blocked, id=6740, stack(0x0000000020b60000,0x0000000020c60000)]
+  0x00000000204a2800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=12444, stack(0x0000000020a60000,0x0000000020b60000)]
+  0x0000000020491800 JavaThread "Finalizer" daemon [_thread_blocked, id=1196, stack(0x0000000020870000,0x0000000020970000)]
+  0x0000000004aac000 JavaThread "Reference Handler" daemon [_thread_blocked, id=2176, stack(0x0000000020370000,0x0000000020470000)]
+  0x00000000049b3800 JavaThread "main" [_thread_blocked, id=12656, stack(0x00000000048a0000,0x00000000049a0000)]
+
+Other Threads:
+  0x000000001e579000 VMThread [stack: 0x0000000020270000,0x0000000020370000] [id=10500]
+  0x000000002057c800 WatcherThread [stack: 0x0000000021360000,0x0000000021460000] [id=4740]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ PSYoungGen      total 967680K, used 458672K [0x000000076b000000, 0x00000007ba380000, 0x00000007c0000000)
+  eden space 936448K, 47% used [0x000000076b000000,0x00000007863c48f0,0x00000007a4280000)
+  from space 31232K, 39% used [0x00000007a4280000,0x00000007a4ea7990,0x00000007a6100000)
+  to   space 29696K, 0% used [0x00000007b8680000,0x00000007b8680000,0x00000007ba380000)
+ ParOldGen       total 249344K, used 74579K [0x00000006c1000000, 0x00000006d0380000, 0x000000076b000000)
+  object space 249344K, 29% used [0x00000006c1000000,0x00000006c58d4c40,0x00000006d0380000)
+ Metaspace       used 63112K, capacity 90232K, committed 90368K, reserved 1110016K
+  class space    used 18001K, capacity 29110K, committed 29184K, reserved 1048576K
+
+Card table byte_map: [0x0000000013e70000,0x0000000014670000] byte_map_base: 0x0000000010868000
+
+Marking Bits: (ParMarkBitMap*) 0x00000000753bf860
+ Begin Bits: [0x00000000153c0000, 0x0000000019380000)
+ End Bits:   [0x0000000019380000, 0x000000001d340000)
+
+Polling page: 0x00000000007e0000
+
+CodeCache: size=245760Kb used=25919Kb max_used=26504Kb free=219840Kb
+ bounds [0x0000000004ab0000, 0x0000000006570000, 0x0000000013ab0000]
+ total_blobs=5819 nmethods=5383 adapters=355
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 2037.373 Thread 0x00000000204c7800 7934 %     3       clojure.lang.LispReader::readToken @ 14 (58 bytes)
+Event: 2037.374 Thread 0x00000000204c7800 nmethod 7934% 0x0000000005359e50 code [0x000000000535a1a0, 0x000000000535be28]
+Event: 2039.428 Thread 0x00000000204c7800 7935       3       clojure.tools.nrepl.middleware$wrap_conj_descriptor$fn__431::invoke (196 bytes)
+Event: 2039.429 Thread 0x00000000204c7800 nmethod 7935 0x0000000006337f50 code [0x0000000006338240, 0x0000000006339cb8]
+Event: 2039.868 Thread 0x00000000204c7800 7936       3       clojure.tools.nrepl.bencode$read_map$fn__68::invoke (53 bytes)
+Event: 2039.869 Thread 0x00000000204c7800 nmethod 7936 0x000000000535e5d0 code [0x000000000535e840, 0x000000000535f938]
+Event: 2039.869 Thread 0x00000000204c7800 7937       3       clojure.tools.nrepl.bencode$string_LT_payload::invoke (7 bytes)
+Event: 2039.870 Thread 0x00000000204c7800 nmethod 7937 0x0000000004c11850 code [0x0000000004c119e0, 0x0000000004c11da8]
+Event: 2039.870 Thread 0x00000000204c7800 7938       3       clojure.walk$keywordize_keys$f__7818::invoke (71 bytes)
+Event: 2039.870 Thread 0x00000000204c7800 nmethod 7938 0x0000000005357d50 code [0x0000000005358020, 0x0000000005359608]
+
+GC Heap History (10 events):
+Event: 4.473 GC heap before
+{Heap before GC invocations=12 (full 2):
+ PSYoungGen      total 705536K, used 7825K [0x000000076b000000, 0x000000079f080000, 0x00000007c0000000)
+  eden space 697344K, 0% used [0x000000076b000000,0x000000076b000000,0x0000000795900000)
+  from space 8192K, 95% used [0x000000079e880000,0x000000079f0245e8,0x000000079f080000)
+  to   space 10240K, 0% used [0x000000079dc80000,0x000000079dc80000,0x000000079e680000)
+ ParOldGen       total 110080K, used 16192K [0x00000006c1000000, 0x00000006c7b80000, 0x000000076b000000)
+  object space 110080K, 14% used [0x00000006c1000000,0x00000006c1fd0000,0x00000006c7b80000)
+ Metaspace       used 27628K, capacity 35439K, committed 35496K, reserved 1075200K
+  class space    used 7108K, capacity 9977K, committed 9984K, reserved 1048576K
+Event: 4.526 GC heap after
+Heap after GC invocations=12 (full 2):
+ PSYoungGen      total 705536K, used 0K [0x000000076b000000, 0x000000079f080000, 0x00000007c0000000)
+  eden space 697344K, 0% used [0x000000076b000000,0x000000076b000000,0x0000000795900000)
+  from space 8192K, 0% used [0x000000079e880000,0x000000079e880000,0x000000079f080000)
+  to   space 10240K, 0% used [0x000000079dc80000,0x000000079dc80000,0x000000079e680000)
+ ParOldGen       total 152576K, used 23487K [0x00000006c1000000, 0x00000006ca500000, 0x000000076b000000)
+  object space 152576K, 15% used [0x00000006c1000000,0x00000006c26eff78,0x00000006ca500000)
+ Metaspace       used 27628K, capacity 35439K, committed 35496K, reserved 1075200K
+  class space    used 7108K, capacity 9977K, committed 9984K, reserved 1048576K
+}
+Event: 6.729 GC heap before
+{Heap before GC invocations=13 (full 2):
+ PSYoungGen      total 705536K, used 697344K [0x000000076b000000, 0x000000079f080000, 0x00000007c0000000)
+  eden space 697344K, 100% used [0x000000076b000000,0x0000000795900000,0x0000000795900000)
+  from space 8192K, 0% used [0x000000079e880000,0x000000079e880000,0x000000079f080000)
+  to   space 10240K, 0% used [0x000000079dc80000,0x000000079dc80000,0x000000079e680000)
+ ParOldGen       total 152576K, used 23487K [0x00000006c1000000, 0x00000006ca500000, 0x000000076b000000)
+  object space 152576K, 15% used [0x00000006c1000000,0x00000006c26eff78,0x00000006ca500000)
+ Metaspace       used 37031K, capacity 46609K, committed 46720K, reserved 1083392K
+  class space    used 8714K, capacity 12142K, committed 12160K, reserved 1048576K
+Event: 6.794 GC heap after
+Heap after GC invocations=13 (full 2):
+ PSYoungGen      total 842240K, used 10228K [0x000000076b000000, 0x00000007a7b80000, 0x00000007c0000000)
+  eden space 832000K, 0% used [0x000000076b000000,0x000000076b000000,0x000000079dc80000)
+  from space 10240K, 99% used [0x000000079dc80000,0x000000079e67d040,0x000000079e680000)
+  to   space 27136K, 0% used [0x00000007a6100000,0x00000007a6100000,0x00000007a7b80000)
+ ParOldGen       total 152576K, used 67934K [0x00000006c1000000, 0x00000006ca500000, 0x000000076b000000)
+  object space 152576K, 44% used [0x00000006c1000000,0x00000006c52579b8,0x00000006ca500000)
+ Metaspace       used 37031K, capacity 46609K, committed 46720K, reserved 1083392K
+  class space    used 8714K, capacity 12142K, committed 12160K, reserved 1048576K
+}
+Event: 1853.066 GC heap before
+{Heap before GC invocations=14 (full 2):
+ PSYoungGen      total 842240K, used 668853K [0x000000076b000000, 0x00000007a7b80000, 0x00000007c0000000)
+  eden space 832000K, 79% used [0x000000076b000000,0x00000007933303f8,0x000000079dc80000)
+  from space 10240K, 99% used [0x000000079dc80000,0x000000079e67d040,0x000000079e680000)
+  to   space 27136K, 0% used [0x00000007a6100000,0x00000007a6100000,0x00000007a7b80000)
+ ParOldGen       total 152576K, used 67934K [0x00000006c1000000, 0x00000006ca500000, 0x000000076b000000)
+  object space 152576K, 44% used [0x00000006c1000000,0x00000006c52579b8,0x00000006ca500000)
+ Metaspace       used 44078K, capacity 59075K, committed 59160K, reserved 1091584K
+  class space    used 11300K, capacity 16812K, committed 16896K, reserved 1048576K
+Event: 1853.111 GC heap after
+Heap after GC invocations=14 (full 2):
+ PSYoungGen      total 963584K, used 26642K [0x000000076b000000, 0x00000007b1200000, 0x00000007c0000000)
+  eden space 936448K, 0% used [0x000000076b000000,0x000000076b000000,0x00000007a4280000)
+  from space 27136K, 98% used [0x00000007a6100000,0x00000007a7b04be0,0x00000007a7b80000)
+  to   space 31232K, 0% used [0x00000007a4280000,0x00000007a4280000,0x00000007a6100000)
+ ParOldGen       total 152576K, used 77793K [0x00000006c1000000, 0x00000006ca500000, 0x000000076b000000)
+  object space 152576K, 50% used [0x00000006c1000000,0x00000006c5bf8790,0x00000006ca500000)
+ Metaspace       used 44078K, capacity 59075K, committed 59160K, reserved 1091584K
+  class space    used 11300K, capacity 16812K, committed 16896K, reserved 1048576K
+}
+Event: 1853.111 GC heap before
+{Heap before GC invocations=15 (full 3):
+ PSYoungGen      total 963584K, used 26642K [0x000000076b000000, 0x00000007b1200000, 0x00000007c0000000)
+  eden space 936448K, 0% used [0x000000076b000000,0x000000076b000000,0x00000007a4280000)
+  from space 27136K, 98% used [0x00000007a6100000,0x00000007a7b04be0,0x00000007a7b80000)
+  to   space 31232K, 0% used [0x00000007a4280000,0x00000007a4280000,0x00000007a6100000)
+ ParOldGen       total 152576K, used 77793K [0x00000006c1000000, 0x00000006ca500000, 0x000000076b000000)
+  object space 152576K, 50% used [0x00000006c1000000,0x00000006c5bf8790,0x00000006ca500000)
+ Metaspace       used 44078K, capacity 59075K, committed 59160K, reserved 1091584K
+  class space    used 11300K, capacity 16812K, committed 16896K, reserved 1048576K
+Event: 1853.378 GC heap after
+Heap after GC invocations=15 (full 3):
+ PSYoungGen      total 963584K, used 0K [0x000000076b000000, 0x00000007b1200000, 0x00000007c0000000)
+  eden space 936448K, 0% used [0x000000076b000000,0x000000076b000000,0x00000007a4280000)
+  from space 27136K, 0% used [0x00000007a6100000,0x00000007a6100000,0x00000007a7b80000)
+  to   space 31232K, 0% used [0x00000007a4280000,0x00000007a4280000,0x00000007a6100000)
+ ParOldGen       total 249344K, used 74571K [0x00000006c1000000, 0x00000006d0380000, 0x000000076b000000)
+  object space 249344K, 29% used [0x00000006c1000000,0x00000006c58d2c40,0x00000006d0380000)
+ Metaspace       used 44078K, capacity 59075K, committed 59160K, reserved 1091584K
+  class space    used 11300K, capacity 16812K, committed 16896K, reserved 1048576K
+}
+Event: 2016.156 GC heap before
+{Heap before GC invocations=16 (full 3):
+ PSYoungGen      total 963584K, used 936448K [0x000000076b000000, 0x00000007b1200000, 0x00000007c0000000)
+  eden space 936448K, 100% used [0x000000076b000000,0x00000007a4280000,0x00000007a4280000)
+  from space 27136K, 0% used [0x00000007a6100000,0x00000007a6100000,0x00000007a7b80000)
+  to   space 31232K, 0% used [0x00000007a4280000,0x00000007a4280000,0x00000007a6100000)
+ ParOldGen       total 249344K, used 74571K [0x00000006c1000000, 0x00000006d0380000, 0x000000076b000000)
+  object space 249344K, 29% used [0x00000006c1000000,0x00000006c58d2c40,0x00000006d0380000)
+ Metaspace       used 63102K, capacity 90164K, committed 90368K, reserved 1110016K
+  class space    used 17999K, capacity 29110K, committed 29184K, reserved 1048576K
+Event: 2016.171 GC heap after
+Heap after GC invocations=16 (full 3):
+ PSYoungGen      total 967680K, used 12446K [0x000000076b000000, 0x00000007ba380000, 0x00000007c0000000)
+  eden space 936448K, 0% used [0x000000076b000000,0x000000076b000000,0x00000007a4280000)
+  from space 31232K, 39% used [0x00000007a4280000,0x00000007a4ea7990,0x00000007a6100000)
+  to   space 29696K, 0% used [0x00000007b8680000,0x00000007b8680000,0x00000007ba380000)
+ ParOldGen       total 249344K, used 74579K [0x00000006c1000000, 0x00000006d0380000, 0x000000076b000000)
+  object space 249344K, 29% used [0x00000006c1000000,0x00000006c58d4c40,0x00000006d0380000)
+ Metaspace       used 63102K, capacity 90164K, committed 90368K, reserved 1110016K
+  class space    used 17999K, capacity 29110K, committed 29184K, reserved 1048576K
+}
+
+Deoptimization events (10 events):
+Event: 2015.715 Thread 0x0000000026ace000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000000055e6fd4 method=clojure.lang.Numbers.category(Ljava/lang/Object;)Lclojure/lang/Numbers$Category; @ 20
+Event: 2015.716 Thread 0x0000000026ace000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000055dc1a4 method=clojure.lang.Numbers$LongOps.combine(Lclojure/lang/Numbers$Ops;)Lclojure/lang/Numbers$Ops; @ 2
+Event: 2015.716 Thread 0x0000000026ace000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000057009d0 method=clojure.lang.RT.longCast(Ljava/lang/Object;)J @ 8
+Event: 2015.716 Thread 0x0000000026ace000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000055dc1a4 method=clojure.lang.Numbers$LongOps.combine(Lclojure/lang/Numbers$Ops;)Lclojure/lang/Numbers$Ops; @ 2
+Event: 2015.716 Thread 0x0000000026ace000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00000000057009d0 method=clojure.lang.RT.longCast(Ljava/lang/Object;)J @ 8
+Event: 2015.717 Thread 0x0000000026ace000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000005268524 method=clojure.lang.RT.longCast(Ljava/lang/Object;)J @ 8
+Event: 2029.778 Thread 0x0000000026ad0000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000005e89618 method=clojure.tools.nrepl.misc$response_for.invokeStatic(Ljava/lang/Object;Lclojure/lang/ISeq;)Ljava/lang/Object; @ 348
+Event: 2029.778 Thread 0x0000000026acf800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000005e89618 method=clojure.tools.nrepl.misc$response_for.invokeStatic(Ljava/lang/Object;Lclojure/lang/ISeq;)Ljava/lang/Object; @ 348
+Event: 2032.019 Thread 0x0000000026ac9800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000545df88 method=clojure.lang.LispReader.readToken(Ljava/io/PushbackReader;C)Ljava/lang/String; @ 21
+Event: 2032.020 Thread 0x0000000026ac9800 Uncommon trap: reason=unhandled action=none pc=0x000000000561d8e0 method=java.net.URLClassLoader.findClass(Ljava/lang/String;)Ljava/lang/Class; @ 44
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 2039.276 Thread 0x0000000026ac9800 JVM_StopThread thread JavaThread 0x0000000026ace000 as oop 0x00000007a44cef78 [exception 0x000000002e82e1e0]
+Event: 2039.429 Thread 0x0000000026ac9800 JVM_StopThread thread JavaThread 0x0000000026ace000 as oop 0x00000007a44cef78 [exception 0x000000002e82e1e0]
+Event: 2039.581 Thread 0x0000000026ac9800 JVM_StopThread thread JavaThread 0x0000000026ace000 as oop 0x00000007a44cef78 [exception 0x000000002e82dc50]
+Event: 2039.724 Thread 0x0000000026ac9800 JVM_StopThread thread JavaThread 0x0000000026ace000 as oop 0x00000007a44cef78 [exception 0x000000002e82dc50]
+Event: 2039.868 Thread 0x0000000026ac9800 JVM_StopThread thread JavaThread 0x0000000026ace000 as oop 0x00000007a44cef78 [exception 0x000000002e82dc50]
+Event: 2040.004 Thread 0x0000000026ac9800 JVM_StopThread thread JavaThread 0x0000000026ace000 as oop 0x00000007a44cef78 [exception 0x000000002e82dc50]
+Event: 2040.156 Thread 0x0000000026ac9800 JVM_StopThread thread JavaThread 0x0000000026ace000 as oop 0x00000007a44cef78 [exception 0x000000002e82dc50]
+Event: 2040.308 Thread 0x0000000026ac9800 JVM_StopThread thread JavaThread 0x0000000026ace000 as oop 0x00000007a44cef78 [exception 0x000000002e82dc50]
+Event: 2040.796 Thread 0x0000000026ac9800 JVM_StopThread thread JavaThread 0x0000000026ace000 as oop 0x00000007a44cef78 [exception 0x000000002e82dc50]
+Event: 2100.809 Thread 0x0000000026ace000 Exception <a 'java/lang/ThreadDeath'> (0x0000000785dae760) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u161\10277\hotspot\src\share\vm\prims\jni.cpp, line 709]
+
+Events (10 events):
+Event: 2089.779 Executing VM operation: RevokeBias
+Event: 2089.780 Executing VM operation: RevokeBias done
+Event: 2089.780 Thread 0x0000000026ac8800 Thread exited: 0x0000000026ac8800
+Event: 2089.780 Thread 0x0000000026ad0000 Thread exited: 0x0000000026ad0000
+Event: 2089.780 Executing VM operation: RevokeBias
+Event: 2089.781 Executing VM operation: RevokeBias done
+Event: 2089.781 Thread 0x0000000026acf800 Thread exited: 0x0000000026acf800
+Event: 2100.799 Executing VM operation: RevokeBias
+Event: 2100.799 Executing VM operation: RevokeBias done
+Event: 2100.799 Thread 0x0000000026ac9800 Thread exited: 0x0000000026ac9800
+
+
+Dynamic libraries:
+0x00007ff6e1ca0000 - 0x00007ff6e1cd7000 	D:\programmas\Java\jdk1.8.0_161\bin\java.exe
+0x00007ff81f460000 - 0x00007ff81f640000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ff81eb60000 - 0x00007ff81ec0e000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ff81c250000 - 0x00007ff81c4b6000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ff81ef40000 - 0x00007ff81efe1000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ff81cb20000 - 0x00007ff81cbbd000 	C:\Windows\System32\msvcrt.dll
+0x00007ff81f0d0000 - 0x00007ff81f12b000 	C:\Windows\System32\sechost.dll
+0x00007ff81ec10000 - 0x00007ff81ed2f000 	C:\Windows\System32\RPCRT4.dll
+0x00007ff81c930000 - 0x00007ff81cabf000 	C:\Windows\System32\USER32.dll
+0x00007ff81bfb0000 - 0x00007ff81bfd0000 	C:\Windows\System32\win32u.dll
+0x00007ff81ed30000 - 0x00007ff81ed58000 	C:\Windows\System32\GDI32.dll
+0x00007ff81bfd0000 - 0x00007ff81c163000 	C:\Windows\System32\gdi32full.dll
+0x00007ff81c6c0000 - 0x00007ff81c75b000 	C:\Windows\System32\msvcp_win.dll
+0x00007ff81c570000 - 0x00007ff81c666000 	C:\Windows\System32\ucrtbase.dll
+0x00007ff80b270000 - 0x00007ff80b4d9000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.16299.248_none_15ced204935f55d7\COMCTL32.dll
+0x00007ff81e600000 - 0x00007ff81e908000 	C:\Windows\System32\combase.dll
+0x00007ff81c1d0000 - 0x00007ff81c242000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ff81f150000 - 0x00007ff81f17d000 	C:\Windows\System32\IMM32.DLL
+0x00000000748d0000 - 0x00000000749a2000 	D:\programmas\Java\jdk1.8.0_161\jre\bin\msvcr100.dll
+0x0000000074ba0000 - 0x000000007543f000 	D:\programmas\Java\jdk1.8.0_161\jre\bin\server\jvm.dll
+0x00007ff81cc90000 - 0x00007ff81cc98000 	C:\Windows\System32\PSAPI.DLL
+0x00007ff81a370000 - 0x00007ff81a37a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ff819420000 - 0x00007ff819429000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ff80e020000 - 0x00007ff80e043000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ff81eed0000 - 0x00007ff81ef3c000 	C:\Windows\System32\WS2_32.dll
+0x00007ff80dea0000 - 0x00007ff80deca000 	C:\Windows\SYSTEM32\WINMMBASE.dll
+0x00007ff81c670000 - 0x00007ff81c6ba000 	C:\Windows\System32\cfgmgr32.dll
+0x0000000074ab0000 - 0x0000000074abf000 	D:\programmas\Java\jdk1.8.0_161\jre\bin\verify.dll
+0x0000000074a80000 - 0x0000000074aa9000 	D:\programmas\Java\jdk1.8.0_161\jre\bin\java.dll
+0x0000000074890000 - 0x00000000748c5000 	D:\programmas\Java\jdk1.8.0_161\jre\bin\jdwp.dll
+0x00000000749b0000 - 0x00000000749b8000 	D:\programmas\Java\jdk1.8.0_161\jre\bin\npt.dll
+0x0000000074a60000 - 0x0000000074a76000 	D:\programmas\Java\jdk1.8.0_161\jre\bin\zip.dll
+0x00007ff81d1c0000 - 0x00007ff81e5f6000 	C:\Windows\System32\SHELL32.dll
+0x00007ff81cca0000 - 0x00007ff81cd46000 	C:\Windows\System32\shcore.dll
+0x00007ff81b860000 - 0x00007ff81bfa7000 	C:\Windows\System32\windows.storage.dll
+0x00007ff81cac0000 - 0x00007ff81cb11000 	C:\Windows\System32\shlwapi.dll
+0x00007ff81b820000 - 0x00007ff81b831000 	C:\Windows\System32\kernel.appcore.dll
+0x00007ff81b7b0000 - 0x00007ff81b7fc000 	C:\Windows\System32\powrprof.dll
+0x00007ff81b800000 - 0x00007ff81b81b000 	C:\Windows\System32\profapi.dll
+0x0000000074880000 - 0x0000000074889000 	D:\programmas\Java\jdk1.8.0_161\jre\bin\dt_socket.dll
+0x00007ff81b030000 - 0x00007ff81b096000 	C:\Windows\system32\mswsock.dll
+0x0000000074a40000 - 0x0000000074a5a000 	D:\programmas\Java\jdk1.8.0_161\jre\bin\net.dll
+0x00000000746d0000 - 0x0000000074868000 	D:\programmas\Java\jdk1.8.0_161\jre\bin\awt.dll
+0x00007ff81cbc0000 - 0x00007ff81cc85000 	C:\Windows\System32\OLEAUT32.dll
+0x00007ff819820000 - 0x00007ff8198a8000 	C:\Windows\SYSTEM32\apphelp.dll
+0x00007ff81adb0000 - 0x00007ff81ae66000 	C:\Windows\SYSTEM32\DNSAPI.dll
+0x00007ff81cd50000 - 0x00007ff81cd58000 	C:\Windows\System32\NSI.dll
+0x00007ff81ad70000 - 0x00007ff81ada9000 	C:\Windows\SYSTEM32\IPHLPAPI.DLL
+0x00007ff814e80000 - 0x00007ff814e8a000 	C:\Windows\System32\rasadhlp.dll
+0x00007ff815680000 - 0x00007ff8156f0000 	C:\Windows\System32\fwpuclnt.dll
+0x00007ff81b310000 - 0x00007ff81b335000 	C:\Windows\SYSTEM32\bcrypt.dll
+0x00007ff81b200000 - 0x00007ff81b217000 	C:\Windows\SYSTEM32\CRYPTSP.dll
+0x00007ff81abf0000 - 0x00007ff81ac23000 	C:\Windows\system32\rsaenh.dll
+0x00007ff81b6e0000 - 0x00007ff81b709000 	C:\Windows\SYSTEM32\USERENV.dll
+0x00007ff81b220000 - 0x00007ff81b22b000 	C:\Windows\SYSTEM32\CRYPTBASE.dll
+0x00007ff817ba0000 - 0x00007ff817bb6000 	C:\Windows\SYSTEM32\dhcpcsvc6.DLL
+0x00007ff817b80000 - 0x00007ff817b9a000 	C:\Windows\SYSTEM32\dhcpcsvc.DLL
+0x0000000074a20000 - 0x0000000074a31000 	D:\programmas\Java\jdk1.8.0_161\jre\bin\nio.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n -Dclojure.compile.path=C:\Users\susve\Desktop\T208-Probabilistic-Programming-A-Case-Study\programming\anglican\draft\model\target\classes -Dmodel.version=0.1.0-SNAPSHOT -Dclojure.debug=false 
+java_command: clojure.main -i C:\Users\susve\AppData\Local\Temp\form-init5270009989782296629.clj
+java_class_path (initial): C:\Users\susve\Desktop\T208-Probabilistic-Programming-A-Case-Study\programming\anglican\draft\model\test;C:\Users\susve\Desktop\T208-Probabilistic-Programming-A-Case-Study\programming\anglican\draft\model\src;C:\Users\susve\Desktop\T208-Probabilistic-Programming-A-Case-Study\programming\anglican\draft\model\dev-resources;C:\Users\susve\Desktop\T208-Probabilistic-Programming-A-Case-Study\programming\anglican\draft\model\programs;C:\Users\susve\Desktop\T208-Probabilistic-Programming-A-Case-Study\programming\anglican\draft\model\target\classes;C:\Users\susve\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\susve\.m2\repository\net\mikera\clojure-utils\0.6.2\clojure-utils-0.6.2.jar;C:\Users\susve\.m2\repository\org\clojure\clojure\1.8.0\clojure-1.8.0.jar;C:\Users\susve\.m2\repository\com\taoensso\encore\2.36.2\encore-2.36.2.jar;C:\Users\susve\.m2\repository\org\clojure\tools.nrepl\0.2.10\tools.nrepl-0.2.10.jar;C:\Users\susve\.m2\repository\org\tcrawley\dynapath\0.2.3\dynapath-0.2.3.jar;C:\Users\susve\.m2\repository\net\mikera\core.matrix.stats\0.7.0\core.matrix.stats-0.7.0.jar;C:\Users\susve\.m2\repository\ccw\ccw.server\0.2.1\ccw.server-0.2.1.jar;C:\Users\susve\.m2\repository\org\clojure\tools.macro\0.1.5\tools.macro-0.1.5.jar;C:\Users\susve\.m2\repository\clojure-complete\clojure-complete\0.2.3\clojure-complete-0.2.3.jar;C:\Users\susve\.m2\repository\com\taoensso\truss\1.1.1\truss-1.1.1.jar;C:\Users\susve\.m2\repository\org\clojure\clojure-contrib\1.2.0\clojure-contrib-1.2.0.jar;C:\Users\susve\.m2\repository\org\clojure\tools.cli\0.3.5\tools.cli-0.3.5.jar;C:\Users\susve\.m2\repository\io\aviso\pretty\0.1.23\pretty-0.1.23.jar;C:\Users\susve\.m2\repository\org\clojure\tools.reader\0.10.0\tools.reader-0.10.0.jar;C:\Users\susve\.m2\repository\net\mikera\vectorz-clj\0.44.0\vectorz-clj-0.44.0.jar;C:\Users\susve\.m2\repository\com\taoensso\timbre\4.3.1\timbre-4.3.1.jar;C:\Users\susve\.m2\repository\net\mikera
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=D:\programmas\Java\jdk1.8.0_161\jre\bin;D:/programmas/Java/jdk1.8.0_161/bin/../jre/bin/server;D:/programmas/Java/jdk1.8.0_161/bin/../jre/bin;D:/programmas/Java/jdk1.8.0_161/bin/../jre/lib/amd64;D:\programmas\Java\jdk1.8.0_161\bin\;D:\programmas\Python\Python36-32\Scripts\;D:\programmas\Python\Python36-32\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\programmas\Git\cmd;D:\programmas\Python27\Scripts;D:\programmas\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\programmas\nodejs\;D:\programmas\Geth;D:\programmas\go-ipfs;D:\programmas\Python27;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;D:\programmas\Leiningen\bin;C:\Users\susve\AppData\Local\Microsoft\WindowsApps;C:\Users\susve\AppData\Local\GitHubDesktop\bin;C:\Users\susve\AppData\Roaming\npm;C:\Users\susve\AppData\Local\atom\bin;D:\programmas\Leiningen\bin;C:\Windows\system32;
+USERNAME=susve
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 60 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 16299 (10.0.16299.15)
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 60 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2
+
+Memory: 4k page, physical 16706404k(8420588k free), swap 19196772k(6341196k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.161-b12) for windows-amd64 JRE (1.8.0_161-b12), built on Dec 19 2017 17:52:25 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Wed Feb 14 19:10:49 2018
+elapsed time: 2100 seconds (0d 0h 35m 0s)
+

@@ -1,0 +1,1 @@
+([:dependencies ([cider/cider-nrepl "0.10.2"] [org.clojure/tools.nrepl "0.2.10"] [ccw/ccw.server "0.2.1"] [org.clojure/clojure "1.8.0"] [nstools/nstools "0.2.4"] [anglican/anglican "1.0.0"] [org.clojure/tools.nrepl "0.2.6" :exclusions [org.clojure/clojure] :scope "test"] [clojure-complete "0.2.3" :exclusions [org.clojure/clojure] :scope "test"])])
